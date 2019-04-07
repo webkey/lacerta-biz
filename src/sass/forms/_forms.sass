@@ -1,0 +1,135 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
+/* form elements
+label
+  display: inline-block
+  vertical-align: top
+  margin-bottom: 0.5rem
+  +font-size($font-size, $line-height)
+  color: $text-color
+  user-select: none
+  -webkit-tap-highlight-color: transparent !important
+  transition: color $animation-speed
+
+  mark
+    background: none
+    color: $error-color
+
+.label-float
+  position: relative
+  float: left
+  margin: 0 #{nth($layout-text-space, 2) - nth($form-label-space-inner, 2)} -#{round-float($line-height / 2, 1)}
+  padding: 0 #{nth($form-label-space-inner, 2)}
+  +font-size($font-size, $line-height)
+  color: $text-color
+  background-color: white
+
+// .form-def:
+// input[type="text"]
+// input[type="password"]
+// input[type="email"]
+// input[type="search"]
+// textarea
+
+.form-def
+  $form-def: &
+  display: block
+  +inputs-common-styles
+  +inputs-font-styles
+  // transition
+  $prop: color, border-color
+  transition:
+    property: $prop
+    duration: $animation-speed
+    timing-function: ease-in-out
+
+  // Textarea
+  @at-root
+    textarea#{$form-def}
+      $lines: 2
+      $height: round($form-line-height*$lines) + $form-input-space-vt + $form-input-space-vb + round($form-border-width*2)
+      min-height: $height
+      height: $height
+      resize: vertical
+
+  // Последний элемент в списке
+  &:last-child
+    margin-bottom: 0
+
+  // Placeholder
+  +placeholder
+    +font-normal
+    color: $form-placeholder-color
+    transition: $animation-speed opacity
+
+  // Placeholder hide on focus
+  +placeholder-focus
+    opacity: 0
+
+  // Focus
+  &:focus
+    cursor: text
+    border-color: $form-border-color--focus
+
+  // Hover
+  &:hover
+    border-color: $form-border-color--focus
+
+  // Focus (js classes)
+  &.focused
+    +focused
+
+  // Has value (js classes)
+  // Label
+  @at-root
+    label
+      &.filled
+        color: $text-color-light
+
+  // Success
+  @at-root
+    label
+      &.success
+        +form-success
+
+  &.success
+    +form-success
+
+    // Placeholder
+    +placeholder
+      color: $form-success-color
+
+  // Error
+  @at-root label
+    &.error
+      +form-error
+
+  &.error
+    +form-error
+
+    // Placeholder
+    +placeholder
+      color: $form-error-color
+
+  // Disabled
+  &[disabled]
+    cursor: default !important
+    color: $form-text-color--disabled !important
+    background-color: $form-bg-color--disabled !important
+    border-color: $form-border-color--disabled !important
+    box-shadow: none !important
+
+    +placeholder
+      color: $form-text-color--disabled !important
+
+@import unit
+@import group
+@import checkboxes
+@import select
+@import select2
+@import validation
+@import captcha
+
+/* form elements end

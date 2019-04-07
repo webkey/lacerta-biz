@@ -1,0 +1,173 @@
+@@include("_tpl_layout_head.html", {
+  "title": "Главная",
+  "pageClass": ""
+})
+
+<!--HEADER-->
+@@include("_tpl_layout_header.html", { "currentItem": "Главная" })
+<!--HEADER end-->
+
+<!--MAIN-->
+<main class="main" role="main">
+  <!--CONTENT-->
+  <!--promo-->
+  <section class="promo layout-page-spaces">
+    <div class="promo__bg">
+      <video id="video" autoplay muted loop>
+        <source src="img/promo.mp4">
+        <source src="img/promo.ogg" type="video/webm">
+        <img src="img/promo.jpg" alt="promo" />
+      </video>
+    </div>
+    <div class="promo__container">
+      <div class="promo__caption">Lacerta.BIZ представляет</div>
+      <h1 class="promo__title">Финансирование бизнеса<br> на ваших условиях</h1>
+      <div class="promo__subtitle">Поможем выпустить облигации. Поддержим в освобождении от банков<br> и предоставим возможность диктовать свои условия.</div>
+    </div>
+  </section>
+  <!--promo end-->
+
+  <!--need-->
+  <section class="need layout-page-spaces">
+    <div class="need__container">
+      <h2>Когда это вам точно понадобится</h2>
+      <div class="need__content">
+        <h3>Рефинансирование</h3>
+        <p>Снизьте кредитную нагрузку и процентную ставку. Выпустите облигации и уменьшите выплаты, по сравнению с банками, в 2 раза.</p>
+        <h3>Расширение или модернизация бизнеса</h3>
+        <p>Выпущенные облигации станут идеальным решением для компании, которой нужна большая сумма средств, но при этом она желает максимально продлить срок полного погашения.</p>
+        <h3>Кредит для бизнеса</h3>
+        <p>Кредитование для увеличения оборотного капитала позволяет решить множество проблем и увеличить прибыль компании без вложения собственных средств, путем выпуска облигаций.</p>
+      </div>
+      <div class="need__footer">
+        <a href="#"><span>Что такое облигации?</span></a>
+        <a href="#"><span>Это интересно</span></a>
+      </div>
+    </div>
+  </section>
+  <!--need end-->
+
+  <!--cases-->
+  <section class="cases">
+    <div class="cases__title layout-page-spaces">
+      <h2 class="h1">Уже более $1 млрд<br> привлеченных средств</h2>
+      <h3>для 45 компаний с 2011 года</h3>
+    </div>
+    <div class="cases__content">
+      <div class="cases__slider cases-slider-js">
+        <div class="layout-page-spaces">
+          {{slider}}
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--cases end-->
+
+  <!--cases-->
+  <section class="scope">
+    <div class="scope__title layout-page-spaces">
+      <h2>Узнайте о возможности привлечения денежных средств для вашей компании</h2>
+    </div>
+    <div class="scope__body layout-page-spaces">
+      <div class="scope__container">
+        <h3>Ответьте на несколько вопросов и наш менеджер произведет все необходимые расчеты по привлечению финансов для вас</h3>
+        <form action="#" method="post" class="form-validate-js">
+          <div class="form-unit">
+            @@include("_tpl_forms_input.html", {
+            "label": "Наименование и УНП компании",
+            "id": "scopeName",
+            "value": "Скурко и партнеры, УНП:192715295"
+            })
+            @@include("_tpl_forms_valid.html")
+          </div>
+          <div class="form-unit">
+            <label class="form-switcher">
+              <input type="checkbox" name="checkbox" checked="">
+              <span>Были ли у вашей компании убытки в годовых балансах за последние 2 года.</span>
+            </label>
+          </div>
+          <div class="form-unit">
+            <label class="form-switcher">
+              <input type="checkbox" name="checkbox" checked="">
+              <span>Есть ли свободная недвижимость для залога</span>
+            </label>
+          </div>
+          <div class="form-unit form-unit_nested">
+            @@include("_tpl_forms_input.html", {
+            "label": "Примерная стоимость этой недвижимости <em>/ в BYN</em>",
+            "id": "scopePrice"
+            })
+            @@include("_tpl_forms_valid.html")
+          </div>
+          <div class="form-unit">
+            @@include("_tpl_forms_input.html", {
+            "label": "Какая цифра в последнем балансе по строке 590",
+            "id": "scope590"
+            })
+            @@include("_tpl_forms_valid.html")
+          </div>
+          <div class="form-unit">
+            @@include("_tpl_forms_input.html", {
+            "label": "Разделите Строку 290 на строку 590 согласно балансу. Введите полученную цифру. ",
+            "id": "scopeResult"
+            })
+            @@include("_tpl_forms_valid.html")
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+  <!--cases end-->
+
+  <!--terms-->
+  <div class="terms">
+    <div class="layout-page-spaces">
+      {{slider}}
+    </div>
+  </div>
+  <!--terms end-->
+
+  <!--prospects-->
+  <div class="prospects layout-page-spaces">
+    <div class="prospects__title">
+      <h2>На какую сумму может рассчитывать ваш бизнес</h2>
+      <h3>Мы произведем все расчеты и свяжемся с вами,<br> в среднем это занимает 1-2 дня</h3>
+    </div>
+    <form action="#" method="post" class="form-validate-js">
+      <div class="form-unit">
+        @@include("_tpl_forms_input.html", {
+        "label": "Имя",
+        "id": "prospectsName"
+        })
+        @@include("_tpl_forms_valid.html")
+      </div>
+      <div class="form-unit">
+        @@include("_tpl_forms_input.html", {
+        "label": "Телефон",
+        "id": "prospectsTel"
+        })
+        @@include("_tpl_forms_valid.html")
+      </div>
+      <div class="form-unit">
+        @@include("_tpl_forms_input.html", {
+        "label": "email",
+        "id": "prospectsEmail",
+        "type": "email"
+        })
+        @@include("_tpl_forms_valid.html")
+      </div>
+    </form>
+    <div class="prospects__footer">
+      <a href="#" class="s"><span>Буду ждать ваших расчетов</span></a>
+    </div>
+  </div>
+  <!--prospects end-->
+  <!--CONTENT end-->
+</main>
+<!--MAIN end-->
+
+<!--FOOTER-->
+@@include("_tpl_layout_footer.html")
+<!--FOOTER end-->
+
+@@include("_tpl_layout_foot.html")

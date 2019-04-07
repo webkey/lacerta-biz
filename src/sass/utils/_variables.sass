@@ -1,0 +1,571 @@
+@import ../utils/functions
+@import ../utils/placeholders
+
+// ==========================================================================
+// Variables
+// ==========================================================================
+
+// Medium query
+$breakpoints: ("desk-l": 2560px, "desk": 1920px, "desk-s": 1600px, "lap-l": 1400px, "lap": 1366px, "lap-s": 1280px, "net": 1200px, "tab": 992px, "tab-s": 768px, "mob": 640px, "mob-s": 480px, "mob-xs": 375px, "mob-xxs": 360px)
+
+
+// Fonts style
+// ==========================================================================
+$font-norm: 'google-sans-regular', Helvetica, Arial, sans-serif !default
+$font-bold: 'google-sans-bold', Helvetica, Arial, sans-serif !default
+$font-medium: 'google-sans-medium', Helvetica, Arial, sans-serif !default
+$font-alt: Georgia, serif !default
+
+// Reset font-weight and font-style
+
+// Main font
+=font-normal()
+  font-family: $font-norm
+
+=font-bold()
+  font-family: $font-bold
+  font-weight: normal
+
+=font-italic()
+  font-style: italic
+
+=font-bold-italic()
+  font-family: $font-bold
+  font-weight: normal
+  font-style: italic
+
+=font-medium()
+  font-family: $font-medium
+  font-weight: normal
+
+// Alternative font
+=font-alt()
+  font-family: $font-alt
+
+=font-alt-bold()
+  font-family: $font-alt
+  font-weight: bold
+
+=font-alt-bold-italic()
+  font-family: $font-alt
+  font-weight: bold
+  font-style: italic
+
+// Base
+// ==========================================================================
+
+$font-size: 1.8rem !default
+$line-height: 2.6rem !default
+$letter-spacing: normal !default
+// ----------------------------------------------------
+$font-size--mob: 1.6rem !default
+$line-height--mob: 2.0rem !default
+
+// Heading h1
+$font-size-h1: 8.0rem !default
+$line-height-h1: 9.0rem !default
+$line-height-h1-kef: $line-height-h1 / $font-size-h1
+// ----------------------------------------------------
+$font-size-h1--tab: 5.5rem !default
+$line-height-h1--tab: 6.5rem !default
+// ----------------------------------------------------
+$font-size-h1--mob: 3.0rem !default
+$line-height-h1--mob: 3.5rem !default
+// ----------------------------------------------------
+=font-h1()
+  font-size: $font-size-h1
+  line-height: $line-height-h1
+
+  +media('<tab')
+    font-size: $font-size-h1--tab
+    line-height: $line-height-h1--tab
+
+  +media('<mob')
+    font-size: $font-size-h1--mob
+    line-height: $line-height-h1--mob
+
+// Heading h2
+$font-size-h2: 4.0rem !default
+$line-height-h2: 4.8rem !default
+$line-height-h2-kef: $line-height-h2 / $font-size-h2
+// ----------------------------------------------------
+$font-size-h2--tab: 3.5rem !default
+$line-height-h2--tab: 4.2rem !default
+// ----------------------------------------------------
+$font-size-h2--mob: 2.4rem !default
+$line-height-h2--mob: 2.6rem !default
+// ----------------------------------------------------
+=font-h2()
+  font-size: $font-size-h2
+  line-height: $line-height-h2
+
+  +media('<tab')
+    font-size: $font-size-h2--tab
+    line-height: $line-height-h2--tab
+
+  +media('<mob')
+    font-size: $font-size-h2--mob
+    line-height: $line-height-h2--mob
+
+// Heading h3
+$font-size-h3: 2.4rem !default
+$line-height-h3: 2.9rem !default
+$line-height-h3-kef: $line-height-h3 / $font-size-h3
+// ----------------------------------------------------
+$font-size-h3--tab: 2.4rem !default
+$line-height-h3--tab: 2.9rem !default
+// ----------------------------------------------------
+$font-size-h3--mob: 2.0rem !default
+$line-height-h3--mob: 2.2rem !default
+
+// ----------------------------------------------------
+=font-h3()
+  font-size: $font-size-h3
+  line-height: $line-height-h3
+
+  +media('<tab')
+    font-size: $font-size-h3--tab
+    line-height: $line-height-h3--tab
+
+  +media('<mob')
+    font-size: $font-size-h3--mob
+    line-height: $line-height-h3--mob
+
+// Heading h4
+$font-size-h4: $font-size !default
+$line-height-h4: $line-height !default
+
+// Heading h5
+$font-size-h5: $font-size !default
+$line-height-h5: $line-height !default
+
+// Heading h6
+$font-size-h6: $font-size !default
+$line-height-h6: $line-height !default
+
+// Spaces
+$bottom-space: $line-height !default
+$bottom-space--large: $line-height * 3 !default
+$bottom-space--small: round-float($line-height*0.75, 1) !default
+
+
+// Colors
+// ==========================================================================
+
+// Color of brands
+$base-color: #eb2b3a !default
+$base-color-alt: #0b1841 !default
+// ----------------------------------------------------
+$highlight-color: #eb2b3a !default
+$highlight-color--hover: #525970 !default
+// ----------------------------------------------------
+$bg-color: #fff !default
+$bg-color-alt: #f3f3f5 !default
+// ----------------------------------------------------
+$text-color: #0b1841 !default
+$text-color-muted: #6c757d !default
+$text-color-light: #b5b9c6 !default
+// ----------------------------------------------------
+$title-color: #0b1841 !default
+// ----------------------------------------------------
+$link-color: #eb2b3a !default
+$focus-color: #0080ff !default
+// ----------------------------------------------------
+$border-color: lightgray !default
+// ----------------------------------------------------
+$mark-color: #fd0cff !default
+// ----------------------------------------------------
+$success-color: #28a745 !default
+$error-color: #dc3545 !default
+$info-color: #17a2b8 !default
+$warning-color: #ffc107 !default
+$light-color: #f8f9fa !default
+$dark-color: #343a40 !default
+
+
+// Class for article page / article content / typography
+// ==========================================================================
+// @example Sass - Использование
+// .#{$article-content}
+//
+// @example css - Вывод CSS
+// .article-content
+$article-content: article-content !default
+
+
+// Z-indexes
+// ==========================================================================
+$z-high: 40 !default
+$z-middle: 30 !default
+$z-low: 20 !default
+$z-up: 5 !default
+$z-max: 9999 !default
+
+
+// Layout
+// ==========================================================================
+
+// Минимальная ширина сайта
+$layout-page-min-width: 32rem !default
+// Максимальная ширина сайта
+$layout-page-max-width: 140rem !default
+// Отступы для всего сайта
+$layout-page-space: 3rem 5rem !default
+$layout-page-space--sm: 1.5rem 3rem !default // '<tab-sm'
+$layout-page-space--mob: 1rem 2rem !default // '<mob-lg'
+
+// ---------------------------------------
+// Максимальная ширина текстового блока
+$layout-text-width: 80rem !default
+// Отступы у текствого блока
+$layout-text-space: 2rem 4rem !default
+
+// ---------------------------------------
+// Максимальная ширина элементов выходящих за пределы текста
+$layout-flood-width: 96rem !default
+$layout-flood-space: 2rem 8rem !default
+// ---------------------------------------
+$layout-large-width: 120rem !default
+
+// ---------------------------------------
+// Внутренние отступы
+$grid-space: 2.8rem 3rem !default
+
+
+// Header
+// ==========================================================================
+$header-height: 6.0rem !default
+
+
+// Footer
+// ==========================================================================
+
+
+// Buttons
+// ==========================================================================
+$btn-height: 5rem !default
+$btn-bg-color: $base-color !default
+$btn-bg-hover-color: invert($base-color) !default
+$btn-text-color: white !default
+$btn-disabled-color: #ccc !default
+
+=btn-disabled()
+  cursor: default !important
+  color: white !important
+  border-color: $btn-disabled-color !important
+  background-color: $btn-disabled-color !important
+  box-shadow: none !important
+  pointer-events: none
+
+
+// Forms
+// ==========================================================================
+
+// Colors of forms
+$form-text-color: $text-color !default
+$form-placeholder-color: $text-color-light !default
+$form-bg-color: transparent !default
+$form-border-color: #dbdde3 !default
+// validation
+$form-error-color: $error-color !default
+$form-success-color: $success-color !default
+// disabled
+$form-text-color--disabled: #ced4da !default
+$form-bg-color--disabled: #e9ecef !default
+$form-border-color--disabled: #ced4da !default
+// focus
+$form-border-color--focus: $form-border-color !default
+
+// Fonts of forms
+//---------------------------------
+$form-font-size: 18px !default
+$form-line-height: 20px !default
+$form-input-height: 50px !default
+$form-letter-spacing: null !default
+$form-border-radius: 4px !default
+//----------------------------------
+$form-font-size--tab: 18px !default
+$form-line-height--tab: 20px !default
+$form-input-height--tab: 50px !default
+$form-letter-spacing--tab: null !default
+$form-border-radius--tab: 4px !default
+//----------------------------------
+$form-font-size--mob: 16px !default
+$form-line-height--mob: 20px !default
+$form-input-height--mob: 50px !default
+$form-letter-spacing--mob: null !default
+$form-border-radius--mob: 4px !default
+
+// Layout of forms
+//---------------------------------
+$form-border-width: 2px !default
+$form-input-space-vt: floor(($form-input-height - $form-line-height - $form-border-width * 2) / 2) !default // верхний паддинг округляем в нижнюю сторону
+$form-input-space-vb: ceil(($form-input-height - $form-line-height - $form-border-width * 2) / 2) !default // нижний паддинг округляем в верхнюю сторону
+$form-input-space-h: 38px !default
+$form-bottom-space: 5rem !default
+$form-label-space-inner: 0 1rem !default
+//---------------------------------
+$form-border-width--tab: 2px !default
+$form-input-space-vt--tab: floor(($form-input-height--tab - $form-line-height--tab - $form-border-width--tab * 2) / 2) !default // верхний паддинг округляем в нижнюю сторону
+$form-input-space-vb--tab: ceil(($form-input-height--tab - $form-line-height--tab - $form-border-width--tab * 2) / 2) !default // нижний паддинг округляем в верхнюю сторону
+$form-input-space-h--tab: 38px !default
+$form-bottom-space--tab: 5rem !default
+$form-gap--tab: 3rem !default
+//---------------------------------
+$form-border-width--mob: 2px !default
+$form-input-space-vt--mob: floor(($form-input-height--mob - $form-line-height--mob - $form-border-width--mob * 2) / 2) !default // верхний паддинг округляем в нижнюю сторону
+$form-input-space-vb--mob: ceil(($form-input-height--mob - $form-line-height--mob - $form-border-width--mob * 2) / 2) !default // нижний паддинг округляем в верхнюю сторону
+$form-input-space-h--mob: 38px !default
+$form-bottom-space--mob: 5rem !default
+$form-gap--mob: 2rem !default
+
+// Inputs Common Styles
+//---------------------------------
+=inputs-common-styles()
+  height: $form-input-height
+  width: 100%
+  padding: $form-input-space-vt #{$form-input-space-h + 10} $form-input-space-vb $form-input-space-h
+  background-color: $form-bg-color
+  border-radius: $form-border-radius
+  box-shadow: none
+  @if $form-border-width
+    border: $form-border-width solid $form-border-color
+
+=inputs-common-styles--tab()
+  height: $form-input-height--tab
+  padding: $form-input-space-vt--tab #{$form-input-space-h--tab + 15} $form-input-space-vb--tab $form-input-space-h--tab
+  border-radius: $form-border-radius--tab
+  @if $form-border-width--tab
+    border-width: $form-border-width--tab
+
+=inputs-common-styles--mob()
+  height: $form-input-height--mob
+  padding: $form-input-space-vt--mob #{$form-input-space-h--mob + 20} $form-input-space-vb--mob $form-input-space-h--mob
+  border-radius: $form-border-radius--mob
+  @if $form-border-width--mob
+    border-width: $form-border-width--mob
+
+// Inputs Font Styles
+//---------------------------------
+=inputs-font-styles()
+  +font-bold
+  font-size: $form-font-size
+  line-height: $form-line-height
+  color: $form-text-color
+  @if $form-letter-spacing
+    letter-spacing: $form-letter-spacing
+
+=inputs-font-style--tab()
+  font-size: $form-font-size--tab
+  line-height: $form-line-height--tab
+  @if $form-letter-spacing--tab
+    letter-spacing: $form-letter-spacing--tab
+
+=inputs-font-style--mob()
+  font-size: $form-font-size--mob
+  line-height: $form-line-height--mob
+  @if $form-letter-spacing--mob
+    letter-spacing: $form-letter-spacing--mob
+
+// Selects Font Styles
+//---------------------------------
+=selects-font-styles()
+  +inputs-font-styles
+
+// Inputs Spaces
+//---------------------------------
+=forms-space()
+  margin: 0 0 $form-bottom-space
+
+  +media('<mob')
+    margin: 0 0 $form-bottom-space--mob
+
+// Checkboxes
+// Radio Buttons
+$checkbox-color: #ff3aa3 !default
+
+// Select
+$select-space-v: 12px !default
+$multiple-item-space: 3px !default
+
+// Select custom arrow
+$select-arrow-width: 40px !default
+$select-arrow-height: $form-input-height !default
+
+// Style Selection
+=selectSelection()
+  height: $form-input-height
+  width: 100%
+  padding: $form-input-space-vt $select-arrow-width $form-input-space-vb $form-input-space-h
+  background: $form-bg-color
+  border: #{$form-border-width} solid #{$form-border-color}
+  border-radius: 4px
+  box-shadow: none
+  text-indent: 0
+  outline: none
+
+// States
+=form-success()
+  color: $form-success-color
+  border-color: $form-success-color
+
+=form-error()
+  color: $form-error-color
+  border-color: $form-error-color
+
+=filled()
+  color: blueviolet
+  border-color: blueviolet
+
+=focused()
+  //color: $form-border-focus-color
+  border-color: $form-border-color--focus
+
+
+// Form validate feedback
+// ==========================================================================
+$validate-feedback-font-size: 1.2rem
+$validate-feedback-line-height: 1.6rem
+$validate-feedback-height: 2.2rem // Высота предупреждения, если оно занимает одну строку
+
+
+// Forms opener
+// ==========================================================================
+=form-opener-style($cf-title-height: 6rem)
+  +media('<tab-s')
+    display: flex
+    align-items: center
+    justify-content: flex-start
+    height: 6rem
+    padding: 0.5rem #{$cf-title-height + 1} 0.5rem #{nth($layout-page-space--mob, 2)}
+    margin: 0
+    font-size: 1.7rem
+    line-height: 2.0rem
+    text-align: left
+    background-color: #2d2d87
+
+  @at-root
+    .callback-form__opener
+      display: none
+      overflow: hidden
+      align-items: center
+      justify-content: center
+      position: absolute
+      right: 0
+      top: 0
+      height: 100%
+      width: $cf-title-height
+      color: white
+      background-color: $highlight-color
+      user-select: none
+      -webkit-tap-highlight-color: transparent
+
+      +media('<tab-s')
+        display: flex
+
+      $this-icon-lines-size: 4px 28px
+      &::before, &::after
+        content: ""
+        display: block
+        position: absolute
+        top: 0
+        height: nth($this-icon-lines-size, 1)
+        width: nth($this-icon-lines-size, 2)
+        z-index: 5
+        opacity: 0
+        pointer-events: none
+        background-color: white
+        // transition
+        $prop: transform, opacity
+        will-change: $prop
+        transition:
+          property: $prop
+          duration: 0.3s
+          timing-function: ease-in-out
+
+      &::before
+        left: 0
+        transform-origin: left top
+        $rotate: 45deg
+        $translate: -20px, -#{round(nth($this-icon-lines-size, 1) / 2)}
+        transform: rotate($rotate) translate($translate)
+        transform: rotate($rotate) translate3d($translate, 0)
+
+      &::after
+        right: 0
+        transform-origin: right top
+        $rotate: -45deg
+        $translate: 20px, -#{round(nth($this-icon-lines-size, 1) / 2)}
+        transform: rotate($rotate) translate($translate)
+        transform: rotate($rotate) translate3d($translate, 0)
+        transition-delay: 0.12s
+
+      .form-is-open &
+        &::before
+          opacity: 1
+          $rotate: 45deg
+          $translate: 28px, -#{round(nth($this-icon-lines-size, 1) / 2)}
+          transform: rotate($rotate) translate($translate)
+          transform: rotate($rotate) translate3d($translate, 0)
+
+        &::after
+          opacity: 1
+          $rotate: -45deg
+          $translate: -28px, -#{round(nth($this-icon-lines-size, 1) / 2)}
+          transform: rotate($rotate) translate($translate)
+          transform: rotate($rotate) translate3d($translate, 0)
+
+      svg
+        display: block
+        $size: 3.2rem
+        height: $size
+        width: $size
+
+        // transition
+        $prop: transform, opacity
+        will-change: $prop
+        transition:
+          property: $prop
+          duration: 0.3s
+          delay: 0.08s
+          timing-function: ease-in-out
+
+        .form-is-open &
+          opacity: 0
+          $scale: 0.9
+          transform: scale($scale)
+          transform: scale($scale) translateZ(0)
+          transition-delay: 0s
+
+        path
+          fill: currentColor
+
+
+// Shadow
+// ==========================================================================
+=shadow()
+  border-radius: 0.5rem 0.5rem 0 0
+
+  &::before, &::after
+    content: ""
+    display: block
+    position: absolute
+    top: 3rem
+    width: 2rem
+    height: 9.5rem
+    z-index: -1
+    background-image: url(../../img/shadow.png)
+    background-repeat: no-repeat
+
+  &::before
+    left: -4px
+    background-position: 0 100%
+
+  &::after
+    right: -4px
+    background-position: 100% 100%
+
+
+// Animation
+// ==========================================================================
+$animation-speed: 0.3s !default

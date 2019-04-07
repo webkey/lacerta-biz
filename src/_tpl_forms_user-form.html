@@ -1,0 +1,42 @@
+<div class="user-form">
+  <div class="form-title">@@title</div>
+  <form action="#" method="post" class="form-validate-js">
+    <div class="form-group">
+      <div class="form-group__item">
+        @@include("_tpl_forms_input.html", {
+        "label": "Name:",
+        "id": "uf-name",
+        "placeholder": "Enter Your Name"
+        })
+        @@include("_tpl_forms_valid.html", {"error": "Please enter your name, please"})
+      </div>
+      <div class="form-group__item">
+        @@include("_tpl_forms_input.html", {
+        "label": "Email:",
+        "id": "uf-email",
+        "type": "email",
+        "placeholder": "Enter Your Email"
+        })
+        @@include("_tpl_forms_valid.html", {"error": "Please enter a valid email address"})
+      </div>
+    </div>
+    <br>
+
+    <label for="form-captcha">Security Check:<span class="form-mark">*</span></label>
+    <div class="form-unit">
+      <div class="captcha">
+        <img src="img/captcha.jpg" alt="captcha" />
+        @@include("_tpl_forms_input.html", {
+        "label": "",
+        "id": "form-captcha",
+        "placeholder": "Enter Your Name"
+        })
+        @@include("_tpl_forms_valid.html", {"error": "Enter text in this image", "success": "The verification was successful!"})
+        <div class="captcha-refresh"><a href="#"><span>Try another text</span></a></div>
+      </div>
+    </div>
+    <br>
+
+    @@include("_tpl_btn.html", {"type": "button!", "value": "SEND"})
+  </form>
+</div>

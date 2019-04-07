@@ -1,0 +1,1372 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
+/* helper classes
+.mark
+  color: $mark-color
+
+.align-center
+  text-align: center
+
+.align-left
+  text-align: left
+
+.align-right
+  text-align: right
+
+.float-left
+  float: left
+
+.float-right
+  float: right
+
+.push-auto
+  margin-left: auto
+  margin-right: auto
+
+.nobr
+  white-space: nowrap
+
+.hide
+  display: none !important
+
+.hide-text
+  +hide-text
+
+.desktop-only
+  +media('<tab')
+    display: none
+
+.devices-only
+  +media('>=tab')
+    display: none
+
+.mobile-only
+  +media('>=mob')
+    display: none
+
+/* ====================================
+/* ============== HEADER ==============
+/* ====================================
+.header
+  overflow-x: hidden
+  position: fixed
+  left: 0
+  top: 0
+  width: 100%
+  min-width: $layout-page-min-width
+  height: $header-height
+  z-index: $z-high
+
+  &::before
+    content: ""
+    display: block
+    position: absolute
+    left: 0
+    top: 0
+    width: 100%
+    height: 100%
+    background-color: $base-color
+    opacity: 0.84
+    // transition
+    $prop: opacity
+    will-change: $prop
+    transition:
+      property: $prop
+      duration: $animation-speed
+      timing-function: ease-in-out
+
+    .page-scrolled &
+      opacity: 1
+
+// Добавлять класс, если не нужно фиксить шапку
+.header_float
+  position: relative
+  left: auto
+  top: auto
+
+.header-frame
+  position: relative
+  display: flex
+  align-items: center
+  justify-content: space-between
+  height: 100%
+
+/* logo
+.logo
+  float: left
+  display: block
+  position: relative
+  background-image: url(../../img/logo.png)
+  background-repeat: no-repeat
+  background-size: contain
+  width: 15.9rem
+
+  .page-scrolled &
+    width: 13.5rem
+
+  @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi)
+    background-image: url(../../img/logo-2x.png)
+
+  +media('<lap-l')
+    width: 13.5rem
+
+  &::before
+    content: ""
+    display: block
+    +ratio(159, 23)
+
+  a, & > span
+    display: block
+    overflow: hidden
+    position: absolute
+    left: 0
+    top: 0
+    width: 100%
+    height: 100%
+    text-indent: -9999px
+
+/* logo end
+
+/* navigation
+.nav-wrap
+  display: flex
+  align-items: center
+  margin: 0
+
+  +media('<tab-s')
+    display: none
+
+.nav
+  position: relative
+
+.nav__list
+  list-style: none
+  margin: 0
+  padding: 0
+  font-size: 1.4rem
+  line-height: 1.8rem
+  letter-spacing: 0.025em
+  cursor: default
+  +clear
+
+  li
+    position: relative
+    float: left
+    margin-left: 4rem
+
+    +media('<lap-l')
+      margin-left: 2.6rem
+
+  a
+    display: flex
+    align-items: center
+    justify-content: center
+    height: $header-height
+    color: white
+    text-decoration: none
+    transition: color $animation-speed
+
+    &:hover
+      color: $highlight-color--hover
+
+  // current
+  li.current
+    color: $text-color-light
+    pointer-events: none
+
+    a, & > span
+      text-decoration: none
+      color: inherit
+      cursor: default
+
+// btn callback
+.btn-callback
+  $btn-height: 4rem
+  $btn-font-size: 1.4rem
+  $btn-line-height: 1.8rem
+  $btn-letter-spacing: 0.025em
+  $btn-border-width: 0.2rem
+  $btn-space-inner-vertical: round-float(($btn-height - $btn-line-height - $btn-border-width * 2) / 2, 1)
+  display: inline-block
+  vertical-align: top
+  position: relative
+  margin: 0
+  padding: #{$btn-space-inner-vertical} 1.286em #{$btn-space-inner-vertical} 1.311em
+  color: white
+  text-decoration: none
+  text-align: center
+  cursor: pointer // Для input-елементов
+  border: $btn-border-width solid currentColor
+  background: none
+  box-shadow: none
+  border-radius: $btn-height
+  user-select: none
+  -webkit-tap-highlight-color: transparent
+  transition: color $animation-speed
+
+  &, & > span
+    +font-size($btn-font-size, $btn-line-height)
+    letter-spacing: $btn-letter-spacing
+
+  // Hover
+  &:hover
+    .no-touchevents &
+      color: $highlight-color--hover
+
+  // Disabled
+  &:disabled, &.disabled, &[data-disabled]
+    +btn-disabled()
+
+
+  .header &
+    margin-left: 4rem
+
+/* navigation end
+
+/* alternative navigation
+.alt-nav
+  position: relative
+
+.alt-nav__list
+  list-style: none
+  padding: 0
+  margin: 0
+  cursor: default
+
+  +media('<tab')
+    text-align: center
+
+  +media('<mob')
+    margin: 0 -0.8rem
+
+  li
+    +font-bold
+    font-size: 5.5rem
+    line-height: 6.6rem
+    letter-spacing: 0.01em
+    margin-bottom: 5.1rem
+    overflow: hidden
+
+    +media('<lap-l')
+      margin-bottom: 2rem
+      font-size: 4rem
+      line-height: 5rem
+
+    +media('<lap-l')
+      font-size: 2.8rem
+      line-height: 3.4rem
+
+    +media('<mob')
+      font-size: 2.4rem
+      line-height: 3rem
+      margin-bottom: 4.1rem
+
+    &:last-child
+      margin-bottom: 0
+
+  a
+    color: #000
+    text-decoration: none
+    transition: color $animation-speed
+    padding-top: 0.5em
+
+    &:hover
+      color: $highlight-color--hover
+
+  // current
+  li.current
+    color: $text-color-light
+    pointer-events: none
+
+    a, & > span
+      text-decoration: none
+      color: inherit
+      cursor: default
+
+/* alternative navigation end
+
+/* === SHUTTER NAVIGATION ===
+$switcher-nav-delay: 0.10s
+$switcher-nav-dur: 0.2s
+$toggle-nav-delay: $switcher-nav-delay + $switcher-nav-dur
+$toggle-nav-dur: 0.2s
+$toggle-nav-curtains-dur: 0.5s
+$toggle-nav-item-dur: 0.4s
+// =====================
+
+/* shutter navigation switcher
+a.shutter-nav-switcher
+  $btn-nav-size: 60px
+  $btn-nav-lines-width: 35px
+  $btn-nav-lines-height: 5px
+  $btn-nav-lines-color: currentColor
+  // ----------------------------
+  $btn-nav-lines-width--sm: 33px
+  $btn-nav-lines-height--sm: 3px
+  // ----------------------------
+  $btn-nav-lines-width--mob: 23px
+  $btn-nav-lines-height--mob: 2px
+  // =====================
+
+  display: none
+  position: absolute
+  right: nth($layout-page-space, 2)
+  top: 50%
+  margin: -#{round-float($btn-nav-size / 2, 1) + 1} -1.2rem 0
+  color: #000
+  text-decoration: none
+  width: $btn-nav-size
+  height: $btn-nav-size
+  user-select: none
+  -webkit-tap-highlight-color: transparent
+  // transition
+  $prop: color
+  will-change: $prop
+  transition:
+    property: $prop
+    duration: $switcher-nav-dur
+    timing-function: ease-in-out
+
+  .page-scrolled &
+    color: white
+
+  +media('<tab')
+    margin-right: -1.4rem
+
+  +media('<tab-s')
+    right: nth($layout-page-space--sm, 2)
+    margin-right: -1.6rem
+
+  +media('<mob')
+    right: nth($layout-page-space--mob, 2)
+    margin-right: -1.9rem
+
+  // убрать подсветку при клике на тачскринах
+  .touchevents &
+    user-select: none
+    -webkit-tap-highlight-color: transparent
+
+  // верх, середина, низ
+  &::before, &::after, & > i
+    display: block
+    position: absolute
+    left: 50%
+    height: $btn-nav-lines-height
+    background-color: $btn-nav-lines-color
+    border-radius: $btn-nav-lines-height
+    // transition
+    $prop: transform, opacity
+    will-change: $prop
+    transition:
+      property: $prop
+      duration: $switcher-nav-dur
+      timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95)
+
+    +media('<tab')
+      height: $btn-nav-lines-height--sm
+
+    +media('<tab-s')
+      height: $btn-nav-lines-height--mob
+
+  // верх, низ
+  &::before, &::after
+    content: ""
+    width: $btn-nav-lines-width + 5
+    margin: 10px 0 11px -#{round($btn-nav-lines-width / 2) + 5}
+
+    +media('<tab')
+      width: $btn-nav-lines-width--sm + 11
+      margin: 12px 0 11px -#{round($btn-nav-lines-width--sm / 2) + 11}
+
+    +media('<tab-s')
+      width: $btn-nav-lines-width--mob + 7
+      margin: 8px 0 8px -#{round($btn-nav-lines-width--mob / 2) + 7}
+
+  // верх
+  &::before
+    bottom: 50%
+    transition-delay: 0s
+
+  // середина
+  & > i
+    font-size: 0
+    line-height: 0
+    top: 50%
+    width: $btn-nav-lines-width
+    margin: -#{round($btn-nav-lines-height / 2)} 0 0 -#{round($btn-nav-lines-width / 2)}
+    transition-delay: round-float($switcher-nav-delay / 2, 2)
+
+    +media('<tab')
+      width: $btn-nav-lines-width--sm
+      margin: -#{round($btn-nav-lines-height--sm / 2 - 1)} 0 0 -#{round($btn-nav-lines-width--sm / 2)}
+
+    +media('<tab-s')
+      width: $btn-nav-lines-width--mob
+      margin: -#{round($btn-nav-lines-height--mob / 2)} 0 0 -#{round($btn-nav-lines-width--mob / 2)}
+
+  // низ
+  &::after
+    top: 50%
+    transition-delay: $switcher-nav-delay
+
+  // текст
+  & > span
+    +hide-text
+
+  // hover
+  &:hover
+    color: $highlight-color--hover
+
+  // opened
+  &.shutter-nav_is-open
+    &::before, &::after, & > i
+      transform: translate(80px, 0) translateZ(0)
+      opacity: 0
+
+/* shutter navigation switcher end
+
+/* shutter navigation close
+.shutter-nav-close
+  position: absolute
+  width: 3.1rem
+  height: 3.1rem
+  top: 3.9rem
+  right: nth($layout-page-space, 2) + 0.2
+  font-size: 0
+  line-height: 0
+  opacity: 0
+  pointer-events: none
+  visibility: hidden
+  $rotate: -20deg
+  transform: rotate($rotate)
+  transform: rotate($rotate) translateZ(0)
+  // transition
+  $prop: transform, opacity, visibility
+  will-change: $prop
+  user-select: none
+  -webkit-tap-highlight-color: transparent
+  transition:
+    property: $prop
+    // Кнопку закрытия скрывать с задержкой (сразу после закрытия меню), без анимацией
+    duration: 0s
+    delay: $toggle-nav-dur
+    timing-function: ease-in-out
+
+  +media('<tab')
+    display: block
+    transition-delay: 0s
+    top: 2.5rem
+
+  +media('<tab-s')
+    top: 1.5rem
+    right: nth($layout-page-space--sm, 2) + 0.2
+
+  +media('<mob')
+    right: nth($layout-page-space--mob, 2) + 0.2
+
+  &::before, &::after
+    $nav-close-cross-size: 5px 41px
+    $nav-close-cross-size--sm: 3px 41px
+    $nav-close-cross-size--mob: 2px 28px
+    content: ""
+    display: block
+    position: absolute
+    left: 50%
+    top: 50%
+    height: nth($nav-close-cross-size, 1)
+    width: nth($nav-close-cross-size, 2)
+    margin: -#{round(nth($nav-close-cross-size, 1) / 2)} 0 0 -#{round(nth($nav-close-cross-size, 2) / 2)}
+    border-radius: nth($nav-close-cross-size, 1)
+    background-color: white
+    // transition
+    $prop: background-color
+    will-change: $prop
+    transition:
+      property: $prop
+      duration: $animation-speed
+      timing-function: ease-in-out
+
+    +media('<tab')
+      background-color: #000
+      height: nth($nav-close-cross-size--sm, 1)
+      width: nth($nav-close-cross-size--sm, 2)
+      margin: -#{round(nth($nav-close-cross-size--sm, 1) / 2)} 0 0 -#{round(nth($nav-close-cross-size--sm, 2) / 2)}
+      border-radius: nth($nav-close-cross-size--sm, 1)
+
+    +media('<tab-s')
+      height: nth($nav-close-cross-size--mob, 1)
+      width: nth($nav-close-cross-size--mob, 2)
+      margin: -#{round(nth($nav-close-cross-size--mob, 1) / 2)} 0 0 -#{round(nth($nav-close-cross-size--mob, 2) / 2)}
+      border-radius: nth($nav-close-cross-size--mob, 1)
+
+  &::before
+    transform: rotate(45deg)
+
+  &::after
+    transform: rotate(-45deg)
+
+  &:hover
+    &::before, &::after
+      background-color: $highlight-color--hover
+
+  &.shutter-nav_is-open
+    opacity: 1
+    pointer-events: auto
+    visibility: visible
+    $rotate: 0deg
+    transform: rotate($rotate)
+    transform: rotate($rotate) translateZ(0)
+    transition:
+      // Кнопку закрытия показывать с задержкой и анимацией
+      duration: $toggle-nav-item-dur
+      delay: $toggle-nav-delay + $toggle-nav-curtains-dur - 0.05s
+
+    +media('<tab')
+      transition:
+        duration: $animation-speed
+        delay: $animation-speed
+
+.shutter-nav .shutter-nav-close
+  +media('<tab')
+    display: none
+
+.shutter-nav-close_device
+  position: fixed
+  display: none
+  z-index: 10000
+
+  +media('<tab')
+    display: block
+
+/* shutter navigation close end
+
+/* shutter navigation overlay
+.shutter-overlay
+  display: none
+  position: fixed
+  left: 0
+  top: 0
+  height: 100%
+  width: 100%
+  background-color: rgba(black, 0.35)
+  z-index: 9998
+  opacity: 0
+  pointer-events: none
+  // transition
+  $prop: opacity
+  will-change: $prop
+  transition:
+    property: $prop
+    duration: $animation-speed
+    timing-function: ease-in-out
+
+  +media('<tab')
+    display: block
+
+  &.shutter-nav_is-open
+    opacity: 1
+
+/* shutter navigation overlay end
+
+/* shutter navigation
+.shutter-nav
+  position: fixed
+  right: 0
+  top: 0
+  display: flex
+  align-items: center
+  justify-content: center
+  width: 100%
+  height: 100%
+  overflow: hidden
+  opacity: 0
+  visibility: hidden
+  pointer-events: none
+  z-index: 9999
+  // Общий блок меню скрывать без задержки, с анимацией
+  transition:
+    property: opacity, visibility
+    duration: $toggle-nav-dur
+
+  +media('<tab')
+    display: block
+    overflow-x: hidden
+    overflow-y: auto
+    background-color: white
+    $translate: 100%, 0
+    transform: translate($translate)
+    transform: translate3d($translate, 0)
+    transition:
+      property: opacity, visibility, transform
+      duration: $animation-speed
+
+  &::before, &::after
+    content: ""
+    display: block
+    position: absolute
+    top: 0
+    left: 0
+    width: 50%
+    height: 100%
+    z-index: -1
+    // transition
+    $prop: opacity, visibility, transform
+    will-change: $prop
+    transition:
+      property: $prop
+      // Шторки меню скрывать с задержкой (сразу после закрытия меню), без анимацией
+      duration: 0s
+      delay: $toggle-nav-dur
+      timing-function: cubic-bezier(0.4, 0.6, 0.2, 1)
+
+    +media('<tab')
+      display: none
+      content: none
+
+  &::before
+    background-color: white
+    $translate: 0, 100%
+    transform: translate($translate)
+    transform: translate3d($translate, 0)
+
+  &::after
+    background-color: $base-color
+    left: 50%
+    $translate: 0, -100%
+    transform: translate($translate)
+    transform: translate3d($translate, 0)
+
+  &.shutter-nav_is-open
+    opacity: 1
+    visibility: visible
+    pointer-events: auto
+
+    +media('>=tab')
+      // Общий блок меню показывать без задержки и анимации
+      transition:
+        duration: 0s
+        delay: 0s
+
+    +media('<tab')
+      $translate: 0, 0
+      transform: translate($translate)
+      transform: translate3d($translate, 0)
+
+    &::before, &::after
+      $translate: 0, 0
+      transform: translate($translate)
+      transform: translate3d($translate, 0)
+      // Шторки меню показывать с задержкой и анимацией
+      transition:
+        duration: $toggle-nav-curtains-dur
+        delay: $toggle-nav-delay
+
+.shutter-nav__layout
+  display: flex
+  align-items: flex-start
+  width: 100%
+  max-width: 166rem
+
+  +media('<tab')
+    display: block
+    padding: 0
+
+.shutter-nav__content,
+.shutter-nav__footer
+  flex-grow: 1
+  flex-basis: 50%
+  max-width: 50%
+  padding: 3rem 9rem
+  opacity: 0
+  will-change: transform, opacity
+  transition:
+    property: transform, opacity
+    // Внутренние элементы скрывать с задержкой (сразу после закрытия меню), без анимацией
+    duration: 0s
+    delay: $toggle-nav-dur
+    timing-function: ease-out
+
+  +media('<lap-l')
+    padding: 2rem 4rem
+
+  +media('<tab')
+    width: auto
+    max-width: none
+    padding: 8.8rem #{nth($layout-page-space, 2)}
+    opacity: 1
+
+  +media('<tab-s')
+    padding-left: #{nth($layout-page-space--sm, 2)}
+    padding-right: #{nth($layout-page-space--sm, 2)}
+
+  +media('<mob')
+    padding-left: #{nth($layout-page-space--mob, 2)}
+    padding-right: #{nth($layout-page-space--mob, 2)}
+
+  .shutter-nav_is-open &
+    +media('>=tab')
+      opacity: 1
+      $translate: 0, 0
+      transform: translate($translate)
+      transform: translate3d($translate, 0)
+      transition:
+        // Внутренние элементы показывать с задержкой и анимацией
+        duration: $toggle-nav-item-dur
+        delay: $toggle-nav-delay + $toggle-nav-curtains-dur - 0.05s
+
+// Левая часть
+.shutter-nav__content
+  +media('>=tab')
+    $translate: 0, 4rem
+    transform: translate($translate)
+    transform: translate3d($translate, 0)
+    padding-left: 0
+
+  +media('<tab')
+    padding-top: 8.8rem
+    padding-bottom: 5.8rem
+
+// Правая часть
+.shutter-nav__footer
+  color: white
+
+  +media('>=tab')
+    $translate: 0, -4rem
+    transform: translate($translate)
+    transform: translate3d($translate, 0)
+    padding-right: 0
+
+  +media('<tab')
+    background-color: $base-color
+    padding-top: 5.7rem
+    padding-bottom: 6rem
+
+/* title
+.shutter-nav__title
+  +font-bold
+  font-size: 5.5rem
+  line-height: 6.6rem
+  margin-bottom: 7.6rem
+
+  +media('<lap-l')
+    margin-bottom: 4rem
+    font-size: 4rem
+    line-height: 5rem
+
+  +media('<lap-l')
+    font-size: 2.8rem
+    line-height: 3.4rem
+
+  +media('<tab')
+    text-align: center
+    font-size: 2.4rem
+    line-height: 2.4rem
+    margin-bottom: 2.9rem
+
+  &:last-child
+    margin-bottom: 0
+
+/* title end
+
+/* alternative navigation
+.shutter-nav__alt-nav
+  margin: 0 0 14.4rem
+
+  +media('<lap-l')
+    margin-bottom: 10rem
+
+  +media('<tab')
+    margin-bottom: 5.3rem
+
+  &:last-child
+    margin-bottom: 0
+
+/* alternative navigation end
+
+/* app
+.shutter-nav__app
+  display: flex
+  flex-wrap: wrap
+  margin-bottom: 4.3rem
+
+  +media('<tab')
+    justify-content: center
+    margin-bottom: 5.3rem
+
+  +media('<tab-s')
+    display: block
+
+.shutter-nav__app-item
+  margin: 0 4rem 3.0rem 0
+
+  +media('<tab-s')
+    margin: 0 0 6rem
+    text-align: center
+
+  &:last-child
+    margin: 0
+
+  .btn-app
+    font-size: 1.8rem
+    line-height: 2.2rem
+    height: 6.2rem
+    padding: 1rem 5rem 1rem 8rem
+    border-radius: 6.2rem
+
+    & > br
+      display: block
+
+    &:hover
+      background-color: $highlight-color--hover
+
+  .btn-app_google-play
+    background-position: 2.8rem center
+    background-size: 29px auto
+
+  .btn-app_apple
+    background-position: 28px center
+    background-size: 26px auto
+
+/* app end
+
+/* conditions
+.shutter-nav__conditions
+  overflow: hidden
+  width: 30rem
+  max-width: 100%
+  font-size: 1.8rem
+  line-height: 2.2rem
+
+  +media('<tab')
+    text-align: center
+    margin-left: auto
+    margin-right: auto
+
+  +media('<mob')
+    width: auto
+    margin: 0 -0.8rem
+    max-width: none
+
+  a
+    color: #000
+    padding-top: 0.5em
+    text-decoration: none
+    box-shadow: inset 0 -1px 0 #8f8f8f
+    transition:
+      property: color, box-shadow
+      duration: $animation-speed
+
+    &:hover
+      box-shadow: inset 0 -1px 0 $highlight-color--hover
+      color: $highlight-color--hover
+
+/* conditions end
+
+/* contacts
+.shutter-nav__contacts
+  display: flex
+  flex-wrap: wrap
+  align-items: flex-start
+  margin: 0 0 6.2rem
+  padding: 0
+  font-size: 2.4rem
+  line-height: 3.2rem
+  list-style: none
+
+  +media('<tab')
+    display: block
+    width: 40rem
+    max-width: 100%
+    margin: 0 auto 5.7rem
+    //font-size: 1.8rem
+    //line-height: 2.2rem
+    text-align: center
+
+  &:last-child
+    margin-bottom: 0
+
+  li
+    margin: 0 3rem 1.1rem 0
+
+    +media('<tab')
+      margin: 2.0rem 0 0
+
+    &.phone
+      +media('<tab')
+        margin-top: 2.6rem
+
+    &:first-child
+      margin-top: 0
+
+  a
+    $box-shadow: inset 0 -1px 0
+    color: inherit
+    text-decoration: none
+    box-shadow: #{$box-shadow} rgba(white, 0.5)
+    transition:
+      property: color, box-shadow
+      duration: $animation-speed
+
+    &[href^="tel:"]
+      box-shadow: none
+
+    &:hover
+      color: $highlight-color--hover
+      box-shadow: #{$box-shadow} rgba($highlight-color--hover, 0.5)
+
+      &[href^="tel:"]
+        box-shadow: none
+
+    & > strong
+      +font-normal
+      font-size: 3.0rem
+
+    &:hover
+      color: $highlight-color--hover
+      box-shadow: inset 0 -1px 0 rgba($highlight-color--hover, 0.5)
+
+      &[href^="tel:"]
+        box-shadow: none
+
+/* contacts end
+
+/* callback-form
+.n-callback-form
+  margin-bottom: 7.7rem
+
+  +media('<lap-l')
+    margin-bottom: 4rem
+
+  +media('<tab')
+    margin-bottom: 5.7rem
+
+  &:last-child
+    margin-bottom: 0
+
+  form
+    display: block
+    position: relative
+
+.n-callback-form__title
+  +font-normal
+  display: block
+  position: relative
+  margin-bottom: 2.0rem
+  font-size: 1.8rem
+  line-height: 2.4rem
+
+  & > strong
+    font-family: inherit
+
+  +media('<lap-l')
+    margin-bottom: 1.5rem
+
+  +media('<tab')
+    display: block
+    margin: 0 0 2.3rem
+    text-align: center
+
+  +form-opener-style(6rem)
+
+.n-callback-form__fields-wrap
+  +media('<tab-s')
+    overflow: hidden
+    transition: max-height 0.3s linear
+    max-height: 0
+
+    &.form-is-open
+      max-height: 50rem
+
+$n-callback-form-item-space: 2rem 2rem
+$n-callback-form-space-item--sm: 3rem 3rem
+$n-callback-form-space-item--mob: 3rem 2rem
+.n-callback-form__fields
+  display: flex
+  flex-wrap: wrap
+  margin: 0 -#{round-float(nth($n-callback-form-item-space, 2) / 2, 1)}
+
+  +media('<tab')
+    padding: 5.1rem #{4 - round-float(nth($n-callback-form-space-item--sm, 2) / 2, 1)} #{5 - $form-bottom-space--tab}
+    margin: 0
+    background-color: $base-color-alt
+
+  +media('<tab-s')
+    padding: 4.1rem #{nth($layout-page-space--mob, 2) - round-float(nth($n-callback-form-space-item--mob, 2) / 2, 1)} #{4.1 - $form-bottom-space--mob}
+    opacity: 0
+    $translate: 0, -2rem
+    transform: translate($translate)
+    transform: translate3d($translate, 0)
+    // transition
+    $prop: opacity, transform
+    will-change: $prop
+    transition:
+      property: $prop
+      duration: 0.3s
+      timing-function: ease-in-out
+
+    .form-is-open &
+      opacity: 1
+      $translate: 0, 0
+      transform: translate($translate)
+      transform: translate3d($translate, 0)
+
+  +media('<mob')
+    display: block
+
+  .n-callback-form__fields-group
+    $space: #{round-float(nth($n-callback-form-item-space, 2) / 2, 1)}
+    flex-grow: 1
+    flex-shrink: 0
+    $width: calc(50.0% - #{nth($n-callback-form-item-space, 2)})
+    flex-basis: $width
+    max-width: $width
+    text-align: right
+    margin-left: $space
+    margin-right: $space
+
+    +media('<tab')
+      $space: #{round-float(nth($n-callback-form-space-item--sm, 2) / 2, 1)}
+      $width: calc(50.0% - #{nth($n-callback-form-space-item--sm, 2)})
+      flex-basis: $width
+      max-width: $width
+      margin-left: $space
+      margin-right: $space
+
+    +media('<tab-s')
+      $space: #{round-float(nth($n-callback-form-space-item--mob, 2) / 2, 1)}
+      $width: calc(50.0% - #{nth($n-callback-form-space-item--mob, 2)})
+      max-width: $width
+      margin-left: $space
+      margin-right: $space
+
+    +media('<mob')
+      max-width: none
+
+    textarea
+      $height: calc(#{$form-input-height * 2} + #{$form-bottom-space})
+      height: $height
+      min-height: $height
+      resize: none
+
+  .input-def
+    border-radius: 1rem
+    background-color: white
+    border-right-color: white
+
+  .input-wrap_btn
+    position: relative
+    top: 2rem
+    text-align: right
+
+    +media('<mob')
+      top: auto
+      text-align: center
+
+    [class*="btn-"]
+      box-shadow: 0 10px 10px rgba(81, 0, 33, 0.25)
+
+      +media('<mob')
+        display: block
+        width: 100%
+
+      &:hover
+        box-shadow: 0 5px 5px rgba($btn-bg-hover-color, 0.25)
+
+/* callback-form end
+
+/* chats
+.shutter-nav__chats
+  +media('<tab')
+    justify-content: center
+    margin: 0 auto 4.1rem
+
+  .chats__group
+    & > strong
+      margin-bottom: 1.5rem
+
+/* chats end
+/* shutter navigation end
+
+
+/* ====================================
+/* ============= FOOTER ===============
+/* ====================================
+.footer
+  position: relative
+  //z-index: 5
+
+  padding-top: 2rem
+  padding-bottom: 2rem
+  background-color: rgba(lightgreen, 0.8)
+
+/* footer bottom
+.footer-bottom
+  position: relative
+  // обрезать вытянутый маржинами по горизонтале дочерний элемент
+  overflow: hidden
+
+.footer-bottom__holder
+  position: relative
+  display: flex
+  flex-wrap: wrap
+  +margin-horizontal(-#{round(nth($grid-space, 2)/2)})
+  margin-bottom: -#{round(nth($grid-space, 1)/2)}
+
+.footer-bottom__col
+  text-align: center
+  +padding-horizontal(round(nth($grid-space, 2)/2))
+  margin-bottom: #{round(nth($grid-space, 1)/2)}
+  // для браузеров не поддерживающих display: flex
+  display: inline-block
+  vertical-align: top
+  width: calc(33.33% - 5px)
+
+  +media('<mob')
+    min-width: 100%
+
+  &:first-child
+    +media('>=mob')
+      text-align: left
+
+  &:last-child
+    +media('>=mob')
+      text-align: right
+
+  a
+    color: inherit
+    text-decoration: none
+
+    .no-touchevents &:hover
+      text-decoration: underline
+
+/* footer bottom end
+
+/* developer
+.developer
+  display: inline-block
+
+  a
+    text-decoration: none
+
+    .no-touchevents &:hover
+      text-decoration: none
+
+.developer__label
+  +media('<mob')
+    display: block
+
+  i
+    +media('<mob')
+      display: none
+
+.developer__logo
+  +display-inline-block-top
+  position: relative
+  top: 5px
+  padding-right: 3px
+  +size(154px, 20px)
+  text-align: left
+  text-indent: -9999px
+
+  &::before, &::after
+    +pseudo()
+    +position(0, 0)
+    +size(149px, 16px)
+
+  &::before
+    +pseudo()
+    +position(4px, 4px)
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyhpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTMyIDc5LjE1OTI4NCwgMjAxNi8wNC8xOS0xMzoxMzo0MCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUuNSAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OTA2ODc1N0UwOEJDMTFFNzlCNzhBOUI2REQxMjc4QzgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OTA2ODc1N0YwOEJDMTFFNzlCNzhBOUI2REQxMjc4QzgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5MDY4NzU3QzA4QkMxMUU3OUI3OEE5QjZERDEyNzhDOCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5MDY4NzU3RDA4QkMxMUU3OUI3OEE5QjZERDEyNzhDOCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PnDruBQAAAAkSURBVHjaYmRgYPjPACL+/2cE0YwYAkAGA5jByPgfqwBAgAEAP4gP/bFMMZQAAAAASUVORK5CYII=')
+    background-size: 2px
+
+  //.no-touchevents a:hover
+    transform: translate(0, 1px)
+    filter: blur(2px)
+    opacity: 0.6
+
+  &::after
+    +pseudo()
+    background: #00ef85 url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAAgBAMAAABa5liJAAAAMFBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABaPxwLAAAAD3RSTlMAd7tEIt0R7pkzzIhmqlV9QenDAAAD2klEQVRYw+2WPYsTURSGj5oEs0lMBkUUlMSUWkxwxNKsnV2ihWCVbGXpFwhWs6Io2GT0D2xQsM2KqGUEEUvFwjbxF7irO2ZMsh7PuRvP3Xuv2mhhkRd258zuvc/7bOaDhXnmmedvUi79S1rK2wcqp99XnyzSwVOhib4fBJWl98ciOuS9GsCuQzR5HNLY4akdW1ovDc6OvUCLPS7wPJ5lEKBU6FJJDiezI4Wa6qhCAny4AKwTIiZtgJ3YpLrPAICcNYAi7+ggAHyET7Udw22c4jrQYiQ1pJwFGTRQKnSpJI0xcAbxE+8e4R5Uq+HVajUCwCOHWyM6Qnn05BlWWGs60/K81lmPu7ELELJW+KF+wj8vHEPr5oEeLsuggVKhSyUrE+SzPbx+Fr8CHCwR9h1AFh9DpjdlrVhp6TXFeAPyMWudGfXvJovCMbRqkOp9kUGAUqGBOv3zuEqH3QRwtaB3GaAworqLMWklOLS0kgkUJgjshWQlHEsLGpsyaKCucLVaq4MmUOWvtfw1IiXqlolg57pfMbXq32NoXBMt4ThaC2MZNFAqXK0s1srf1KrSLz8tUn77HZhZIq1PXyyttTAqP+e646P+iyQSjq21M5ZBA6XC1cqNoDHhpzfcXHS18ryv/JVOMkor/dnW6iy3IqrL0C1/ctAUjq1FG2UQoFS4WukEFmIe3uDm0NK6daozbgMM1tTZO9LKY2RqNVdujIHrXsHb2p6hcGyt+lQGDZQKV2vlO+2NaEh1MH5palHu8OkWpUJamXDZ1Kqkx+ukJW954ZhaS2FXBg2UClerfxlSuKp4L9AUx3O9RJ3qTwvKG4ZWubIDN7ZpCcfQengU40gGDZQKV6v1jr6aoPIau+a9lVfCnS1KibUuJpZWiuj6aRGO9ZYf7QcZNFAqHK0sPg2CwTdQyfhTUwvKX7j7mzyJ9IQsmVrgv7S1mGNo7Q0iABk0UCocrRxyJrOzxrqldZEdPk1VQcRaKfQsLQBDSzhFhhZm7wWODAKUCkcrjZyxvAItrRyTLvHGdAysBZ2zrpavtTRngdctbLpaApQKV2uFxXO4CCpv7YuYQhoLOCSB6ZZWI96uNXC0hLObofWpqyVAqXC1+vxmy9JvC68A7ofXLS3obABtvNJewi5rcRtrBUHvUVD7udJfFp5wSOIR7ArPu1oClApHix9EStiFIlJGka3VSPiP5+vcZi1mb/9/y1+1iZrTx888uFoClAobkuWfK+GdIWK8H2ytAl+KrK8ebKUFvqFVsomas6eHeBt+pSVAqRCImyBow2+SCSL4c1wO76r9CTjPPPP8x/kBIrOdsjg4YcgAAAAASUVORK5CYII=') no-repeat center center
+    background-size: auto 16px
+
+    .no-touchevents a:hover &
+      transform: translate(0, -1px)
+
+/* developer end
+
+/* ====================================
+/* ============== MAIN ================
+/* ====================================
+.main
+  position: relative
+
+.content
+  background-color: rgba(whitesmoke, 0.8)
+
+/* promo
+.promo
+  position: relative
+  display: flex
+  align-items: center
+  justify-content: center
+  min-height: 64.9rem
+  padding-top: #{$header-height + 5}
+  padding-bottom: 5rem
+  background-color: $base-color
+  margin-bottom: -3rem
+
+  +media('<lap-l')
+    min-height: 60.3rem
+
+  +media('<tab-s')
+    min-height: 59.3rem
+
+.promo__bg
+  overflow: hidden
+  position: absolute
+  right: 0
+  bottom: 0
+  min-width: 100%
+  min-height: 100%
+  height: auto
+  width: auto
+  background-color: $base-color
+  opacity: 0.3
+
+  video, img
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    +object-fit(cover)
+
+.promo__container
+  flex-basis: 100%
+  width: 100%
+  max-width: $layout-large-width
+  position: relative
+  text-align: center
+  color: white
+
+.promo__caption
+  +font-medium
+  $font-size: 2.4rem !default
+  $line-height: 3.2rem !default
+  $line-height-kef: $line-height / $font-size
+  +font-size($font-size, $line-height)
+  max-width: $layout-flood-width
+  margin: 0 auto 5rem
+  padding: 0 calc(#{nth($layout-flood-space, 2)} + #{nth($layout-text-space, 2)})
+
+  +media('<tab-s')
+    font-size: 2.2rem
+    line-height: round-float(2.2rem * $line-height-kef, 1)
+
+  &:last-child
+    margin-bottom: 0
+
+.promo__title
+  color: white
+  margin-bottom: 4rem
+
+  &:last-child
+    margin-bottom: 0
+
+.promo__subtitle
+  +font-size($font-size, $line-height)
+  max-width: $layout-flood-width
+  margin: 0 auto 1rem
+  padding: 0 calc(#{nth($layout-flood-space, 2)} + #{nth($layout-text-space, 2)})
+
+  &:last-child
+    margin-bottom: 0
+
+/* promo end
+
+/* need
+.need__container
+  position: relative
+  max-width: $layout-flood-width
+  margin: 0 auto
+  padding: 10rem #{nth($layout-flood-space, 2)}
+  background-color: white
+  +shadow
+
+.need__content
+  padding: 0 #{nth($layout-text-space, 2)} 5rem
+
+/* need end
+
+/* cases
+.cases
+  padding-top: 7rem
+  padding-bottom: 10rem
+  background-color: $bg-color-alt
+
+.cases__title
+
+  h1, h2
+    max-width: $layout-page-max-width
+    margin: 0 auto 3rem
+    text-align: center
+
+  h3
+    max-width: $layout-flood-width
+    margin: 0 auto 3rem
+    padding: 0 calc(#{nth($layout-flood-space, 2)} + #{nth($layout-text-space, 2)})
+    text-align: center
+
+/* cases end
+
+/* scope
+.scope
+  position: relative
+
+.scope__title
+  background-color: $bg-color-alt
+  margin-bottom: -3rem
+  padding-top: 5rem
+  padding-bottom: 5rem
+
+  h1, h2, h3
+    max-width: $layout-flood-width
+    margin: 0 auto
+    padding: 0 #{nth($layout-flood-space, 2)}
+
+.scope__body
+  position: relative
+  z-index: 1
+
+.scope__container
+  position: relative
+  max-width: $layout-flood-width
+  margin: 0 auto
+  padding: 10rem #{nth($layout-flood-space, 2)}
+  background-color: white
+  z-index: 1
+  +shadow
+
+/* scope end
+
+/* terms
+.terms
+  padding-top: 5rem
+  padding-bottom: 5rem
+  background-color: $bg-color-alt
+
+/* terms end
+
+/* prospects
+.prospects
+  padding-top: 5rem
+  padding-bottom: 5rem
+  background-color: $base-color
+  color: white
+
+  a
+    color: white
+
+/* prospects end
