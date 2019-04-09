@@ -987,11 +987,6 @@ $n-callback-form-space-item--mob: 3rem 2rem
   flex-wrap: wrap
   margin: 0 -#{round-float(nth($n-callback-form-item-space, 2) / 2, 1)}
 
-  +media('<tab')
-    padding: 5.1rem #{4 - round-float(nth($n-callback-form-space-item--sm, 2) / 2, 1)} #{5 - $form-bottom-space--tab}
-    margin: 0
-    background-color: $base-color-alt
-
   +media('<tab-s')
     padding: 4.1rem #{nth($layout-page-space--mob, 2) - round-float(nth($n-callback-form-space-item--mob, 2) / 2, 1)} #{4.1 - $form-bottom-space--mob}
     opacity: 0

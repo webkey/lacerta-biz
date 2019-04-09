@@ -20,9 +20,11 @@ label
 .label-float
   position: relative
   float: left
-  margin: 0 #{nth($layout-text-space, 2) - nth($form-label-space-inner, 2)} -#{round-float($line-height / 2, 1)}
-  padding: 0 #{nth($form-label-space-inner, 2)}
-  +font-size($font-size, $line-height)
+  $space-outer-horizontal: $form-border-width + $form-input-space-h - nth($form-label-space-inner, 2)
+  $space-outer-vertical: round-float($form-label-line-height / 2, 1)
+  margin: 0 #{$space-outer-horizontal} -#{$space-outer-vertical}
+  padding: $form-label-space-inner
+  +font-size($form-label-font-size, $form-label-line-height)
   color: $text-color
   background-color: white
 
@@ -38,6 +40,7 @@ label
   display: block
   +inputs-common-styles
   +inputs-font-styles
+  +forms-space
   // transition
   $prop: color, border-color
   transition:

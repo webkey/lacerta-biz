@@ -1094,6 +1094,150 @@
 
 
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+// ПРИМЕСИ ИСПОЛЬЗУЕМЫЕ В ТЕКУЩЕМ ПРОЕКТЕ
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+// Form opener
+// ==========================================================================
+=form-opener-style($cf-title-height: 6rem)
+  +media('<tab-s')
+    display: flex
+    align-items: center
+    justify-content: flex-start
+    height: 6rem
+    padding: 0.5rem #{$cf-title-height + 1} 0.5rem #{nth($layout-page-space--mob, 2)}
+    margin: 0
+    font-size: 1.7rem
+    line-height: 2.0rem
+    text-align: left
+    background-color: #2d2d87
+
+  @at-root
+    .callback-form__opener
+      display: none
+      overflow: hidden
+      align-items: center
+      justify-content: center
+      position: absolute
+      right: 0
+      top: 0
+      height: 100%
+      width: $cf-title-height
+      color: white
+      background-color: $highlight-color
+      user-select: none
+      -webkit-tap-highlight-color: transparent
+
+      +media('<tab-s')
+        display: flex
+
+      $this-icon-lines-size: 4px 28px
+      &::before, &::after
+        content: ""
+        display: block
+        position: absolute
+        top: 0
+        height: nth($this-icon-lines-size, 1)
+        width: nth($this-icon-lines-size, 2)
+        z-index: 5
+        opacity: 0
+        pointer-events: none
+        background-color: white
+        // transition
+        $prop: transform, opacity
+        will-change: $prop
+        transition:
+          property: $prop
+          duration: 0.3s
+          timing-function: ease-in-out
+
+      &::before
+        left: 0
+        transform-origin: left top
+        $rotate: 45deg
+        $translate: -20px, -#{round(nth($this-icon-lines-size, 1) / 2)}
+        transform: rotate($rotate) translate($translate)
+        transform: rotate($rotate) translate3d($translate, 0)
+
+      &::after
+        right: 0
+        transform-origin: right top
+        $rotate: -45deg
+        $translate: 20px, -#{round(nth($this-icon-lines-size, 1) / 2)}
+        transform: rotate($rotate) translate($translate)
+        transform: rotate($rotate) translate3d($translate, 0)
+        transition-delay: 0.12s
+
+      .form-is-open &
+        &::before
+          opacity: 1
+          $rotate: 45deg
+          $translate: 28px, -#{round(nth($this-icon-lines-size, 1) / 2)}
+          transform: rotate($rotate) translate($translate)
+          transform: rotate($rotate) translate3d($translate, 0)
+
+        &::after
+          opacity: 1
+          $rotate: -45deg
+          $translate: -28px, -#{round(nth($this-icon-lines-size, 1) / 2)}
+          transform: rotate($rotate) translate($translate)
+          transform: rotate($rotate) translate3d($translate, 0)
+
+      svg
+        display: block
+        $size: 3.2rem
+        height: $size
+        width: $size
+
+        // transition
+        $prop: transform, opacity
+        will-change: $prop
+        transition:
+          property: $prop
+          duration: 0.3s
+          delay: 0.08s
+          timing-function: ease-in-out
+
+        .form-is-open &
+          opacity: 0
+          $scale: 0.9
+          transform: scale($scale)
+          transform: scale($scale) translateZ(0)
+          transition-delay: 0s
+
+        path
+          fill: currentColor
+
+
+// Shadow
+// ==========================================================================
+=shadow()
+  border-radius: 0.5rem 0.5rem 0 0
+
+  &::before, &::after
+    content: ""
+    display: block
+    position: absolute
+    top: 3rem
+    width: 2rem
+    height: 9.5rem
+    z-index: -1
+    background-image: url(../../img/shadow.png)
+    background-repeat: no-repeat
+
+  &::before
+    left: -4px
+    background-position: 0 100%
+
+  &::after
+    right: -4px
+    background-position: 100% 100%
+
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+// ПРИМЕСИ ИСПОЛЬЗУЕМЫЕ В ТЕКУЩЕМ ПРОЕКТЕ конец
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+
+
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 // ПРИМЕСИ ИСПОЛЬЗУЕМЫЕ В ТИОПОГРАФИЧЕСКИХ СТИЛЯХ
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 

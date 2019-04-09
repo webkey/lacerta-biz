@@ -31,3 +31,19 @@
   $value: round($number*$float)/$float
 
   @return $value
+
+/// Округление в к ближайшему меньшему целому до n знаков после запятой
+@function floor-float($number, $n)
+  $float: pow(10, $n)
+
+  $value: floor($number*$float)/$float
+
+  @return $value
+
+/// Округление в к ближайшему большему целому до n знаков после запятой
+@function ceil-float($number, $n)
+  $float: pow(10, $n)
+
+  $value: ceil($number*$float)/$float
+
+  @return $value

@@ -258,10 +258,16 @@ $btn-disabled-color: #ccc !default
   pointer-events: none
 
 
-// Forms
+// Form
 // ==========================================================================
 
-// Colors of forms
+// Form media query
+//---------------------------------
+$form-media--tab: '<tab'
+$form-media--mob: '<tab-s'
+
+// Form colors
+//---------------------------------
 $form-text-color: $text-color !default
 $form-placeholder-color: $text-color-light !default
 $form-bg-color: transparent !default
@@ -270,56 +276,62 @@ $form-border-color: #dbdde3 !default
 $form-error-color: $error-color !default
 $form-success-color: $success-color !default
 // disabled
-$form-text-color--disabled: #ced4da !default
-$form-bg-color--disabled: #e9ecef !default
-$form-border-color--disabled: #ced4da !default
+$form-text-color--disabled: #eaeaea !default
+//$form-bg-color--disabled: #e9ecef !default
+$form-bg-color--disabled: white !default // Белый, потому что сверху налазит лейбл с белым фоном
+$form-border-color--disabled: #eeeeee !default
 // focus
 $form-border-color--focus: $form-border-color !default
 
-// Fonts of forms
+// Form label fonts
 //---------------------------------
-$form-font-size: 18px !default
-$form-line-height: 20px !default
-$form-input-height: 50px !default
-$form-letter-spacing: null !default
-$form-border-radius: 4px !default
-//----------------------------------
-$form-font-size--tab: 18px !default
-$form-line-height--tab: 20px !default
-$form-input-height--tab: 50px !default
-$form-letter-spacing--tab: null !default
-$form-border-radius--tab: 4px !default
-//----------------------------------
-$form-font-size--mob: 16px !default
-$form-line-height--mob: 20px !default
-$form-input-height--mob: 50px !default
-$form-letter-spacing--mob: null !default
-$form-border-radius--mob: 4px !default
-
-// Layout of forms
-//---------------------------------
-$form-border-width: 2px !default
-$form-input-space-vt: floor(($form-input-height - $form-line-height - $form-border-width * 2) / 2) !default // верхний паддинг округляем в нижнюю сторону
-$form-input-space-vb: ceil(($form-input-height - $form-line-height - $form-border-width * 2) / 2) !default // нижний паддинг округляем в верхнюю сторону
-$form-input-space-h: 38px !default
-$form-bottom-space: 5rem !default
+$form-label-font-size: 1.8rem
+$form-label-line-height: 2.6rem
 $form-label-space-inner: 0 1rem !default
 //---------------------------------
-$form-border-width--tab: 2px !default
-$form-input-space-vt--tab: floor(($form-input-height--tab - $form-line-height--tab - $form-border-width--tab * 2) / 2) !default // верхний паддинг округляем в нижнюю сторону
-$form-input-space-vb--tab: ceil(($form-input-height--tab - $form-line-height--tab - $form-border-width--tab * 2) / 2) !default // нижний паддинг округляем в верхнюю сторону
-$form-input-space-h--tab: 38px !default
-$form-bottom-space--tab: 5rem !default
-$form-gap--tab: 3rem !default
+$form-label-font-size--mob: 1.6rem
+$form-label-line-height--mob: 2.0rem
+$form-label-space-inner--mob: 0 1rem !default
+
+// Form fonts
 //---------------------------------
-$form-border-width--mob: 2px !default
+$form-font-size: 1.8rem !default
+$form-line-height: 2.0rem !default
+$form-input-height: 5.0rem !default
+$form-letter-spacing: null !default
+$form-border-radius: 0.5rem !default
+//----------------------------------
+$form-font-size--mob: 1.6rem !default
+$form-line-height--mob: 2.0rem !default
+$form-input-height--mob: 5.0rem !default
+$form-letter-spacing--mob: null !default
+$form-border-radius--mob: 0.5rem !default
+
+// Form layout
+//---------------------------------
+$form-border-width: 0.2rem !default
+$form-input-space-vt: floor-float(($form-input-height - $form-line-height - $form-border-width * 2) / 2, 1) !default // верхний паддинг округляем в нижнюю сторону
+$form-input-space-vb: ceil-float(($form-input-height - $form-line-height - $form-border-width * 2) / 2, 1) !default // нижний паддинг округляем в верхнюю сторону
+$form-input-space-h: 2.8rem !default
+$form-bottom-space: 4.8rem !default
+$form-gap: 2rem !default
+//---------------------------------
+$form-border-width--mob: 0.2rem !default
 $form-input-space-vt--mob: floor(($form-input-height--mob - $form-line-height--mob - $form-border-width--mob * 2) / 2) !default // верхний паддинг округляем в нижнюю сторону
 $form-input-space-vb--mob: ceil(($form-input-height--mob - $form-line-height--mob - $form-border-width--mob * 2) / 2) !default // нижний паддинг округляем в верхнюю сторону
-$form-input-space-h--mob: 38px !default
-$form-bottom-space--mob: 5rem !default
+$form-input-space-h--mob: 2.0rem !default
+$form-bottom-space--mob: 3.5rem !default
 $form-gap--mob: 2rem !default
 
-// Inputs Common Styles
+// Form vertical space
+//---------------------------------
+=forms-space()
+  margin: 0 0 $form-bottom-space
+
+=forms-space--mob()
+  margin: 0 0 $form-bottom-space--mob
+
+// Input common style mixin
 //---------------------------------
 =inputs-common-styles()
   height: $form-input-height
@@ -331,13 +343,6 @@ $form-gap--mob: 2rem !default
   @if $form-border-width
     border: $form-border-width solid $form-border-color
 
-=inputs-common-styles--tab()
-  height: $form-input-height--tab
-  padding: $form-input-space-vt--tab #{$form-input-space-h--tab + 15} $form-input-space-vb--tab $form-input-space-h--tab
-  border-radius: $form-border-radius--tab
-  @if $form-border-width--tab
-    border-width: $form-border-width--tab
-
 =inputs-common-styles--mob()
   height: $form-input-height--mob
   padding: $form-input-space-vt--mob #{$form-input-space-h--mob + 20} $form-input-space-vb--mob $form-input-space-h--mob
@@ -345,7 +350,7 @@ $form-gap--mob: 2rem !default
   @if $form-border-width--mob
     border-width: $form-border-width--mob
 
-// Inputs Font Styles
+// Input fort style mixin
 //---------------------------------
 =inputs-font-styles()
   +font-bold
@@ -355,44 +360,30 @@ $form-gap--mob: 2rem !default
   @if $form-letter-spacing
     letter-spacing: $form-letter-spacing
 
-=inputs-font-style--tab()
-  font-size: $form-font-size--tab
-  line-height: $form-line-height--tab
-  @if $form-letter-spacing--tab
-    letter-spacing: $form-letter-spacing--tab
-
 =inputs-font-style--mob()
   font-size: $form-font-size--mob
   line-height: $form-line-height--mob
   @if $form-letter-spacing--mob
     letter-spacing: $form-letter-spacing--mob
 
-// Selects Font Styles
+// Select font styles mixin
 //---------------------------------
 =selects-font-styles()
   +inputs-font-styles
 
-// Inputs Spaces
-//---------------------------------
-=forms-space()
-  margin: 0 0 $form-bottom-space
-
-  +media('<mob')
-    margin: 0 0 $form-bottom-space--mob
-
-// Checkboxes
-// Radio Buttons
+// Radio button and checkbox
+// Radio button
 $checkbox-color: #ff3aa3 !default
 
 // Select
-$select-space-v: 12px !default
-$multiple-item-space: 3px !default
+$select-space-v: 1.2rem !default
+$multiple-item-space: 0.3rem !default
 
 // Select custom arrow
-$select-arrow-width: 40px !default
+$select-arrow-width: 4.0rem !default
 $select-arrow-height: $form-input-height !default
 
-// Style Selection
+// Select selection mixin
 =selectSelection()
   height: $form-input-height
   width: 100%
@@ -404,7 +395,7 @@ $select-arrow-height: $form-input-height !default
   text-indent: 0
   outline: none
 
-// States
+// Select states mixin
 =form-success()
   color: $form-success-color
   border-color: $form-success-color
@@ -418,7 +409,6 @@ $select-arrow-height: $form-input-height !default
   border-color: blueviolet
 
 =focused()
-  //color: $form-border-focus-color
   border-color: $form-border-color--focus
 
 
@@ -427,143 +417,6 @@ $select-arrow-height: $form-input-height !default
 $validate-feedback-font-size: 1.2rem
 $validate-feedback-line-height: 1.6rem
 $validate-feedback-height: 2.2rem // Высота предупреждения, если оно занимает одну строку
-
-
-// Forms opener
-// ==========================================================================
-=form-opener-style($cf-title-height: 6rem)
-  +media('<tab-s')
-    display: flex
-    align-items: center
-    justify-content: flex-start
-    height: 6rem
-    padding: 0.5rem #{$cf-title-height + 1} 0.5rem #{nth($layout-page-space--mob, 2)}
-    margin: 0
-    font-size: 1.7rem
-    line-height: 2.0rem
-    text-align: left
-    background-color: #2d2d87
-
-  @at-root
-    .callback-form__opener
-      display: none
-      overflow: hidden
-      align-items: center
-      justify-content: center
-      position: absolute
-      right: 0
-      top: 0
-      height: 100%
-      width: $cf-title-height
-      color: white
-      background-color: $highlight-color
-      user-select: none
-      -webkit-tap-highlight-color: transparent
-
-      +media('<tab-s')
-        display: flex
-
-      $this-icon-lines-size: 4px 28px
-      &::before, &::after
-        content: ""
-        display: block
-        position: absolute
-        top: 0
-        height: nth($this-icon-lines-size, 1)
-        width: nth($this-icon-lines-size, 2)
-        z-index: 5
-        opacity: 0
-        pointer-events: none
-        background-color: white
-        // transition
-        $prop: transform, opacity
-        will-change: $prop
-        transition:
-          property: $prop
-          duration: 0.3s
-          timing-function: ease-in-out
-
-      &::before
-        left: 0
-        transform-origin: left top
-        $rotate: 45deg
-        $translate: -20px, -#{round(nth($this-icon-lines-size, 1) / 2)}
-        transform: rotate($rotate) translate($translate)
-        transform: rotate($rotate) translate3d($translate, 0)
-
-      &::after
-        right: 0
-        transform-origin: right top
-        $rotate: -45deg
-        $translate: 20px, -#{round(nth($this-icon-lines-size, 1) / 2)}
-        transform: rotate($rotate) translate($translate)
-        transform: rotate($rotate) translate3d($translate, 0)
-        transition-delay: 0.12s
-
-      .form-is-open &
-        &::before
-          opacity: 1
-          $rotate: 45deg
-          $translate: 28px, -#{round(nth($this-icon-lines-size, 1) / 2)}
-          transform: rotate($rotate) translate($translate)
-          transform: rotate($rotate) translate3d($translate, 0)
-
-        &::after
-          opacity: 1
-          $rotate: -45deg
-          $translate: -28px, -#{round(nth($this-icon-lines-size, 1) / 2)}
-          transform: rotate($rotate) translate($translate)
-          transform: rotate($rotate) translate3d($translate, 0)
-
-      svg
-        display: block
-        $size: 3.2rem
-        height: $size
-        width: $size
-
-        // transition
-        $prop: transform, opacity
-        will-change: $prop
-        transition:
-          property: $prop
-          duration: 0.3s
-          delay: 0.08s
-          timing-function: ease-in-out
-
-        .form-is-open &
-          opacity: 0
-          $scale: 0.9
-          transform: scale($scale)
-          transform: scale($scale) translateZ(0)
-          transition-delay: 0s
-
-        path
-          fill: currentColor
-
-
-// Shadow
-// ==========================================================================
-=shadow()
-  border-radius: 0.5rem 0.5rem 0 0
-
-  &::before, &::after
-    content: ""
-    display: block
-    position: absolute
-    top: 3rem
-    width: 2rem
-    height: 9.5rem
-    z-index: -1
-    background-image: url(../../img/shadow.png)
-    background-repeat: no-repeat
-
-  &::before
-    left: -4px
-    background-position: 0 100%
-
-  &::after
-    right: -4px
-    background-position: 100% 100%
 
 
 // Animation

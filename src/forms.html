@@ -285,22 +285,22 @@ include("_tpl_forms_textarea.html", {
       <h2>Textarea</h2>
       <form action="#" class="form-validate-js">
         <!--=== Default ===-->
-        <label for="textareaDefault">Default: <mark>*</mark></label>
+        <label class="label-float" for="textareaDefault">Default: <mark>*</mark></label>
         <textarea class="form-def" id="textareaDefault" name="textareaDefault" placeholder="Some placeholder" required></textarea>
         <span class="error-feedback">Error feedback</span>
         <span class="success-feedback">Success feedback</span>
         <!--=== Disabled ===-->
-        <label for="textareaDisabled">Disabled: <mark>*</mark></label>
+        <label class="label-float" for="textareaDisabled">Disabled: <mark>*</mark></label>
         <textarea class="form-def" id="textareaDisabled" name="textareaDisabled" placeholder="Some placeholder" disabled required></textarea>
         <span class="error-feedback">Error feedback</span>
         <span class="success-feedback">Success feedback</span>
         <!--=== Value ===-->
-        <label for="textareaValue">Has value: <mark>*</mark></label>
+        <label class="label-float" for="textareaValue">Has value: <mark>*</mark></label>
         <textarea class="form-def" id="textareaValue" name="textareaValue" placeholder="Some placeholder" required>Has value</textarea>
         <span class="error-feedback">Error feedback</span>
         <span class="success-feedback">Success feedback</span>
         <!--=== Value and Disabled ===-->
-        <label for="textareaValueDisabled">Has value and disabled: <mark>*</mark></label>
+        <label class="label-float" for="textareaValueDisabled">Has value and disabled: <mark>*</mark></label>
         <textarea class="form-def" id="textareaValueDisabled" name="textareaValueDisabled" placeholder="Some placeholder" disabled required>Has value</textarea>
         <span class="error-feedback">Error feedback</span>
         <span class="success-feedback">Success feedback</span>
@@ -382,7 +382,7 @@ include("_tpl_forms_textarea.html", {
 &lt;/select&gt;</pre>
       <form action="#" class="form-validate-js">
         <!--=== Default ===-->
-        <label for="selectDefault">Default: <mark>*</mark></label>
+        <label class="label-float" for="selectDefault">Default: <mark>*</mark></label>
         <select class="form-def field-js" id="selectDefault" name="selectDefault" required>
   <!--Important! The first element must have a value of ""-->
   <option value="">- Choose option -</option>
@@ -398,7 +398,7 @@ include("_tpl_forms_textarea.html", {
         <span class="error-feedback">Error feedback</span>
         <span class="success-feedback">Success feedback</span>
         <!--=== Disabled ===-->
-        <label for="selectDisabled">Disabled: <mark>*</mark></label>
+        <label class="label-float" for="selectDisabled">Disabled: <mark>*</mark></label>
         <select class="form-def field-js" id="selectDisabled" name="selectDisabled" disabled required>
   <!--Important! The first element must have a value of ""-->
   <option value="">- Choose option -</option>
@@ -414,7 +414,7 @@ include("_tpl_forms_textarea.html", {
         <span class="error-feedback">Error feedback</span>
         <span class="success-feedback">Success feedback</span>
         <!--=== Selected ===-->
-        <label for="selectSelected">Selected: <mark>*</mark></label>
+        <label class="label-float" for="selectSelected">Selected: <mark>*</mark></label>
         <select class="form-def field-js" id="selectSelected" name="selectSelected" required>
   <!--Important! The first element must have a value of ""-->
   <option value="">- Choose option -</option>
@@ -430,7 +430,7 @@ include("_tpl_forms_textarea.html", {
         <span class="error-feedback">Error feedback</span>
         <span class="success-feedback">Success feedback</span>
         <!--=== Selected and Disabled ===-->
-        <label for="selectSelectedDisabled">Selected and Disabled: <mark>*</mark></label>
+        <label class="label-float" for="selectSelectedDisabled">Selected and Disabled: <mark>*</mark></label>
         <select class="form-def field-js" id="selectSelectedDisabled" name="selectSelectedDisabled" disabled required>
   <!--Important! The first element must have a value of ""-->
   <option value="">- Choose option -</option>
@@ -466,7 +466,7 @@ include("_tpl_forms_textarea.html", {
 &lt;div class="select-arrow"&gt;@include("includes/svg/icon-angle.svg")&lt;/div&gt;</pre>
       <form action="#" class="form-validate-js">
         <!--=== Default ===-->
-        <label for="selectArrowDefault">Default: <mark>*</mark></label>
+        <label class="label-float" for="selectArrowDefault">Default: <mark>*</mark></label>
         <select class="form-def has-arrow field-js" id="selectArrowDefault" name="selectArrowDefault" required>
   <!--Important! The first element must have a value of ""-->
   <option value="">- Choose option -</option>
@@ -483,7 +483,7 @@ include("_tpl_forms_textarea.html", {
         <span class="error-feedback">Error feedback</span>
         <span class="success-feedback">Success feedback</span>
         <!--=== Disabled ===-->
-        <label for="selectArrowDisabled">Disabled: <mark>*</mark></label>
+        <label class="label-float" for="selectArrowDisabled">Disabled: <mark>*</mark></label>
         <select class="form-def has-arrow field-js" id="selectArrowDisabled" name="selectArrowDisabled" disabled required>
   <!--Important! The first element must have a value of ""-->
   <option value="">- Choose option -</option>
@@ -500,7 +500,7 @@ include("_tpl_forms_textarea.html", {
         <span class="error-feedback">Error feedback</span>
         <span class="success-feedback">Success feedback</span>
         <!--=== Selected ===-->
-        <label for="selectArrowSelected">Selected: <mark>*</mark></label>
+        <label class="label-float" for="selectArrowSelected">Selected: <mark>*</mark></label>
         <select class="form-def has-arrow field-js" id="selectArrowSelected" name="selectArrowSelected" required>
   <!--Important! The first element must have a value of ""-->
   <option value="">- Choose option -</option>
@@ -517,7 +517,7 @@ include("_tpl_forms_textarea.html", {
         <span class="error-feedback">Error feedback</span>
         <span class="success-feedback">Success feedback</span>
         <!--=== Selected and Disabled ===-->
-        <label for="selectArrowSelectedDisabled">Selected and Disabled: <mark>*</mark></label>
+        <label class="label-float" for="selectArrowSelectedDisabled">Selected and Disabled: <mark>*</mark></label>
         <select class="form-def has-arrow field-js" id="selectArrowSelectedDisabled" name="selectArrowSelectedDisabled" disabled required>
   <!--Important! The first element must have a value of ""-->
   <option value="">- Choose option -</option>
@@ -669,7 +669,7 @@ include("_tpl_forms_textarea.html", {
           <span class="success-feedback">Success feedback</span>
         </div>
         <div class="form-unit">
-          <label for="unitSelectDefault">Default select: <mark>*</mark></label>
+          <label class="label-float" for="unitSelectDefault">Default select: <mark>*</mark></label>
           <select class="form-def field-js" id="unitSelectDefault" name="unitSelectDefault" required>
   <!--Important! The first element must have a value of ""-->
   <option value="">- Choose option -</option>
@@ -686,7 +686,7 @@ include("_tpl_forms_textarea.html", {
           <span class="success-feedback">Success feedback</span>
         </div>
         <div class="form-unit">
-          <label for="unitSelectArrowDefault">Default select with custom arrow: <mark>*</mark></label>
+          <label class="label-float" for="unitSelectArrowDefault">Default select with custom arrow: <mark>*</mark></label>
           <select class="form-def has-arrow field-js" id="unitSelectArrowDefault" name="unitSelectArrowDefault" required>
   <!--Important! The first element must have a value of ""-->
   <option value="">- Choose option -</option>
