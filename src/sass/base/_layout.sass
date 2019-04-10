@@ -39,9 +39,9 @@ body
   +push-auto
 
 // Отступы по бокам текстовых элементов
-@if nth($layout-page-space, 2) != 0
+@if nth($layout-text-space, 2) != 0
   .layout-text-spaces
-    +padding-horizontal(nth($layout-page-space, 2))
+    +padding-horizontal(nth($layout-text-space, 2))
 
 // Выравнивание текстовых элементов и их максимальная ширина
 .layout-text
@@ -49,10 +49,15 @@ body
   box-sizing: content-box
   +push-auto
 
+// Отступы по бокам текстовых элементов
+@if nth($layout-flood-space, 2) != 0
+  .layout-flood-spaces
+    +padding-horizontal(nth($layout-flood-space, 2))
+
 // Выравнивание элементов выходящих за пределы текста
 .layout-flood
   max-width: $layout-text-width
-  box-sizing: content-box
+  //box-sizing: content-box
   +push-auto
 
 // Прижать футер к низу страницы

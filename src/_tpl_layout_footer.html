@@ -1,25 +1,46 @@
-<footer class="footer">
-  <div class="layout-page layout-page-spaces">
-    <!--footer bottom-->
-    <div class="footer-bottom">
-      <div class="footer-bottom__holder">
-        <div class="footer-bottom__col">
-          <span class="copyright">&copy; <a href="index.html">Project</a> 2018</span>
-        </div>
-        <div class="footer-bottom__col">
-          <a href="tel:8 000 111-22-33">8 000 111-22-33</a> / <a href="mailto:email@project.com">email@project.com</a>
-        </div>
-        <div class="footer-bottom__col">
-          <!--developer-->
-          <div class="developer">
-            <a href="http://astronim.by/" target="_blank">
-              <span class="developer__label">Разработка сайта <i>—</i></span>
-              <span class="developer__logo">Astronim*Support</span> </a>
-          </div>
-          <!--developer end-->
-        </div>
+<footer class="footer layout-page-spaces">
+  <div class="footer-common layout-flood layout-flood-spaces">
+    <!--tel-->
+    <ul class="f-tel">
+      <li class="f-tel__item">
+        <a href="tel:+375172247479">+375 17 <strong>224-74-79</strong></a>
+      </li>
+      <li class="f-tel__item">
+        <a href="tel:+375333447479">+375 33 <strong>344-74-79</strong></a>
+      </li>
+    </ul>
+    <!--tel end-->
+
+    <!--info-->
+    <div class="f-info">
+      <div class="f-email">
+        <a href="mailto:info@lacerta.by">info@lacerta.by</a>
+      </div>
+      <div class="f-adr">
+        Беларусь, Минск, 220062<br>
+        пр-т Победителей, 121
+      </div>
+      <div class="f-terms"><a href="#">Условия договора на комплексное брокерское обслуживание</a></div>
+      <div class="f-license"><a href="#">Лицензия</a></div>
+    </div>
+    <!--info end-->
+
+    <!--chats-->
+    @@include("_tpl_chats.html", {"classes": "footer__chats"})
+    <!--chats end-->
+  </div>
+  <div class="footer-bottom layout-flood">
+    <!--copyright-->
+    <div class="copyright">ООО «Ласерта» ©  2011-2019</div>
+    <!--copyright end-->
+
+    <!--developer-->
+    <div class="developer">
+      <a href="http://pras.by/" target="_blank" class="developer__logo">@@include("./includes/svg/icon-prasby.svg")</a>
+      <div class="developer__text">
+        <a href="http://pras.by/" target="_blank">Разработка сайта</a> — <a href="http://pras.by/" target="_blank">компания PRAS</a>
       </div>
     </div>
-    <!--footer bottom end-->
+    <!--developer end-->
   </div>
 </footer>

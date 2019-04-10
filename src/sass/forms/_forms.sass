@@ -65,7 +65,12 @@ label
   +placeholder
     +font-normal
     color: $form-placeholder-color
-    transition: $animation-speed opacity
+    // transition
+    $prop: opacity, color
+    will-change: $prop
+    transition:
+      property: $prop
+      duration: $animation-speed
 
   // Placeholder hide on focus
   +placeholder-focus
