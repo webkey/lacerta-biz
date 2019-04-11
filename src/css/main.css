@@ -1519,32 +1519,32 @@ label.error {
 
 .form-def[disabled] {
   cursor: default !important;
-  color: #eaeaea !important;
+  color: #dbdbdb !important;
   background-color: white !important;
-  border-color: #eeeeee !important;
+  border-color: #e6e6e6 !important;
   box-shadow: none !important;
 }
 
 .form-def[disabled]::-webkit-input-placeholder {
-  color: #eaeaea !important;
+  color: #dbdbdb !important;
 }
 
 .form-def[disabled]:-moz-placeholder {
-  color: #eaeaea !important;
+  color: #dbdbdb !important;
 }
 
 .form-def[disabled]::-moz-placeholder {
   opacity: 1;
-  color: #eaeaea !important;
+  color: #dbdbdb !important;
 }
 
 .form-def[disabled]:-ms-input-placeholder {
   opacity: 1;
-  color: #eaeaea !important;
+  color: #dbdbdb !important;
 }
 
 .form-def[disabled].placeholder {
-  color: #eaeaea !important;
+  color: #dbdbdb !important;
 }
 
 .form-unit {
@@ -1841,21 +1841,30 @@ label.error {
   border-color: #525970;
 }
 
-.form-switcher:disabled {
-  color: #bdbdbd !important;
-}
-
-.form-switcher:disabled + span {
+.form-switcher input[type="checkbox"]:disabled {
   cursor: default !important;
-  color: #d6d6d6 !important;
 }
 
-.form-switcher:disabled + span::before, .form-switcher:disabled + span::after {
-  border-color: currentColor !important;
+.form-switcher input[type="checkbox"]:disabled ~ span {
+  color: #dbdbdb !important;
+  cursor: default !important;
 }
 
-.form-switcher:disabled + span::before {
-  background-color: #f3f3f3 !important;
+.form-switcher input[type="checkbox"]:disabled ~ span::before {
+  border-color: #e6e6e6 !important;
+}
+
+.form-switcher input[type="checkbox"]:disabled ~ span::after {
+  background-color: #e6e6e6 !important;
+}
+
+.form-switcher input[type="checkbox"]:disabled:checked ~ span::before {
+  border-color: #e6e6e6 !important;
+  background-color: #e6e6e6 !important;
+}
+
+.form-switcher input[type="checkbox"]:disabled:checked ~ span::after {
+  background-color: white !important;
 }
 
 .article-content select, .select select, .article-content .select select {
@@ -1929,31 +1938,31 @@ label.error {
 
 .article-content select[disabled], .select[disabled] {
   cursor: default;
-  color: #eaeaea;
+  color: #dbdbdb;
   background-color: white;
-  border-color: #eeeeee;
+  border-color: #e6e6e6;
 }
 
 .article-content select[disabled]::-webkit-input-placeholder, .select[disabled]::-webkit-input-placeholder {
-  color: #eaeaea;
+  color: #dbdbdb;
 }
 
 .article-content select[disabled]:-moz-placeholder, .select[disabled]:-moz-placeholder {
-  color: #eaeaea;
+  color: #dbdbdb;
 }
 
 .article-content select[disabled]::-moz-placeholder, .select[disabled]::-moz-placeholder {
   opacity: 1;
-  color: #eaeaea;
+  color: #dbdbdb;
 }
 
 .article-content select[disabled]:-ms-input-placeholder, .select[disabled]:-ms-input-placeholder {
   opacity: 1;
-  color: #eaeaea;
+  color: #dbdbdb;
 }
 
 .article-content select[disabled].placeholder, .select[disabled].placeholder {
-  color: #eaeaea;
+  color: #dbdbdb;
 }
 
 .article-content select:not([disabled]):not(.error):not(.success):not(.filled):hover, .select:not([disabled]):not(.error):not(.success):not(.filled):hover {

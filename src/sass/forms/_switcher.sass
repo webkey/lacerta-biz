@@ -113,15 +113,26 @@ $checkbox-check-color-active: #fff
             border-color: $highlight-color--hover
 
   // disabled
-  &:disabled
-    color: #bdbdbd !important
-
-    & + span
+  input[type="checkbox"]
+    &:disabled
       cursor: default !important
-      color: #d6d6d6 !important
 
-      &::before, &::after
-        border-color: currentColor !important
+      & ~ span
+        color: $form-text-color--disabled !important
+        cursor: default !important
 
-      &::before
-        background-color: #f3f3f3 !important
+        &::before
+          border-color: $form-border-color--disabled !important
+
+        &::after
+          background-color: $form-border-color--disabled !important
+
+      &:checked
+        & ~ span
+
+          &::before
+            border-color: $form-border-color--disabled !important
+            background-color: $form-border-color--disabled !important
+
+          &::after
+            background-color: white !important
