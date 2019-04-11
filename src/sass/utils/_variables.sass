@@ -246,17 +246,14 @@ $footer-grid-space: 3rem 4.2rem
 // Buttons
 // ==========================================================================
 $btn-height: 5rem !default
-$btn-bg-color: $base-color !default
-$btn-bg-hover-color: invert($base-color) !default
+$btn-bg-color: $highlight-color !default
+$btn-bg-hover-color: $highlight-color--hover !default
 $btn-text-color: white !default
 $btn-disabled-color: #ccc !default
 
 =btn-disabled()
   cursor: default !important
-  color: white !important
-  border-color: $btn-disabled-color !important
-  background-color: $btn-disabled-color !important
-  box-shadow: none !important
+  color: $btn-disabled-color !important
   pointer-events: none
 
 
@@ -423,4 +420,4 @@ $validate-feedback-height: 2.2rem // Высота предупреждения, 
 
 // Animation
 // ==========================================================================
-$animation-speed: 0.3s !default
+$animation-speed: 0.35s !default

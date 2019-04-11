@@ -214,6 +214,7 @@
     display: block
     overflow: hidden
     position: absolute
+    box-shadow: none
     left: 0
     top: 0
     width: 100%
@@ -259,6 +260,7 @@
     height: $header-height
     color: white
     text-decoration: none
+    box-shadow: none
     transition: color $animation-speed
 
     &:hover
@@ -1434,6 +1436,12 @@ $n-callback-form-space-item--mob: 3rem 2rem
 
 .need__content
   padding: 0 #{nth($layout-text-space, 2)} 5rem
+
+.need__footer
+  display: flex
+  flex-wrap: wrap
+  align-items: center
+  justify-content: space-between
 
 /* need end
 

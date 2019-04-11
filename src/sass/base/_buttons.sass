@@ -4,27 +4,46 @@
 
 /* btn-def
 .btn-def
-  $btn-font-size: 1.4rem
-  $btn-line-height: 1.8rem
-  $btn-letter-spacing: 0.2em
-  $btn-border-width: 0.2rem
-  $btn-space-inner-vertical: round-float(($btn-height - $btn-line-height - $btn-border-width * 2) / 2, 1)
-  $btn-space-inner-horizontal: $btn-space-inner-vertical * 2
+  $btn-font-size: 2.4rem
+  $btn-line-height: 2.6rem
+  $btn-letter-spacing: normal
   display: inline-block
   vertical-align: top
   position: relative
   margin: 0
-  padding: #{$btn-space-inner-vertical} #{$btn-space-inner-horizontal}
-  color: $btn-text-color
-  text-transform: uppercase
+  padding: 0 9rem 0 0
+  +font-medium
+  color: $highlight-color
   text-decoration: none
-  text-align: center
   cursor: pointer // Для input-елементов
-  border: $btn-border-width solid transparent
-  background-color: $btn-bg-color
+  border: none
+  background: none
   box-shadow: none
+  outline: none // Обнулить подсветку на фокус
   user-select: none
   -webkit-tap-highlight-color: transparent
+  transition: color $animation-speed
+
+  &::before, &::after
+    content: ""
+    display: block
+    position: absolute
+    right: 0
+    top: 50%
+    border: 0 solid currentColor
+
+  &::before
+    height: 0
+    width: 8rem
+    border-top-width: 0.2rem
+    margin-top: -0.1rem
+
+  &::after
+    width: 0.8rem
+    height: 0.8rem
+    border-width: 0.2rem 0.2rem 0 0
+    transform: rotate(45deg)
+    margin-top: -0.4rem
 
   &, & > span
     +font-size($btn-font-size, $btn-line-height)
@@ -33,50 +52,10 @@
   // Hover
   &:hover
     .no-touchevents &
-      background-color: $btn-bg-hover-color
+      color: $btn-bg-hover-color
 
   // Disabled
   &:disabled, &.disabled, &[data-disabled]
     +btn-disabled()
 
 /* btn-def end
-
-/* btn-alt
-.btn-alt
-  $btn-font-size: 1.4rem
-  $btn-line-height: 1.8rem
-  $btn-letter-spacing: 0.2em
-  $btn-border-width: 0.2rem
-  $btn-space-inner-vertical: round-float(($btn-height - $btn-line-height - $btn-border-width * 2) / 2, 1)
-  $btn-space-inner-horizontal: $btn-space-inner-vertical * 2
-  display: inline-block
-  vertical-align: top
-  position: relative
-  margin: 0
-  padding: #{$btn-space-inner-vertical} #{$btn-space-inner-horizontal}
-  color: $btn-bg-color
-  text-transform: uppercase
-  text-decoration: none
-  text-align: center
-  cursor: pointer // Для input-елементов
-  border: $btn-border-width solid $btn-bg-color
-  background-color: white
-  box-shadow: none
-  user-select: none
-  -webkit-tap-highlight-color: transparent
-
-  &, & > span
-    +font-size($btn-font-size, $btn-line-height)
-    letter-spacing: $btn-letter-spacing
-
-  // Hover
-  &:hover
-    .no-touchevents &
-      color: $btn-text-color
-      background-color: $btn-bg-color
-
-  // Disabled
-  &:disabled, &.disabled, &[data-disabled]
-    +btn-disabled()
-
-/* btn-alt end
