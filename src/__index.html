@@ -53,11 +53,61 @@
       <h2 class="h1">Уже более $1 млрд<br> привлеченных средств</h2>
       <h3>для 45 компаний с 2011 года</h3>
     </div>
-    <div class="cases__content">
-      <div class="cases__slider cases-slider-js">
-        <div class="layout-page-spaces">
-          {{slider}}
+    <div class="cases__content layout-flood">
+      <div class="cases-slider cases-slider-js swiper-container">
+        <div class="swiper-wrapper">
+          <a href="#" class="bond swiper-slide cases-slider__item">
+            @@include("_tpl_bond.html", {
+            "title": "ООО &quot;Активлизинг&quot;",
+            "release": "6",
+            "term": "1 год",
+            "value": "100 USD",
+            "rate": "6,5%",
+            "imgSrc": "img/img-bond-01.png"
+            })
+          </a>
+          <a href="#" class="bond swiper-slide cases-slider__item">
+            @@include("_tpl_bond.html", {
+            "title": "СООО &quot;Белвингрупп&quot;",
+            "release": "6",
+            "term": "1 год",
+            "value": "100 USD",
+            "rate": "15%",
+            "imgSrc": "img/img-bond-02.png"
+            })
+          </a>
+          <a href="#" class="bond swiper-slide cases-slider__item">
+            @@include("_tpl_bond.html", {
+            "title": "СЗАО &quot;ПРОСТОРМАРКЕТ&quot;",
+            "release": "6",
+            "term": "3 год",
+            "value": "100 USD",
+            "rate": "7%",
+            "imgSrc": "img/img-bond-03.png"
+            })
+          </a>
+          <a href="#" class="bond swiper-slide cases-slider__item">
+            @@include("_tpl_bond.html", {
+            "title": "ООО &quot;Активлизинг&quot;",
+            "release": "3",
+            "term": "1 год",
+            "value": "200 USD",
+            "rate": "3,5%",
+            "imgSrc": "img/temp/img_640_01.jpg"
+            })
+          </a>
+          <a href="#" class="bond swiper-slide cases-slider__item">
+            @@include("_tpl_bond.html", {
+            "title": "ООО &quot;Активлизинг&quot;",
+            "release": "4",
+            "term": "1 год",
+            "value": "150 USD",
+            "rate": "9,0%",
+            "imgSrc": "img/temp/img_640_02.jpg"
+            })
+          </a>
         </div>
+        <div class="swiper-pagination"></div>
       </div>
     </div>
   </section>

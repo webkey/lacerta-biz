@@ -431,7 +431,7 @@ a.shutter-nav-switcher
     margin-right: -1.4rem
 
   +media('<tab-s')
-    right: nth($layout-page-space--sm, 2)
+    right: nth($layout-page-space--tab, 2)
     margin-right: -1.6rem
 
   +media('<mob')
@@ -556,7 +556,7 @@ a.shutter-nav-switcher
 
   +media('<tab-s')
     top: 1.5rem
-    right: nth($layout-page-space--sm, 2) + 0.2
+    right: nth($layout-page-space--tab, 2) + 0.2
 
   +media('<mob')
     right: nth($layout-page-space--mob, 2) + 0.2
@@ -793,8 +793,8 @@ a.shutter-nav-switcher
     opacity: 1
 
   +media('<tab-s')
-    padding-left: #{nth($layout-page-space--sm, 2)}
-    padding-right: #{nth($layout-page-space--sm, 2)}
+    padding-left: #{nth($layout-page-space--tab, 2)}
+    padding-right: #{nth($layout-page-space--tab, 2)}
 
   +media('<mob')
     padding-left: #{nth($layout-page-space--mob, 2)}
@@ -1445,11 +1445,245 @@ $n-callback-form-space-item--mob: 3rem 2rem
 
 /* need end
 
+/* bond
+$bond-space: 3.1rem 2.9rem 2.3rem
+$bond-space--sm: 2.4rem 2rem 1.9rem
+$bond-space--mob: 1.8rem 2rem 1.2rem
+.bond
+  display: block
+  position: relative
+  padding: $bond-space
+  text-decoration: none
+  color: inherit
+  cursor: pointer
+  background-color: white
+  border-radius: 0.8rem
+  //box-shadow: 0 1rem 4.6rem rgba($box-shadow-color, 0.25)
+  box-shadow: 0 0.8rem 3.2rem rgba($base-color-alt, 0.25)
+  transition: box-shadow $animation-speed
+
+  +media('<tab')
+    padding: $bond-space--sm
+
+  +media('<tab-s')
+    padding: $bond-space--mob
+
+.bond__figure
+  display: flex
+  align-items: center
+  justify-content: flex-start
+  width: 15rem
+  height: 3.5rem
+  margin: 0.3rem 0 1.9rem
+
+  +media('<tab')
+    height: 2.9rem
+    width: 12rem
+    margin: 0.3rem 0 1.3rem
+
+  +media('<tab-s')
+    margin-bottom: 0.2rem
+
+  img
+    display: block
+    max-width: 100%
+    max-height: 100%
+
+.bond__title
+  $line-height: 2.4rem
+  $line-length: 2
+  display: block
+  position: relative
+  +font-normal
+  font-size: 1.8rem
+  line-height: $line-height
+  font-weight: normal
+  color: #0d0d0d
+  height: $line-height * $line-length
+  overflow: hidden
+  margin-bottom: 1.2rem
+
+  +media('<tab')
+    margin-bottom: 0.1rem
+
+  +media('<tab-s')
+    $line-height: 1.8rem
+    $line-length: 2
+    font-size: 1.5rem
+    line-height: $line-height
+    height: $line-height * $line-length
+    margin-bottom: 0
+
+  &::after
+    content: ""
+    display: block
+    position: absolute
+    bottom: 0
+    right: 0
+    width: 20%
+    min-width: 6rem
+    height: $line-height
+    +linear-gradient(to right, rgba(white, 0) 0%, white 100%)
+
+.bond__release
+  overflow: hidden
+  position: relative
+  margin: 0 12rem 0.1rem 0
+  font-size: 1.8rem
+  line-height: 2.4rem
+  color: #0d0d0d
+  text-overflow: ellipsis
+
+  +media('<tab')
+    margin-right: 9rem
+    font-size: 1.8rem
+    line-height: 2.2rem
+
+  +media('<tab-s')
+    margin-right: 8rem
+    margin-bottom: 0
+    font-size: 1.5rem
+    line-height: 1.8rem
+
+.bond__term
+  overflow: hidden
+  position: relative
+  margin-right: 12rem
+  font-size: 2.4rem
+  line-height: 2.8rem
+  color: #0d0d0d
+  text-overflow: ellipsis
+
+  +media('<tab')
+    margin-right: 9rem
+    font-size: 1.8rem
+    line-height: 2.2rem
+
+  +media('<tab-s')
+    margin-right: 8rem
+    font-size: 1.5rem
+    line-height: 1.8rem
+
+.bond__value
+  position: absolute
+  bottom: nth($bond-space, 3)
+  right: nth($bond-space, 2)
+  +font-bold
+  font-size: 2.4rem
+  line-height: 2.8rem
+  color: #0d0d0d
+
+  +media('<tab')
+    font-size: 1.8rem
+    line-height: 2.2rem
+    bottom: nth($bond-space--sm, 3)
+    right: nth($bond-space--sm, 2)
+
+  +media('<tab-s')
+    font-size: 1.5rem
+    line-height: 1.8rem
+    bottom: nth($bond-space--mob, 3)
+    right: nth($bond-space--mob, 2)
+
+.bond__rate
+  position: absolute
+  top: nth($bond-space, 1)
+  right: nth($bond-space, 2)
+  $size: 4.1rem 8.5rem
+  height: nth($size, 1)
+  min-width: nth($size, 2)
+  padding: 0 1.5rem
+  +font-bold
+  font-size: 2.4rem
+  line-height: nth($size, 1)
+  text-align: center
+  color: white
+  background-color: $highlight-color
+  border-radius: nth($size, 1)
+  transition: background-color $animation-speed
+
+  +media('<tab')
+    top: nth($bond-space--sm, 1)
+    right: nth($bond-space--sm, 2)
+    $size: 3.4rem 6.9rem
+    height: nth($size, 1)
+    min-width: nth($size, 2)
+    font-size: 1.8rem
+    line-height: nth($size, 1)
+    border-radius: nth($size, 1)
+    padding: 0 1rem
+
+  +media('<tab-s')
+    top: nth($bond-space--mob, 1)
+    right: nth($bond-space--mob, 2)
+    $size: 2.6rem 5.2rem
+    height: nth($size, 1)
+    min-width: nth($size, 2)
+    font-size: 1.5rem
+    line-height: nth($size, 1)
+    border-radius: nth($size, 1)
+    padding: 0 0.8rem
+
+  // hover
+  .bond:not(.swiper-slide-active):hover &
+    background-color: $highlight-color--hover
+
+/* bond end
+
+/* cases slider
+.cases-slider
+  position: relative
+  padding: 3rem 0 4.9rem
+  margin: -3rem 0 5.9rem
+
+  .js &:not(.is-loaded)
+    opacity: 0
+    pointer-events: none
+    overflow: hidden
+
+  &:last-child
+    margin-bottom: 0
+
+  &.swiper-container
+    overflow: visible
+
+.cases-slider__item
+  opacity: 0
+  // transition
+  $prop: opacity
+  will-change: $prop
+  transition:
+    property: $prop
+    duration: 0.35s
+    timing-function: ease-in-out
+
+  +media('<tab')
+    width: 37rem
+    //max-width: 37rem
+    opacity: 0.5
+
+  +media('<tab-s')
+    width: 28rem
+
+  &.swiper-slide-visible
+    opacity: 1
+
+    & ~ .cases-slider__item
+      opacity: 1
+      transition-duration: 0.1s
+
+.selection__bonds-pagination
+  &, .swiper-container-horizontal > &
+    bottom: 0
+
+/* cases slider end
+
 /* cases
 .cases
   padding-top: 7rem
   padding-bottom: 10rem
   background-color: $bg-color-alt
+  overflow: hidden // Обрезать слайдер
 
 .cases__title
 

@@ -22,9 +22,10 @@
     "jquery-placeholder": "^2.3.1",
     "jquery-smartresize": "*",
     "include-media": "^1.4.9",
-    "select2": "^4.0.3",
     "normalize-scss": "normalize.scss#^7.0.1",
-    "jquery-validation": "^1.17.0"
+    "jquery-validation": "^1.17.0",
+    "matchHeight": "matchheight#^0.7.0",
+    "swiper": "^4.4.6"
   },
   "devDependencies": {
     "mathsass": "^0.9.5"

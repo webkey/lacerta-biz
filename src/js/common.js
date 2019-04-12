@@ -20,13 +20,6 @@ var TOUCH = Modernizr.touchevents;
 var DESKTOP = !TOUCH;
 
 /**
- * !Add placeholder for old browsers
- * */
-function placeholderInit() {
-  $('[placeholder]').placeholder();
-}
-
-/**
  * !Detect scroll page
  */
 function detectScroll() {
@@ -124,23 +117,6 @@ function inputHasValueClass() {
       }
     }
   }
-}
-
-/**
- * !Initial custom select for cross-browser styling
- * */
-function customSelect(select) {
-  $.each(select, function () {
-    var $thisSelect = $(this);
-    // var placeholder = $thisSelect.attr('data-placeholder') || '';
-    $thisSelect.select2({
-      language: "ru",
-      width: '100%',
-      containerCssClass: 'cselect-head',
-      dropdownCssClass: 'cselect-drop'
-      // , placeholder: placeholder
-    });
-  })
 }
 
 /**
@@ -423,67 +399,45 @@ function switchClasses() {
  * !Initial sliders on the project
  * */
 function slidersInit() {
-  //images carousel
-  var $imagesCarousel = $('.images-slider-js');
+  /** Cases slider */
+  var $casesSlider = $('.cases-slider-js');
+  if ($casesSlider.length) {
+    $casesSlider.each(function () {
+      var $thisSlider = $(this),
+          $thisPag = $('.swiper-pagination', $thisSlider),
+          casesSliderJs;
 
-  if ($imagesCarousel.length) {
-    var slideCounterTpl = '' +
-        '<div class="slider-counter">' +
-        '<span class="slide-curr">0</span>/<span class="slide-total">0</span>' +
-        '</div>';
+      casesSliderJs = new Swiper($thisSlider, {
+        init: false,
 
-    var titleListTpl = $('<div class="flashes"></div>');
-
-    $imagesCarousel.each(function () {
-      var $curSlider = $(this);
-      var $imgList = $curSlider.find('.images-slider__list');
-      var $imgListItem = $imgList.find('.images-slider__item');
-      var dur = 200;
-
-      // create titles
-      $imgList.after(titleListTpl.clone());
-      var $titleList = $curSlider.find('.flashes');
-      $.each($imgListItem, function () {
-        var $this = $(this);
-        $titleList.append($('<div class="flashes__item">' + $this.find('.caption').html() + '</div>'));
+        // Optional parameters
+        loop: true,
+        loopedSlides: 20,
+        spaceBetween: 22,
+        slidesPerView: 2,
+        watchSlidesVisibility: true,
+        // autoplay: {
+        //   delay: 3000,
+        //   disableOnInteraction: true
+        // },
+        pagination: {
+          el: $thisPag,
+          type: 'bullets',
+          clickable: true
+        },
+        breakpoints: {
+          991: {
+            slidesPerView: 'auto',
+            centeredSlides: true
+          }
+        }
       });
 
-      // initialized slider of titles
-      $titleList.slick({
-        fade: true,
-        speed: dur,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        infinite: true,
-        asNavFor: $imgList,
-        dots: false,
-        arrows: false,
-
-        swipe: false,
-        touchMove: false,
-        draggable: false
+      casesSliderJs.on('init', function() {
+        $(casesSliderJs.el).closest($thisSlider).addClass('is-loaded');
       });
 
-      // initialized slider of images
-      $imgList.on('init', function (event, slick) {
-        $(slick.$slider).append($(slideCounterTpl).clone());
-
-        $('.slide-total', $(slick.$slider)).text(slick.$slides.length);
-        $('.slide-curr', $(slick.$slider)).text(slick.currentSlide + 1);
-      }).slick({
-        fade: false,
-        speed: dur,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        asNavFor: $titleList,
-        lazyLoad: 'ondemand',
-        infinite: true,
-        dots: true,
-        arrows: true
-      }).on('beforeChange', function (event, slick, currentSlide, nextSlider) {
-        $('.slide-curr', $(slick.$slider)).text(nextSlider + 1);
-      });
-
+      casesSliderJs.init();
     });
   }
 }
@@ -537,20 +491,10 @@ function formValidation() {
  * =========== !ready document, load/resize window ===========
  */
 
-$(window).on('load', function () {
-  // add functions
-});
-
-$(window).on('debouncedresize', function () {
-  // $(document.body).trigger("sticky_kit:recalc");
-});
-
 $(document).ready(function () {
-  placeholderInit();
   detectScroll();
   inputFocusClass();
   inputHasValueClass();
-  customSelect($('select.cselect'));
   switchClasses();
   slidersInit();
   objectFitImages(); // object-fit-images initial
