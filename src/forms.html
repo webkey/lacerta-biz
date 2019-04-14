@@ -59,17 +59,17 @@
         <nav class="nav">
           <ul class="nav__list">
             <li>
-              <a href="#">Финансирование бизнеса</a>
+              <a href="#businessFinancing">Финансирование бизнеса</a>
             </li>
             <li>
-              <a href="#">Кейсы</a>
+              <a href="#cases">Кейсы</a>
             </li>
             <li>
-              <a href="#">Условия</a>
+              <a href="#terms">Условия</a>
             </li>
           </ul>
         </nav>
-        <a href="#" class="btn-callback">Запрос менеджеру</a>
+        <a href="#appealToManager" class="btn-callback">Запрос менеджеру</a>
       </div>
       <!--navigation end-->
     </div>
@@ -84,135 +84,110 @@
   <!--shutter navigation overlay end-->
   <!--shutter navigation-->
   <div class="shutter-nav shutter-nav-js stop-remove-class">
-    <div class="shutter-nav__layout layout-spaces">
-      <div class="shutter-nav__content">
-        <!--alternative navigation-->
-        <div class="alt-nav shutter-nav__alt-nav">
-          <ul class="alt-nav__list">
-            <li>
-              <a href="companies.html">Куда вкладывать деньги</a>
-            </li>
-            <li>
-              <a href="pokupka.html">Покупка облигаций</a>
-            </li>
-            <li>
-              <a href="last-news.html">Новости</a>
-            </li>
-          </ul>
-        </div>
-        <!--alternative navigation end-->
-        <!--app-->
-        <div class="shutter-nav__app">
-          <div class="shutter-nav__app-item"><a href="https://play.google.com/store/apps/details?id=by.lacerta" class="btn-app btn-app_google-play" target="_blank">Скачать в<br> Google Play</a></div>
-          <div class="shutter-nav__app-item"><a href="https://itunes.apple.com/us/app/lacerta-%D0%BF%D0%BE%D0%BA%D1%83%D0%BF%D0%BA%D0%B0-%D0%BE%D0%B1%D0%BB%D0%B8%D0%B3%D0%B0%D1%86%D0%B8%D0%B9/id1438857466" class="btn-app btn-app_apple" target="_blank">Скачать на<br> App Store</a></div>
-        </div>
-        <!--app end-->
-        <!--conditions-->
-        <div class="shutter-nav__conditions"><a href="#">Условия договора на комплексное брокерское обслуживание</a></div>
-        <!--conditions end-->
-      </div>
-      <div class="shutter-nav__footer">
-        <div class="shutter-nav__title">Контакты</div>
-        <!--contacts-->
-        <ul class="shutter-nav__contacts">
-          <li class="phone">
-            <a href="tel:+375172247479">+375 17 <strong>224-74-79</strong></a>
+    <div class="shutter-nav__content layout-page-spaces">
+      <!--nav-->
+      <div class="alt-nav sn__alt-nav">
+        <ul class="alt-nav__list">
+          <li>
+            <a href="#businessFinancing">Финансирование бизнеса</a>
           </li>
-          <li class="phone">
-            <a href="tel:+375333447479">+375 33 <strong>344-74-79</strong></a>
+          <li>
+            <a href="#cases">Кейсы</a>
           </li>
-          <li class="email"><a href="mailto:info@lacerta.by">info@lacerta.by</a></li>
+          <li>
+            <a href="#terms">Условия</a>
+          </li>
         </ul>
-        <!--contacts end-->
-        <!--callback form-->
-        <div class="n-callback-form">
-          <form action="#" method="post" class="validation-form-js">
-            <div class="n-callback-form__title form-opener-js">
-              <strong>Напишите нам</strong>
-              <div class="callback-form__opener">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20 22.621l-3.521-6.795c-.008.004-1.974.97-2.064 1.011-2.24 1.086-6.799-7.82-4.609-8.994l2.083-1.026-3.493-6.817-2.106 1.039c-7.202 3.755 4.233 25.982 11.6 22.615.121-.055 2.102-1.029 2.11-1.033z"></path></svg>
-              </div>
+      </div>
+      <!--nav end-->
+      <!--form-->
+      <div class="callback-form sn__callback-form">
+        <h3 class="callback-form__title">Запрос менеджеру</h3>
+        <form action="#" method="post" class="form-validate-js">
+          <div class="callback-form__fields">
+            <div class="form-unit">
+              <label class="label-float label_dark" for="prospectsNameMenu">Имя</label>
+              <input class="form-def_dark field-js" id="prospectsNameMenu" name="prospectsNameMenu" type="text" required />
+              <span class="error-feedback">Error feedback</span>
+              <span class="success-feedback">Success feedback</span>
             </div>
-            <div class="n-callback-form__fields-wrap form-drop-js">
-              <div class="n-callback-form__fields">
-                <div class="n-callback-form__fields-group">
-                  <label class="input-wrap">
-                  <input class="input-def" name="name" placeholder="Введите имя" required type="text">
-                  
-<span class="error-feedback">Текст ошибки</span>
-
-<span class="success-feedback">Текст успешной отправки</span>
-                </label>
-                  <label class="input-wrap">
-                  <input class="input-def" name="email" placeholder="Email" required type="email">
-                  
-<span class="error-feedback">Текст ошибки</span>
-
-<span class="success-feedback">Текст успешной отправки</span>
-                </label>
-                  <label class="input-wrap">
-                  <input class="input-def" name="phone" placeholder="Телефон" required type="text">
-                  
-<span class="error-feedback">Пожалуйста, укажите телефон</span>
-
-<span class="success-feedback">Проверено!</span>
-                </label>
-                </div>
-                <div class="n-callback-form__fields-group">
-                  <label class="input-wrap">
-                  <textarea class="input-def" placeholder="Сообщение" required type="message"></textarea>
-                  
-<span class="error-feedback">Текст ошибки</span>
-
-<span class="success-feedback">Текст успешной отправки</span>
-                </label>
-                  <div class="input-wrap input-wrap_btn">
-                    <button class="btn-def">Отправить</button>
-                  </div>
-                </div>
-              </div>
+            <div class="form-unit">
+              <label class="label-float label_dark" for="prospectsTelMenu">Телефон</label>
+              <input class="form-def_dark field-js" id="prospectsTelMenu" name="prospectsTelMenu" type="text" required />
+              <span class="error-feedback">Error feedback</span>
+              <span class="success-feedback">Success feedback</span>
             </div>
-            <div class="success__msg">
-              <strong class="success__msg-title">Спасибо!</strong>
-              <span class="success__msg-subtitle">Мы Вам перезвоним</span>
+            <div class="form-unit">
+              <label class="label-float label_dark" for="prospectsEmailMenu">email</label>
+              <input class="form-def_dark field-js" id="prospectsEmailMenu" name="prospectsEmailMenu" type="email" required />
+              <span class="error-feedback">Error feedback</span>
+              <span class="success-feedback">Success feedback</span>
             </div>
-          </form>
-        </div>
-        <!--callback form end-->
-        <!--chats-->
-        <div class="chats shutter-nav__chats">
-          <div class="chats__group">
-            <strong>Группа</strong>
-            <div class="chats__list">
-              <div class="chats__item">
-                <a href="https://www.facebook.com/" class="facebook" target="_blank">
+            <div class="form-unit">
+              <label class="label-float label_dark" for="prospectsQuestionMenu">Вопрос</label>
+              <textarea class="form-def_dark field-js" id="prospectsQuestionMenu" name="prospectsQuestionMenu" required></textarea>
+              <span class="error-feedback">Error feedback</span>
+              <span class="success-feedback">Success feedback</span>
+            </div>
+          </div>
+          <div class="callback-form__footer">
+            <button class="btn-def callback-form__btn">Отправить</button>
+          </div>
+        </form>
+      </div>
+      <!--form end-->
+      <!--tel-->
+      <ul class="sn-tel">
+        <li>
+          <a href="tel:+375172247479">+375 17 <strong>224-74-79</strong></a>
+        </li>
+        <li>
+          <a href="tel:+375333447479">+375 33 <strong>344-74-79</strong></a>
+        </li>
+      </ul>
+      <!--tel end-->
+      <!--info-->
+      <div class="sn-email">
+        <a href="mailto:info@lacerta.by">info@lacerta.by</a>
+      </div>
+      <div class="sn-adr">
+        Беларусь, Минск, 220062<br> пр-т Победителей, 121
+      </div>
+      <div class="sn-terms"><a href="#">Условия договора на комплексное брокерское обслуживание</a></div>
+      <div class="sn-license"><a href="#">Лицензия</a></div>
+      <!--info end-->
+      <!--chats-->
+      <div class="chats sn__chats">
+        <div class="chats__group">
+          <strong>Группа</strong>
+          <div class="chats__list">
+            <div class="chats__item">
+              <a href="https://www.facebook.com/" class="facebook" target="_blank">
 					<span>Facebook</span>
 				</a>
-              </div>
-            </div>
-          </div>
-          <div class="chats__group">
-            <strong>Чат-боты</strong>
-            <div class="chats__list">
-              <div class="chats__item">
-                <a href="https://telegram.org/" class="telegram" target="_blank">
-					<span>Telegram</span>
-				</a>
-              </div>
-              <div class="chats__item">
-                <a href="https://www.viber.com/" class="viber" target="_blank">
-					<span>Viber</span>
-				</a>
-              </div>
             </div>
           </div>
         </div>
-        <!--chats end-->
+        <div class="chats__group">
+          <strong>Чат-боты</strong>
+          <div class="chats__list">
+            <div class="chats__item">
+              <a href="https://telegram.org/" class="telegram" target="_blank">
+					<span>Telegram</span>
+				</a>
+            </div>
+            <div class="chats__item">
+              <a href="https://www.viber.com/" class="viber" target="_blank">
+					<span>Viber</span>
+				</a>
+            </div>
+          </div>
+        </div>
       </div>
+      <!--chats end-->
     </div>
-    <a href="#" class="shutter-nav-close shutter-nav-close-js">X</a>
   </div>
-  <a href="#" class="shutter-nav-close shutter-nav-close_device shutter-nav-close-js">X</a>
+  <a href="#" class="shutter-nav-close shutter-nav-close-js">X</a>
   <!--shutter-navigation end-->
   <main class="main" role="main">
     <div class="layout-text layout-page-spaces">
@@ -259,22 +234,22 @@ include("_tpl_forms_textarea.html", {
       <form action="#" class="form-validate-js">
         <!--=== Default ===-->
         <label class="label-float" for="inputDefault">Default:</label>
-        <input class="form-def field-js" id="inputDefault" name="inputDefault" type="text" placeholder="Some placeholder" required />
+        <input class="form-def field-js" id="inputDefault" name="inputDefault" type="text" required />
         <span class="error-feedback">Error feedback</span>
         <span class="success-feedback">Success feedback</span>
         <!--=== Disabled ===-->
         <label class="label-float" for="inputDisabled">Disabled:</label>
-        <input class="form-def field-js" id="inputDisabled" name="inputDisabled" type="text" placeholder="Some placeholder" disabled required />
+        <input class="form-def field-js" id="inputDisabled" name="inputDisabled" type="text" disabled required />
         <span class="error-feedback">Error feedback</span>
         <span class="success-feedback">Success feedback</span>
         <!--=== Value ===-->
         <label class="label-float" for="inputValue">Has value:</label>
-        <input class="form-def field-js" id="inputValue" name="inputValue" type="text" placeholder="Some placeholder" value="Has value" required />
+        <input class="form-def field-js" id="inputValue" name="inputValue" type="text" value="Has value" required />
         <span class="error-feedback">Error feedback</span>
         <span class="success-feedback">Success feedback</span>
         <!--=== Value and Disabled ===-->
         <label class="label-float" for="inputValueDisabled">Has value and disabled:</label>
-        <input class="form-def field-js" id="inputValueDisabled" name="inputValueDisabled" type="text" placeholder="Some placeholder" value="Has value" disabled required />
+        <input class="form-def field-js" id="inputValueDisabled" name="inputValueDisabled" type="text" value="Has value" disabled required />
         <span class="error-feedback">Error feedback</span>
         <span class="success-feedback">Success feedback</span>
         <!--=== === ===--><br>
@@ -285,23 +260,23 @@ include("_tpl_forms_textarea.html", {
       <h2>Textarea</h2>
       <form action="#" class="form-validate-js">
         <!--=== Default ===-->
-        <label class="label-float" for="textareaDefault">Default: <mark>*</mark></label>
-        <textarea class="form-def" id="textareaDefault" name="textareaDefault" placeholder="Some placeholder" required></textarea>
+        <label class="label-float" for="textareaDefault">Default:</label>
+        <textarea class="form-def field-js" id="textareaDefault" name="textareaDefault" required></textarea>
         <span class="error-feedback">Error feedback</span>
         <span class="success-feedback">Success feedback</span>
         <!--=== Disabled ===-->
-        <label class="label-float" for="textareaDisabled">Disabled: <mark>*</mark></label>
-        <textarea class="form-def" id="textareaDisabled" name="textareaDisabled" placeholder="Some placeholder" disabled required></textarea>
+        <label class="label-float" for="textareaDisabled">Disabled:</label>
+        <textarea class="form-def field-js" id="textareaDisabled" name="textareaDisabled" disabled required></textarea>
         <span class="error-feedback">Error feedback</span>
         <span class="success-feedback">Success feedback</span>
         <!--=== Value ===-->
-        <label class="label-float" for="textareaValue">Has value: <mark>*</mark></label>
-        <textarea class="form-def" id="textareaValue" name="textareaValue" placeholder="Some placeholder" required>Has value</textarea>
+        <label class="label-float" for="textareaValue">Has value:</label>
+        <textarea class="form-def field-js" id="textareaValue" name="textareaValue" required>Has value</textarea>
         <span class="error-feedback">Error feedback</span>
         <span class="success-feedback">Success feedback</span>
         <!--=== Value and Disabled ===-->
-        <label class="label-float" for="textareaValueDisabled">Has value and disabled: <mark>*</mark></label>
-        <textarea class="form-def" id="textareaValueDisabled" name="textareaValueDisabled" placeholder="Some placeholder" disabled required>Has value</textarea>
+        <label class="label-float" for="textareaValueDisabled">Has value and disabled:</label>
+        <textarea class="form-def field-js" id="textareaValueDisabled" name="textareaValueDisabled" disabled required>Has value</textarea>
         <span class="error-feedback">Error feedback</span>
         <span class="success-feedback">Success feedback</span>
         <!--=== === ===--><br>
@@ -552,7 +527,7 @@ include("_tpl_forms_textarea.html", {
       <form action="#" class="form-validate-js">
         <div class="form-unit">
           <label class="label-float" for="unitInputDefault">Input:</label>
-          <input class="form-def field-js" id="unitInputDefault" name="unitInputDefault" type="text" placeholder="Some placeholder" required />
+          <input class="form-def field-js" id="unitInputDefault" name="unitInputDefault" type="text" required />
           <span class="error-feedback">Error feedback</span>
           <span class="success-feedback">Success feedback</span>
         </div>
@@ -619,13 +594,13 @@ include("_tpl_forms_textarea.html", {
         <div class="form-group">
           <div class="form-group__item">
             <label class="label-float" for="inputGroupFirst">First:</label>
-            <input class="form-def field-js" id="inputGroupFirst" name="inputGroupFirst" type="text" placeholder="Some placeholder" required />
+            <input class="form-def field-js" id="inputGroupFirst" name="inputGroupFirst" type="text" required />
             <span class="error-feedback">Error feedback</span>
             <span class="success-feedback">Success feedback</span>
           </div>
           <div class="form-group__item">
             <label class="label-float" for="inputGroupTwo">Two:</label>
-            <input class="form-def field-js" id="inputGroupTwo" name="inputGroupTwo" type="text" placeholder="Some placeholder" required />
+            <input class="form-def field-js" id="inputGroupTwo" name="inputGroupTwo" type="text" required />
             <span class="error-feedback">Error feedback</span>
             <span class="success-feedback">Success feedback</span>
           </div>
@@ -633,13 +608,13 @@ include("_tpl_forms_textarea.html", {
         <div class="form-group">
           <div class="form-group__item">
             <label class="label-float" for="inputGroupThree">Three:</label>
-            <input class="form-def field-js" id="inputGroupThree" name="inputGroupThree" type="text" placeholder="Some placeholder" required />
+            <input class="form-def field-js" id="inputGroupThree" name="inputGroupThree" type="text" required />
             <span class="error-feedback">Error feedback</span>
             <span class="success-feedback">Success feedback</span>
           </div>
           <div class="form-group__item">
             <label class="label-float" for="inputGroupFour">Four:</label>
-            <input class="form-def field-js" id="inputGroupFour" name="inputGroupFour" type="text" placeholder="Some placeholder" required />
+            <input class="form-def field-js" id="inputGroupFour" name="inputGroupFour" type="text" required />
             <span class="error-feedback">Error feedback</span>
             <span class="success-feedback">Success feedback</span>
           </div>
@@ -655,10 +630,10 @@ include("_tpl_forms_textarea.html", {
     <div class="footer-common layout-flood layout-flood-spaces">
       <!--tel-->
       <ul class="f-tel">
-        <li class="f-tel__item">
+        <li>
           <a href="tel:+375172247479">+375 17 <strong>224-74-79</strong></a>
         </li>
-        <li class="f-tel__item">
+        <li>
           <a href="tel:+375333447479">+375 33 <strong>344-74-79</strong></a>
         </li>
       </ul>
@@ -671,7 +646,7 @@ include("_tpl_forms_textarea.html", {
         <div class="f-adr">
           Беларусь, Минск, 220062<br> пр-т Победителей, 121
         </div>
-        <div class="f-terms"><a href="#">Условия договора на комплексное брокерское обслуживание</a></div>
+        <div class="f-terms" id="terms"><a href="#">Условия договора на комплексное брокерское обслуживание</a></div>
         <div class="f-license"><a href="#">Лицензия</a></div>
       </div>
       <!--info end-->
@@ -719,8 +694,9 @@ include("_tpl_forms_textarea.html", {
       <!--developer end-->
     </div>
   </footer>
-  <script src="js/jquery.min.js"></script>
-  <script src="js/libs.min.js"></script>
+  <script src="js/jquery.min.js?rev=@@hash"></script>
+  <script src="js/libs.min.js?rev=@@hash"></script>
+  <script src="js/form-validation.js?rev=@@hash"></script>
   <script src="js/common.js?rev=@@hash"></script>
 </body>
 

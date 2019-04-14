@@ -40,81 +40,83 @@
         <p>Кредитование для увеличения оборотного капитала позволяет решить множество проблем и увеличить прибыль компании без вложения собственных средств, путем выпуска облигаций.</p>
       </div>
       <div class="need__footer">
-        <a href="#"><span>Что такое облигации?</span></a>
-        <a href="#" class="btn-def"><span>Это интересно</span></a>
+        <a href="#advantages"><span>Что такое облигации?</span></a>
+        <a href="#appealToManager" class="btn-def">Это интересно</a>
       </div>
     </div>
   </section>
   <!--need end-->
 
   <!--cases-->
-  <section class="cases">
-    <div class="cases__title layout-page-spaces">
+  <section class="cases layout-page-spaces" id="cases">
+    <div class="cases__title">
       <h2 class="h1">Уже более $1 млрд<br> привлеченных средств</h2>
       <h3>для 45 компаний с 2011 года</h3>
     </div>
     <div class="cases__content layout-flood">
       <div class="cases-slider cases-slider-js swiper-container">
         <div class="swiper-wrapper">
-          <a href="#" class="bond swiper-slide cases-slider__item">
-            @@include("_tpl_bond.html", {
-            "title": "ООО &quot;Активлизинг&quot;",
-            "release": "6",
-            "term": "1 год",
-            "value": "100 USD",
-            "rate": "6,5%",
-            "imgSrc": "img/img-bond-01.png"
-            })
-          </a>
-          <a href="#" class="bond swiper-slide cases-slider__item">
-            @@include("_tpl_bond.html", {
-            "title": "СООО &quot;Белвингрупп&quot;",
-            "release": "6",
-            "term": "1 год",
-            "value": "100 USD",
-            "rate": "15%",
-            "imgSrc": "img/img-bond-02.png"
-            })
-          </a>
-          <a href="#" class="bond swiper-slide cases-slider__item">
-            @@include("_tpl_bond.html", {
-            "title": "СЗАО &quot;ПРОСТОРМАРКЕТ&quot;",
-            "release": "6",
-            "term": "3 год",
-            "value": "100 USD",
-            "rate": "7%",
-            "imgSrc": "img/img-bond-03.png"
-            })
-          </a>
-          <a href="#" class="bond swiper-slide cases-slider__item">
-            @@include("_tpl_bond.html", {
-            "title": "ООО &quot;Активлизинг&quot;",
-            "release": "3",
-            "term": "1 год",
-            "value": "200 USD",
-            "rate": "3,5%",
-            "imgSrc": "img/temp/img_640_01.jpg"
-            })
-          </a>
-          <a href="#" class="bond swiper-slide cases-slider__item">
-            @@include("_tpl_bond.html", {
-            "title": "ООО &quot;Активлизинг&quot;",
-            "release": "4",
-            "term": "1 год",
-            "value": "150 USD",
-            "rate": "9,0%",
-            "imgSrc": "img/temp/img_640_02.jpg"
-            })
-          </a>
+          <div class="swiper-slide cases-slider__item">
+            <div class="cases-slider__item-visibility" data-swiper-parallax data-swiper-parallax-opacity="0" data-swiper-parallax-duration="500">
+              <a href="#" class="bond">
+                @@include("_tpl_bond.html", {
+                "title": "ОАО «Простормаркет»",
+                "emission": "5",
+                "value": "$ 1 000 000",
+                "imgSrc": "img/img-bond-01.jpg",
+                "logoSrc": "img/logotype-prostore.png"
+                })
+              </a>
+            </div>
+          </div>
+          <div class="swiper-slide cases-slider__item">
+            <div class="cases-slider__item-visibility" data-swiper-parallax data-swiper-parallax-opacity="0" data-swiper-parallax-duration="500">
+              <a href="#" class="bond">
+                @@include("_tpl_bond.html", {
+                "title": "ООО «Интерсталь»",
+                "emission": "1",
+                "value": "$ 250 000",
+                "imgSrc": "img/img-bond-02.jpg",
+                "logoSrc": "img/logotype-interstal.png"
+                })
+              </a>
+            </div>
+          </div>
+          <div class="swiper-slide cases-slider__item">
+            <div class="cases-slider__item-visibility" data-swiper-parallax data-swiper-parallax-opacity="0" data-swiper-parallax-duration="500">
+              <a href="#" class="bond">
+                @@include("_tpl_bond.html", {
+                "title": "ЗАО «Остров Чистоты»",
+                "emission": "5",
+                "value": "$1 000 000",
+                "imgSrc": "img/img-bond-03.jpg",
+                "logoSrc": "img/logotype-ostrov.png"
+                })
+              </a>
+            </div>
+          </div>
+          <div class="swiper-slide cases-slider__item">
+            <div class="cases-slider__item-visibility" data-swiper-parallax data-swiper-parallax-opacity="0" data-swiper-parallax-duration="500">
+              <a href="#" class="bond">
+                @@include("_tpl_bond.html", {
+                "title": "ОАО «Простормаркет»",
+                "emission": "3",
+                "value": "$ 500 000",
+                "imgSrc": "img/img-bond-04.jpg",
+                "logoSrc": "img/logotype-prostore.png"
+                })
+              </a>
+            </div>
+          </div>
         </div>
-        <div class="swiper-pagination"></div>
+        <div class="swiper-pagination cases-slider__pagination"></div>
       </div>
     </div>
   </section>
   <!--cases end-->
 
   <!--cases-->
-  <section class="scope">
+  <section class="scope" id="businessFinancing">
     <div class="scope__title layout-page-spaces">
       <h2>Узнайте о возможности привлечения денежных средств для вашей компании</h2>
     </div>
@@ -127,6 +129,13 @@
             "label": "Наименование и УНП компании",
             "id": "scopeName",
             "value": "Скурко и партнеры, УНП:192715295"
+            })
+            @@include("_tpl_forms_valid.html")
+          </div>
+          <div class="form-unit">
+            @@include("_tpl_forms_input.html", {
+            "label": "Сколько лет существует компания на рынке РБ",
+            "id": "scopeYearsOld"
             })
             @@include("_tpl_forms_valid.html")
           </div>
@@ -163,7 +172,7 @@
             })
             @@include("_tpl_forms_valid.html")
           </div>
-          <div class="align-right">
+          <div class="form__footer">
             @@include("_tpl_btn.html", {"type": "button!", "value": "Готово"})
           </div>
         </form>
@@ -172,46 +181,101 @@
   </section>
   <!--cases end-->
 
-  <!--terms-->
-  <div class="terms">
-    <div class="layout-page-spaces">
-      {{slider}}
+  <!--advantages-->
+  <div class="advantages layout-page-spaces" id="advantages">
+    <div class="advantages__content layout-text">
+      <div class="advantages-slider advantages-slider-js swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide advantages-slider__item advantage">
+            <div class="advantages-slider__item-visibility" data-swiper-parallax data-swiper-parallax-opacity="0" data-swiper-parallax-duration="500">
+              <h2><span>Развивайтесь, но не переплачивайте</span></h2>
+              <h3>Поможем выпустить облигации</h3>
+              <p>Lacerta полностью сопровождает эмиссию, консультирует эмитента и благодаря накопленному опыту помогает избежать типичных ошибок при регистрации выпуска.</p>
+              <h3>Сотрудничество по вашим требованиям</h3>
+              <p>Мы просчитаем сумму, на которую может рассчитывать ваш бизнес, а вы назовете условия, на которых облигации выйдут в оборот.</p>
+              <h3>Всё строго официально и по-закону</h3>
+              <p>УНП:192715295<br> <a href="#">Лицензия</a> / <a href="#">Свидетельство о государственной регистрации</a></p>
+            </div>
+          </div>
+          <div class="swiper-slide advantages-slider__item advantage">
+            <div class="advantages-slider__item-visibility" data-swiper-parallax data-swiper-parallax-opacity="0" data-swiper-parallax-duration="500">
+              <h2><span>Кредиты для</span></h2>
+              <h3>Выдаем пустить облигации</h3>
+              <p>Компания Дфсукеф выдаетLacerta полностью сопровождает эмиссию, консультирует эмитента и бла вы можете взять кредит для бизнеса и больше не думать о дополнительных вливаниях годаря накопленному опыту помогает избежать типичных ошибок при регистрации выпуска.</p>
+              <h3>Для бизнесаребованиям</h3>
+              <p>Менеджер Мы просчитаем сумму, на которую может рассчитывать ваш бизнес, а вы назовете условия, на которых облигации выйдут в обонной регистрации</p>
+            </div>
+          </div>
+
+          <div class="swiper-slide advantages-slider__item advantage">
+            <div class="advantages-slider__item-visibility" data-swiper-parallax data-swiper-parallax-opacity="0" data-swiper-parallax-duration="500">
+              <h2><span>Развивайтесь, но не переплачивайте</span></h2>
+              <h3>Поможем выпустить облигации</h3>
+              <p>Lacerta полностью сопровождает эмиссию, консультирует эмитента и благодаря накопленному опыту помогает избежать типичных ошибок при регистрации выпуска.</p>
+              <h3>Сотрудничество по вашим требованиям</h3>
+              <p>Мы просчитаем сумму, на которую может рассчитывать ваш бизнес, а вы назовете условия, на которых облигации выйдут в оборот.</p>
+              <h3>Всё строго официально и по-закону</h3>
+              <p>УНП:192715295<br> <a href="#">Лицензия</a> / <a href="#">Свидетельство о государственной регистрации</a></p>
+            </div>
+          </div>
+          <div class="swiper-slide advantages-slider__item advantage">
+            <div class="advantages-slider__item-visibility" data-swiper-parallax data-swiper-parallax-opacity="0" data-swiper-parallax-duration="500">
+              <h2><span>Кредиты для</span></h2>
+              <h3>Выдаем пустить облигации</h3>
+              <p>Компания Дфсукеф выдаетLacerta полностью сопровождает эмиссию, консультирует эмитента и бла вы можете взять кредит для бизнеса и больше не думать о дополнительных вливаниях годаря накопленному опыту помогает избежать типичных ошибок при регистрации выпуска.</p>
+              <h3>Для бизнесаребованиям</h3>
+              <p>Менеджер Мы просчитаем сумму, на которую может рассчитывать ваш бизнес, а вы назовете условия, на которых облигации выйдут в обонной регистрации</p>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-pagination advantages-slider__pagination"></div>
+      </div>
     </div>
   </div>
-  <!--terms end-->
+  <!--advantages end-->
 
   <!--prospects-->
-  <div class="prospects layout-page-spaces">
+  <div class="prospects layout-page-spaces" id="appealToManager">
     <div class="prospects__title">
-      <h2>На какую сумму может рассчитывать ваш бизнес</h2>
+      <h2 class="h1">На какую сумму может рассчитывать ваш бизнес</h2>
       <h3>Мы произведем все расчеты и свяжемся с вами,<br> в среднем это занимает 1-2 дня</h3>
     </div>
-    <form action="#" method="post" class="form-validate-js">
-      <div class="form-unit">
-        @@include("_tpl_forms_input.html", {
-        "label": "Имя",
-        "id": "prospectsName"
-        })
-        @@include("_tpl_forms_valid.html")
-      </div>
-      <div class="form-unit">
-        @@include("_tpl_forms_input.html", {
-        "label": "Телефон",
-        "id": "prospectsTel"
-        })
-        @@include("_tpl_forms_valid.html")
-      </div>
-      <div class="form-unit">
-        @@include("_tpl_forms_input.html", {
-        "label": "email",
-        "id": "prospectsEmail",
-        "type": "email"
-        })
-        @@include("_tpl_forms_valid.html")
-      </div>
-    </form>
-    <div class="prospects__footer">
-      <a href="#" class="s"><span>Буду ждать ваших расчетов</span></a>
+    <div class="callback-form prospects__form">
+      <form action="#" method="post" class="form-validate-js">
+        <div class="callback-form__fields">
+          <div class="form-unit">
+            @@include("_tpl_forms_input.html", {
+            "classes": "form-def_dark",
+            "classesLabel": "label_dark",
+            "label": "Имя",
+            "id": "prospectsName"
+            })
+            @@include("_tpl_forms_valid.html")
+          </div>
+          <div class="form-unit">
+            @@include("_tpl_forms_input.html", {
+            "classes": "form-def_dark",
+            "classesLabel": "label_dark",
+            "label": "Телефон",
+            "id": "prospectsTel"
+            })
+            @@include("_tpl_forms_valid.html")
+          </div>
+          <div class="form-unit">
+            @@include("_tpl_forms_input.html", {
+            "classes": "form-def_dark",
+            "classesLabel": "label_dark",
+            "label": "email",
+            "id": "prospectsEmail",
+            "type": "email"
+            })
+            @@include("_tpl_forms_valid.html")
+          </div>
+        </div>
+        <div class="callback-form__footer">
+          <button class="btn-def callback-form__btn">Буду ждать ваших расчетов</button>
+        </div>
+      </form>
     </div>
   </div>
   <!--prospects end-->

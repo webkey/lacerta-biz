@@ -356,9 +356,9 @@ function inputHasValueClass() {
  */
 function switchClasses() {
   // Toggle shutter navigation
-  var $shutterNavSwitcher = $('.shutter-nav-switcher-js'), shutterNavSwitcherJs;
+  var $shutterNavSwitcher = $('.shutter-nav-switcher-js'), $html = $('html');
   if ($shutterNavSwitcher.length) {
-    shutterNavSwitcherJs = $shutterNavSwitcher.switchClass({
+    $shutterNavSwitcher.switchClass({
       switchClassTo: $('.shutter-nav-js').add('.shutter-overlay-js')
       , remover: $('.shutter-nav-close-js')
       , modifiers: {
@@ -366,31 +366,12 @@ function switchClasses() {
       }
       , cssScrollFixed: true
       , removeOutsideClick: true
-    });
-  }
-
-  // При добавлении классов одним экземпляром плагина,
-  // вызывать метод удаления классов другими
-  shutterNavSwitcherJs.on('switchClass.beforeAdded', function () {
-    // otherShutter.switchClass('remove');
-  });
-
-  // Toggle callback form
-  var $callbackFromOpener = $('.form-opener-js');
-
-  if ($callbackFromOpener.length) {
-    $.each($callbackFromOpener, function () {
-      var $thisOpener = $(this),
-          $thisDrop = $thisOpener.closest('form').find('.form-drop-js');
-
-      $thisOpener.switchClass({
-        switchClassTo: $thisDrop
-        , modifiers: {
-          activeClass: 'form-is-open'
-        }
-        , cssScrollFixed: false
-        , removeOutsideClick: false
-      });
+      , afterAdded: function () {
+        $html.addClass('open-only-mob');
+      }
+      , afterRemoved: function () {
+        $html.removeClass('open-only-mob');
+      }
     });
   }
 }
@@ -413,9 +394,10 @@ function slidersInit() {
         // Optional parameters
         loop: true,
         loopedSlides: 20,
-        spaceBetween: 22,
-        slidesPerView: 2,
+        spaceBetween: 40,
+        slidesPerView: 'auto',
         watchSlidesVisibility: true,
+        parallax: true,
         // autoplay: {
         //   delay: 3000,
         //   disableOnInteraction: true
@@ -426,18 +408,63 @@ function slidersInit() {
           clickable: true
         },
         breakpoints: {
-          991: {
-            slidesPerView: 'auto',
-            centeredSlides: true
+          639: {
+            spaceBetween: 20
           }
         }
       });
 
       casesSliderJs.on('init', function() {
         $(casesSliderJs.el).closest($thisSlider).addClass('is-loaded');
+        $(casesSliderJs.slides).matchHeight({
+          byRow: true, property: 'height', target: null, remove: false
+        });
       });
 
       casesSliderJs.init();
+    });
+  }
+
+  /** Advantages slider */
+  var $advantagesSlider = $('.advantages-slider-js');
+  if ($advantagesSlider.length) {
+    $advantagesSlider.each(function () {
+      var $thisSlider = $(this),
+          $thisPag = $('.swiper-pagination', $thisSlider),
+          advantagesSliderJs;
+
+      advantagesSliderJs = new Swiper($thisSlider, {
+        init: false,
+
+        // Optional parameters
+        loop: true,
+        loopedSlides: 20,
+        spaceBetween: 122,
+        slidesPerView: 'auto',
+        centeredSlides: true,
+        watchSlidesVisibility: true,
+        parallax: true,
+        // autoplay: {
+        //   delay: 3000,
+        //   disableOnInteraction: true
+        // },
+        pagination: {
+          el: $thisPag,
+          type: 'bullets',
+          clickable: true
+        },
+        breakpoints: {
+          639: {
+            spaceBetween: 20
+          }
+        }
+      });
+
+      advantagesSliderJs.on('init', function() {
+        $(advantagesSliderJs.el).closest($thisSlider).addClass('is-loaded');
+      });
+
+      advantagesSliderJs.init();
     });
   }
 }
@@ -445,46 +472,27 @@ function slidersInit() {
 /**
  * !Form validation
  * */
-function formValidation() {
-  $.validator.setDefaults({
-    submitHandler: function() {
-      alert('Форма находится в тестовом режиме. Чтобы закрыть окно, нажмите ОК.');
-      return false;
+function scrollToAnchor(){
+  var $page = $('html, body');
+
+  $('body').on('click', 'a[href^="#"]', function (e) {
+    e.preventDefault();
+
+    var $curAnchor = $(this),
+        $scrollElem = $($curAnchor.attr('href'));
+
+    if (!$page.is(':animated')) {
+      $page.stop().animate({scrollTop: $scrollElem.offset().top - $('.header').innerHeight()}, 300);
     }
   });
 
-  var $form = $('.form-validate-js');
+  $('.logo').on('click', function (e) {
+    e.preventDefault();
 
-  if ($form.length) {
-    var changeClasses = function (elem, remove, add) {
-      console.log('changeClasses');
-      elem
-          .removeClass(remove).addClass(add);
-      elem
-          .closest('form').find('label[for="' + elem.attr('id') + '"]')
-          .removeClass(remove).addClass(add);
-      elem
-          .closest('.input-wrap')
-          .removeClass(remove).addClass(add);
-    };
-
-    $.each($form, function (index, element) {
-      $(element).validate({
-        errorClass: "error",
-        validClass: "success",
-        errorElement: false,
-        errorPlacement: function (error, element) {
-          return true;
-        },
-        highlight: function (element, errorClass, successClass) {
-          changeClasses($(element), successClass, errorClass);
-        },
-        unhighlight: function (element, errorClass, successClass) {
-          changeClasses($(element), errorClass, successClass);
-        }
-      });
-    });
-  }
+    if (!$page.is(':animated')) {
+      $page.stop().animate({scrollTop: 0}, 300);
+    }
+  })
 }
 
 /**
@@ -497,7 +505,6 @@ $(document).ready(function () {
   inputHasValueClass();
   switchClasses();
   slidersInit();
+  scrollToAnchor();
   objectFitImages(); // object-fit-images initial
-
-  formValidation();
 });

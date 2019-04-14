@@ -35,7 +35,7 @@ var gulp = require('gulp')
  * @type {{dist: string}}
  */
 var path = {
-  'dist': 'dist'
+  'dist': 'lacerta.biz'
 };
 
 /**
@@ -284,7 +284,7 @@ gulp.task('buildDist', ['cleanDist', 'html:buildAllPages', 'copyImgToDist', 'sas
   gulp.src('src/assets/**/*')
       .pipe(gulp.dest(path.dist + '/assets'));
 
-  gulp.src(['!src/__*.html', '!src/forms.html', '!src/_tpl_*.html', '!src/_temp_*.html', 'src/*.html'])
+  gulp.src(['!src/__*.html', '!src/forms.html', '!src/all-pages.html', '!src/_tpl_*.html', '!src/_temp_*.html', 'src/*.html'])
       .pipe(revts()) // Добавить версии подключаемых файлов. В html добавить ключ ?rev=@@hash в место добавления версии
       .pipe(gulp.dest(path.dist));
 

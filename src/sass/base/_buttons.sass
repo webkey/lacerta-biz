@@ -15,6 +15,7 @@
   +font-medium
   color: $highlight-color
   text-decoration: none
+  text-align: right
   cursor: pointer // Для input-елементов
   border: none
   background: none
@@ -23,6 +24,9 @@
   user-select: none
   -webkit-tap-highlight-color: transparent
   transition: color $animation-speed
+
+  +media('<mob')
+    padding-right: 7rem
 
   &::before, &::after
     content: ""
@@ -38,6 +42,9 @@
     border-top-width: 0.2rem
     margin-top: -0.1rem
 
+    +media('<mob')
+      width: 6rem
+
   &::after
     width: 0.8rem
     height: 0.8rem
@@ -48,6 +55,7 @@
   &, & > span
     +font-size($btn-font-size, $btn-line-height)
     letter-spacing: $btn-letter-spacing
+    //white-space: nowrap
 
   // Hover
   &:hover

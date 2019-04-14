@@ -29,6 +29,12 @@
 .#{$article-content} select, .select
   +forms-space
 
+  +media($form-media--net)
+    +forms-space--net
+
+  +media($form-media--mob)
+    +forms-space--mob
+
   &:last-child
     margin-bottom: 0
 
@@ -114,10 +120,17 @@ select.has-arrow
     align-items: center
     justify-content: center
     position: relative
-    height: $form-input-height
+    height: $select-arrow-height
     width: $select-arrow-width
     margin-top: calc(-#{$form-bottom-space} - #{$form-input-height})
     +font-size(0, 0)
 
-    +media('<mob')
-      margin-top: calc(-#{$form-bottom-space--mob} - #{$form-input-height})
+    +media($form-media--net)
+      height: $select-arrow-height--net
+      width: $select-arrow-width--net
+      margin-top: calc(-#{$form-bottom-space--net} - #{$form-input-height--net})
+
+    +media($form-media--mob)
+      height: $select-arrow-height--mob
+      width: $select-arrow-width--mob
+      margin-top: calc(-#{$form-bottom-space--mob} - #{$form-input-height--mob})

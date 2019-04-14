@@ -35,7 +35,7 @@
   +hide-text
 
 .desktop-only
-  +media('<tab')
+  +media('<net')
     display: none
 
 .devices-only
@@ -59,12 +59,13 @@
 
 .chats__group
   margin-left: 4rem
+
   &:first-child
     margin-left: 0
 
   & > strong
     display: block
-    margin-bottom: 0.7rem
+    margin-bottom: 0.6rem
     +font-normal
     font-size: 1.4rem
     line-height: 1.8rem
@@ -150,7 +151,9 @@
   width: 100%
   min-width: $layout-page-min-width
   height: $header-height
+  box-shadow: 0 0.2rem 0.3rem rgba($base-color-alt, 0)
   z-index: $z-high
+  transition: box-shadow $animation-speed
 
   &::before
     content: ""
@@ -163,14 +166,17 @@
     background-color: $base-color
     opacity: 0.84
     // transition
-    $prop: opacity
+    $prop: opacity, box-shadow
     will-change: $prop
     transition:
       property: $prop
       duration: $animation-speed
       timing-function: ease-in-out
 
-    .page-scrolled &
+  .page-scrolled &
+    box-shadow: 0 0.2rem 0.5rem rgba($base-color-alt, 0.1)
+
+    &::before
       opacity: 1
 
 // Добавлять класс, если не нужно фиксить шапку
@@ -191,19 +197,25 @@
   float: left
   display: block
   position: relative
+  width: 15.9rem
+  margin-left: 1.3rem
   background-image: url(../../img/logo.png)
   background-repeat: no-repeat
   background-size: contain
-  width: 15.9rem
+  cursor: pointer
 
-  .page-scrolled &
-    width: 13.5rem
+  //.page-scrolled &
+    width: 13.6rem
 
   @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi)
     background-image: url(../../img/logo-2x.png)
 
-  +media('<lap-l')
+  +media('<net')
     width: 13.5rem
+    margin-left: 0
+
+  +media('<tab-s')
+    margin-left: 1rem
 
   &::before
     content: ""
@@ -250,7 +262,7 @@
     float: left
     margin-left: 4rem
 
-    +media('<lap-l')
+    +media('<net')
       margin-left: 2.6rem
 
   a
@@ -288,7 +300,9 @@
   vertical-align: top
   position: relative
   margin: 0
-  padding: #{$btn-space-inner-vertical} 1.286em #{$btn-space-inner-vertical} 1.311em
+  padding: #{$btn-space-inner-vertical} 1.195em #{$btn-space-inner-vertical} 1.22em
+  +font-size($btn-font-size, $btn-line-height)
+  letter-spacing: $btn-letter-spacing
   color: white
   text-decoration: none
   text-align: center
@@ -301,9 +315,14 @@
   -webkit-tap-highlight-color: transparent
   transition: color $animation-speed
 
-  &, & > span
-    +font-size($btn-font-size, $btn-line-height)
-    letter-spacing: $btn-letter-spacing
+  +media('<net')
+    $btn-height: 3.2rem
+    $btn-space-inner-vertical: round-float(($btn-height - $btn-line-height - $btn-border-width * 2) / 2, 1)
+    padding: #{$btn-space-inner-vertical} 0.6em #{$btn-space-inner-vertical} 0.625em
+    border-radius: $btn-height
+
+  +media('<tab')
+    margin-right: -1.1rem
 
   // Hover
   &:hover
@@ -314,9 +333,11 @@
   &:disabled, &.disabled, &[data-disabled]
     +btn-disabled()
 
-
   .header &
-    margin-left: 4rem
+    margin-left: 3.9rem
+
+    +media('<net')
+      margin-left: 2.1rem
 
 /* navigation end
 
@@ -330,49 +351,35 @@
   margin: 0
   cursor: default
 
-  +media('<tab')
+  +media('<net')
     text-align: center
 
   +media('<mob')
     margin: 0 -0.8rem
 
   li
-    +font-bold
-    font-size: 5.5rem
-    line-height: 6.6rem
-    letter-spacing: 0.01em
-    margin-bottom: 5.1rem
+    font-size: 2.0rem
+    line-height: 2.8rem
+    letter-spacing: 0.025em
+    margin-bottom: 2.8rem
     overflow: hidden
-
-    +media('<lap-l')
-      margin-bottom: 2rem
-      font-size: 4rem
-      line-height: 5rem
-
-    +media('<lap-l')
-      font-size: 2.8rem
-      line-height: 3.4rem
-
-    +media('<mob')
-      font-size: 2.4rem
-      line-height: 3rem
-      margin-bottom: 4.1rem
 
     &:last-child
       margin-bottom: 0
 
   a
-    color: #000
+    color: white
     text-decoration: none
+    box-shadow: none
     transition: color $animation-speed
     padding-top: 0.5em
 
-    &:hover
+    .no-touchevents &:hover
       color: $highlight-color--hover
 
   // current
   li.current
-    color: $text-color-light
+    color: rgba(white, 0.5)
     pointer-events: none
 
     a, & > span
@@ -392,25 +399,19 @@ $toggle-nav-item-dur: 0.4s
 // =====================
 
 /* shutter navigation switcher
-a.shutter-nav-switcher
-  $btn-nav-size: 60px
-  $btn-nav-lines-width: 35px
-  $btn-nav-lines-height: 5px
+.shutter-nav-switcher
+  $btn-nav-size: $header-height
+  $btn-nav-lines-width: 2.0rem
+  $btn-nav-lines-height: 0.4rem
   $btn-nav-lines-color: currentColor
-  // ----------------------------
-  $btn-nav-lines-width--sm: 33px
-  $btn-nav-lines-height--sm: 3px
-  // ----------------------------
-  $btn-nav-lines-width--mob: 23px
-  $btn-nav-lines-height--mob: 2px
   // =====================
 
   display: none
   position: absolute
-  right: nth($layout-page-space, 2)
+  right: 0
   top: 50%
-  margin: -#{round-float($btn-nav-size / 2, 1) + 1} -1.2rem 0
-  color: #000
+  margin: -#{round-float($btn-nav-size / 2, 1)} 0 0
+  color: white
   text-decoration: none
   width: $btn-nav-size
   height: $btn-nav-size
@@ -427,21 +428,8 @@ a.shutter-nav-switcher
   .page-scrolled &
     color: white
 
-  +media('<tab')
-    margin-right: -1.4rem
-
   +media('<tab-s')
-    right: nth($layout-page-space--tab, 2)
-    margin-right: -1.6rem
-
-  +media('<mob')
-    right: nth($layout-page-space--mob, 2)
-    margin-right: -1.9rem
-
-  // убрать подсветку при клике на тачскринах
-  .touchevents &
-    user-select: none
-    -webkit-tap-highlight-color: transparent
+    display: block
 
   // верх, середина, низ
   &::before, &::after, & > i
@@ -450,7 +438,7 @@ a.shutter-nav-switcher
     left: 50%
     height: $btn-nav-lines-height
     background-color: $btn-nav-lines-color
-    border-radius: $btn-nav-lines-height
+    border-radius: 0
     // transition
     $prop: transform, opacity
     will-change: $prop
@@ -459,28 +447,17 @@ a.shutter-nav-switcher
       duration: $switcher-nav-dur
       timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95)
 
-    +media('<tab')
-      height: $btn-nav-lines-height--sm
-
-    +media('<tab-s')
-      height: $btn-nav-lines-height--mob
-
   // верх, низ
   &::before, &::after
     content: ""
-    width: $btn-nav-lines-width + 5
-    margin: 10px 0 11px -#{round($btn-nav-lines-width / 2) + 5}
-
-    +media('<tab')
-      width: $btn-nav-lines-width--sm + 11
-      margin: 12px 0 11px -#{round($btn-nav-lines-width--sm / 2) + 11}
-
-    +media('<tab-s')
-      width: $btn-nav-lines-width--mob + 7
-      margin: 8px 0 8px -#{round($btn-nav-lines-width--mob / 2) + 7}
+    margin-top: 0.7rem
+    margin-bottom: 0.7rem
 
   // верх
   &::before
+    $space: 0.2
+    width: $btn-nav-lines-width + $space
+    margin-left: -#{round-float($btn-nav-lines-width / 2, 1) + $space}
     bottom: 50%
     transition-delay: 0s
 
@@ -489,20 +466,16 @@ a.shutter-nav-switcher
     font-size: 0
     line-height: 0
     top: 50%
-    width: $btn-nav-lines-width
-    margin: -#{round($btn-nav-lines-height / 2)} 0 0 -#{round($btn-nav-lines-width / 2)}
+    $space: 0.6
+    width: $btn-nav-lines-width + $space
+    margin: -#{round-float($btn-nav-lines-height / 2, 1)} 0 0 -#{round-float($btn-nav-lines-width / 2, 1) + $space}
     transition-delay: round-float($switcher-nav-delay / 2, 2)
-
-    +media('<tab')
-      width: $btn-nav-lines-width--sm
-      margin: -#{round($btn-nav-lines-height--sm / 2 - 1)} 0 0 -#{round($btn-nav-lines-width--sm / 2)}
-
-    +media('<tab-s')
-      width: $btn-nav-lines-width--mob
-      margin: -#{round($btn-nav-lines-height--mob / 2)} 0 0 -#{round($btn-nav-lines-width--mob / 2)}
 
   // низ
   &::after
+    $space: -0.2
+    width: $btn-nav-lines-width + $space
+    margin-left: -#{round-float($btn-nav-lines-width / 2, 1) + $space}
     top: 50%
     transition-delay: $switcher-nav-delay
 
@@ -516,55 +489,43 @@ a.shutter-nav-switcher
 
   // opened
   &.shutter-nav_is-open
-    &::before, &::after, & > i
-      transform: translate(80px, 0) translateZ(0)
-      opacity: 0
+    +media('<tab-s')
+      &::before, &::after, & > i
+        transform: translate(80px, 0) translateZ(0)
+        opacity: 0
 
 /* shutter navigation switcher end
 
 /* shutter navigation close
 .shutter-nav-close
-  position: absolute
-  width: 3.1rem
-  height: 3.1rem
-  top: 3.9rem
-  right: nth($layout-page-space, 2) + 0.2
+  position: fixed
+  width: $header-height
+  height: $header-height
+  top: 0
+  right: 0
   font-size: 0
   line-height: 0
   opacity: 0
   pointer-events: none
   visibility: hidden
+  z-index: 10000
   $rotate: -20deg
   transform: rotate($rotate)
   transform: rotate($rotate) translateZ(0)
   // transition
   $prop: transform, opacity, visibility
   will-change: $prop
-  user-select: none
-  -webkit-tap-highlight-color: transparent
   transition:
     property: $prop
     // Кнопку закрытия скрывать с задержкой (сразу после закрытия меню), без анимацией
     duration: 0s
-    delay: $toggle-nav-dur
+    delay: 0s
     timing-function: ease-in-out
-
-  +media('<tab')
-    display: block
-    transition-delay: 0s
-    top: 2.5rem
-
-  +media('<tab-s')
-    top: 1.5rem
-    right: nth($layout-page-space--tab, 2) + 0.2
-
-  +media('<mob')
-    right: nth($layout-page-space--mob, 2) + 0.2
+  user-select: none
+  -webkit-tap-highlight-color: transparent
 
   &::before, &::after
-    $nav-close-cross-size: 5px 41px
-    $nav-close-cross-size--sm: 3px 41px
-    $nav-close-cross-size--mob: 2px 28px
+    $nav-close-cross-size: 0.4rem 2.4rem
     content: ""
     display: block
     position: absolute
@@ -572,8 +533,8 @@ a.shutter-nav-switcher
     top: 50%
     height: nth($nav-close-cross-size, 1)
     width: nth($nav-close-cross-size, 2)
-    margin: -#{round(nth($nav-close-cross-size, 1) / 2)} 0 0 -#{round(nth($nav-close-cross-size, 2) / 2)}
-    border-radius: nth($nav-close-cross-size, 1)
+    margin: -#{round-float(nth($nav-close-cross-size, 1) / 2, 1)} 0 0 -#{round-float(nth($nav-close-cross-size, 2) / 2, 1)}
+    border-radius: 0
     background-color: white
     // transition
     $prop: background-color
@@ -583,19 +544,6 @@ a.shutter-nav-switcher
       duration: $animation-speed
       timing-function: ease-in-out
 
-    +media('<tab')
-      background-color: #000
-      height: nth($nav-close-cross-size--sm, 1)
-      width: nth($nav-close-cross-size--sm, 2)
-      margin: -#{round(nth($nav-close-cross-size--sm, 1) / 2)} 0 0 -#{round(nth($nav-close-cross-size--sm, 2) / 2)}
-      border-radius: nth($nav-close-cross-size--sm, 1)
-
-    +media('<tab-s')
-      height: nth($nav-close-cross-size--mob, 1)
-      width: nth($nav-close-cross-size--mob, 2)
-      margin: -#{round(nth($nav-close-cross-size--mob, 1) / 2)} 0 0 -#{round(nth($nav-close-cross-size--mob, 2) / 2)}
-      border-radius: nth($nav-close-cross-size--mob, 1)
-
   &::before
     transform: rotate(45deg)
 
@@ -603,43 +551,26 @@ a.shutter-nav-switcher
     transform: rotate(-45deg)
 
   &:hover
-    &::before, &::after
-      background-color: $highlight-color--hover
+    .no-touchevents
+      &::before, &::after
+        background-color: $highlight-color--hover
 
   &.shutter-nav_is-open
-    opacity: 1
-    pointer-events: auto
-    visibility: visible
-    $rotate: 0deg
-    transform: rotate($rotate)
-    transform: rotate($rotate) translateZ(0)
-    transition:
-      // Кнопку закрытия показывать с задержкой и анимацией
-      duration: $toggle-nav-item-dur
-      delay: $toggle-nav-delay + $toggle-nav-curtains-dur - 0.05s
-
-    +media('<tab')
+    +media('<tab-s')
+      opacity: 1
+      pointer-events: auto
+      visibility: visible
+      $rotate: 0deg
+      transform: rotate($rotate)
+      transform: rotate($rotate) translateZ(0)
       transition:
         duration: $animation-speed
         delay: $animation-speed
-
-.shutter-nav .shutter-nav-close
-  +media('<tab')
-    display: none
-
-.shutter-nav-close_device
-  position: fixed
-  display: none
-  z-index: 10000
-
-  +media('<tab')
-    display: block
 
 /* shutter navigation close end
 
 /* shutter navigation overlay
 .shutter-overlay
-  display: none
   position: fixed
   left: 0
   top: 0
@@ -657,11 +588,9 @@ a.shutter-nav-switcher
     duration: $animation-speed
     timing-function: ease-in-out
 
-  +media('<tab')
-    display: block
-
   &.shutter-nav_is-open
-    opacity: 1
+    +media('<tab-s')
+      opacity: 1
 
 /* shutter navigation overlay end
 
@@ -670,513 +599,162 @@ a.shutter-nav-switcher
   position: fixed
   right: 0
   top: 0
-  display: flex
+  display: block
   align-items: center
   justify-content: center
   width: 100%
   height: 100%
-  overflow: hidden
+  overflow-x: hidden
+  overflow-y: auto
   opacity: 0
   visibility: hidden
   pointer-events: none
+  background-color: $base-color
   z-index: 9999
+  $translate: 100%, 0
+  transform: translate($translate)
+  transform: translate3d($translate, 0)
   // Общий блок меню скрывать без задержки, с анимацией
   transition:
-    property: opacity, visibility
-    duration: $toggle-nav-dur
-
-  +media('<tab')
-    display: block
-    overflow-x: hidden
-    overflow-y: auto
-    background-color: white
-    $translate: 100%, 0
-    transform: translate($translate)
-    transform: translate3d($translate, 0)
-    transition:
-      property: opacity, visibility, transform
-      duration: $animation-speed
-
-  &::before, &::after
-    content: ""
-    display: block
-    position: absolute
-    top: 0
-    left: 0
-    width: 50%
-    height: 100%
-    z-index: -1
-    // transition
-    $prop: opacity, visibility, transform
-    will-change: $prop
-    transition:
-      property: $prop
-      // Шторки меню скрывать с задержкой (сразу после закрытия меню), без анимацией
-      duration: 0s
-      delay: $toggle-nav-dur
-      timing-function: cubic-bezier(0.4, 0.6, 0.2, 1)
-
-    +media('<tab')
-      display: none
-      content: none
-
-  &::before
-    background-color: white
-    $translate: 0, 100%
-    transform: translate($translate)
-    transform: translate3d($translate, 0)
-
-  &::after
-    background-color: $base-color
-    left: 50%
-    $translate: 0, -100%
-    transform: translate($translate)
-    transform: translate3d($translate, 0)
+    property: opacity, visibility, transform
+    duration: $animation-speed
 
   &.shutter-nav_is-open
-    opacity: 1
-    visibility: visible
-    pointer-events: auto
-
-    +media('>=tab')
-      // Общий блок меню показывать без задержки и анимации
-      transition:
-        duration: 0s
-        delay: 0s
-
-    +media('<tab')
-      $translate: 0, 0
-      transform: translate($translate)
-      transform: translate3d($translate, 0)
-
-    &::before, &::after
-      $translate: 0, 0
-      transform: translate($translate)
-      transform: translate3d($translate, 0)
-      // Шторки меню показывать с задержкой и анимацией
-      transition:
-        duration: $toggle-nav-curtains-dur
-        delay: $toggle-nav-delay
-
-.shutter-nav__layout
-  display: flex
-  align-items: flex-start
-  width: 100%
-  max-width: 166rem
-
-  +media('<tab')
-    display: block
-    padding: 0
-
-.shutter-nav__content,
-.shutter-nav__footer
-  flex-grow: 1
-  flex-basis: 50%
-  max-width: 50%
-  padding: 3rem 9rem
-  opacity: 0
-  will-change: transform, opacity
-  transition:
-    property: transform, opacity
-    // Внутренние элементы скрывать с задержкой (сразу после закрытия меню), без анимацией
-    duration: 0s
-    delay: $toggle-nav-dur
-    timing-function: ease-out
-
-  +media('<lap-l')
-    padding: 2rem 4rem
-
-  +media('<tab')
-    width: auto
-    max-width: none
-    padding: 8.8rem #{nth($layout-page-space, 2)}
-    opacity: 1
-
-  +media('<tab-s')
-    padding-left: #{nth($layout-page-space--tab, 2)}
-    padding-right: #{nth($layout-page-space--tab, 2)}
-
-  +media('<mob')
-    padding-left: #{nth($layout-page-space--mob, 2)}
-    padding-right: #{nth($layout-page-space--mob, 2)}
-
-  .shutter-nav_is-open &
-    +media('>=tab')
+    +media('<tab-s')
       opacity: 1
+      visibility: visible
+      pointer-events: auto
       $translate: 0, 0
       transform: translate($translate)
       transform: translate3d($translate, 0)
-      transition:
-        // Внутренние элементы показывать с задержкой и анимацией
-        duration: $toggle-nav-item-dur
-        delay: $toggle-nav-delay + $toggle-nav-curtains-dur - 0.05s
 
-// Левая часть
 .shutter-nav__content
-  +media('>=tab')
-    $translate: 0, 4rem
-    transform: translate($translate)
-    transform: translate3d($translate, 0)
-    padding-left: 0
+  padding-top: 8rem
+  padding-bottom: 8rem
 
-  +media('<tab')
-    padding-top: 8.8rem
-    padding-bottom: 5.8rem
+/* shutter navigation menu
+.sn__alt-nav
+  margin: 0 0 6.7rem
 
-// Правая часть
-.shutter-nav__footer
-  color: white
+  &:last-child
+    margin-bottom: 0
 
-  +media('>=tab')
-    $translate: 0, -4rem
-    transform: translate($translate)
-    transform: translate3d($translate, 0)
-    padding-right: 0
+/* shutter navigation menu end
 
-  +media('<tab')
+/* shutter navigation form
+.sn__callback-form
+  margin-bottom: 8.9rem
+
+  &:last-child
+    margin-bottom: 0
+
+  label
     background-color: $base-color
-    padding-top: 5.7rem
-    padding-bottom: 6rem
 
-/* title
-.shutter-nav__title
-  +font-bold
-  font-size: 5.5rem
-  line-height: 6.6rem
-  margin-bottom: 7.6rem
+  .callback-form__btn
+    color: white
 
-  +media('<lap-l')
-    margin-bottom: 4rem
-    font-size: 4rem
-    line-height: 5rem
+/* shutter navigation form end
 
-  +media('<lap-l')
-    font-size: 2.8rem
-    line-height: 3.4rem
-
-  +media('<tab')
-    text-align: center
-    font-size: 2.4rem
-    line-height: 2.4rem
-    margin-bottom: 2.9rem
-
-  &:last-child
-    margin-bottom: 0
-
-/* title end
-
-/* alternative navigation
-.shutter-nav__alt-nav
-  margin: 0 0 14.4rem
-
-  +media('<lap-l')
-    margin-bottom: 10rem
-
-  +media('<tab')
-    margin-bottom: 5.3rem
-
-  &:last-child
-    margin-bottom: 0
-
-/* alternative navigation end
-
-/* app
-.shutter-nav__app
-  display: flex
-  flex-wrap: wrap
-  margin-bottom: 4.3rem
-
-  +media('<tab')
-    justify-content: center
-    margin-bottom: 5.3rem
-
-  +media('<tab-s')
-    display: block
-
-.shutter-nav__app-item
-  margin: 0 4rem 3.0rem 0
-
-  +media('<tab-s')
-    margin: 0 0 6rem
-    text-align: center
-
-  &:last-child
-    margin: 0
-
-  .btn-app
-    font-size: 1.8rem
-    line-height: 2.2rem
-    height: 6.2rem
-    padding: 1rem 5rem 1rem 8rem
-    border-radius: 6.2rem
-
-    & > br
-      display: block
-
-    &:hover
-      background-color: $highlight-color--hover
-
-  .btn-app_google-play
-    background-position: 2.8rem center
-    background-size: 29px auto
-
-  .btn-app_apple
-    background-position: 28px center
-    background-size: 26px auto
-
-/* app end
-
-/* conditions
-.shutter-nav__conditions
-  overflow: hidden
-  width: 30rem
-  max-width: 100%
-  font-size: 1.8rem
-  line-height: 2.2rem
-
-  +media('<tab')
-    text-align: center
-    margin-left: auto
-    margin-right: auto
-
-  +media('<mob')
-    width: auto
-    margin: 0 -0.8rem
-    max-width: none
-
-  a
-    color: #000
-    padding-top: 0.5em
-    text-decoration: none
-    box-shadow: inset 0 -1px 0 #8f8f8f
-    transition:
-      property: color, box-shadow
-      duration: $animation-speed
-
-    &:hover
-      box-shadow: inset 0 -1px 0 $highlight-color--hover
-      color: $highlight-color--hover
-
-/* conditions end
-
-/* contacts
-.shutter-nav__contacts
-  display: flex
-  flex-wrap: wrap
-  align-items: flex-start
-  margin: 0 0 6.2rem
+/* shutter navigation telephone
+.sn-tel
+  list-style: none
+  margin: 0 0 1.9rem
   padding: 0
   font-size: 2.4rem
-  line-height: 3.2rem
-  list-style: none
-
-  +media('<tab')
-    display: block
-    width: 40rem
-    max-width: 100%
-    margin: 0 auto 5.7rem
-    //font-size: 1.8rem
-    //line-height: 2.2rem
-    text-align: center
+  line-height: 4.0rem
 
   &:last-child
     margin-bottom: 0
 
   li
-    margin: 0 3rem 1.1rem 0
+    margin-bottom: 2.2rem
 
-    +media('<tab')
-      margin: 2.0rem 0 0
-
-    &.phone
-      +media('<tab')
-        margin-top: 2.6rem
-
-    &:first-child
-      margin-top: 0
+    &:last-child
+      margin-bottom: 0
 
   a
-    $box-shadow: inset 0 -1px 0
     color: inherit
-    text-decoration: none
-    box-shadow: #{$box-shadow} rgba(white, 0.5)
-    transition:
-      property: color, box-shadow
-      duration: $animation-speed
 
-    &[href^="tel:"]
-      box-shadow: none
+    strong
+      font-family: inherit
+      font-size: 4.0rem
+      padding-left: 0.1em
 
-    &:hover
-      color: $highlight-color--hover
-      box-shadow: #{$box-shadow} rgba($highlight-color--hover, 0.5)
+/* shutter navigation telephone end
 
-      &[href^="tel:"]
-        box-shadow: none
-
-    & > strong
-      +font-normal
-      font-size: 3.0rem
-
-    &:hover
-      color: $highlight-color--hover
-      box-shadow: inset 0 -1px 0 rgba($highlight-color--hover, 0.5)
-
-      &[href^="tel:"]
-        box-shadow: none
-
-/* contacts end
-
-/* callback-form
-.n-callback-form
-  margin-bottom: 7.7rem
-
-  +media('<lap-l')
-    margin-bottom: 4rem
-
-  +media('<tab')
-    margin-bottom: 5.7rem
+/* shutter navigation info
+.sn-email
+  font-size: 2.4rem
+  line-height: 4.0rem
+  margin-bottom: 4.1rem
 
   &:last-child
     margin-bottom: 0
 
-  form
-    display: block
-    position: relative
+  a
+    color: $base-color-alt
+    box-shadow: inset 0 -1px 0 rgba($base-color-alt, 0.5)
+    transition: box-shadow $animation-speed
 
-.n-callback-form__title
-  +font-normal
-  display: block
-  position: relative
-  margin-bottom: 2.0rem
+    &:hover
+      box-shadow: inset 0 0 0 rgba($base-color-alt, 0.5)
+
+.sn-adr
   font-size: 1.8rem
-  line-height: 2.4rem
+  line-height: 2.2rem
+  margin-bottom: 4.8rem
 
-  & > strong
-    font-family: inherit
+  &:last-child
+    margin-bottom: 0
 
-  +media('<lap-l')
-    margin-bottom: 1.5rem
+  a
+    color: $base-color-alt
+    box-shadow: inset 0 -1px 0 rgba($base-color-alt, 0.5)
+    transition: box-shadow $animation-speed
 
-  +media('<tab')
-    display: block
-    margin: 0 0 2.3rem
-    text-align: center
+    &:hover
+      box-shadow: inset 0 0 0 rgba($base-color-alt, 0.5)
 
-  +form-opener-style(6rem)
+.sn-terms
+  font-size: 1.8rem
+  line-height: 2.2rem
+  margin-bottom: 2.7rem
 
-.n-callback-form__fields-wrap
-  +media('<tab-s')
-    overflow: hidden
-    transition: max-height 0.3s linear
-    max-height: 0
+  &:last-child
+    margin-bottom: 0
 
-    &.form-is-open
-      max-height: 50rem
+  a
+    color: $base-color-alt
+    box-shadow: inset 0 -1px 0 rgba($base-color-alt, 0.5)
+    transition: box-shadow $animation-speed
 
-$n-callback-form-item-space: 2rem 2rem
-$n-callback-form-space-item--sm: 3rem 3rem
-$n-callback-form-space-item--mob: 3rem 2rem
-.n-callback-form__fields
-  display: flex
-  flex-wrap: wrap
-  margin: 0 -#{round-float(nth($n-callback-form-item-space, 2) / 2, 1)}
+    &:hover
+      box-shadow: inset 0 0 0 rgba($base-color-alt, 0.5)
 
-  +media('<tab-s')
-    padding: 4.1rem #{nth($layout-page-space--mob, 2) - round-float(nth($n-callback-form-space-item--mob, 2) / 2, 1)} #{4.1 - $form-bottom-space--mob}
-    opacity: 0
-    $translate: 0, -2rem
-    transform: translate($translate)
-    transform: translate3d($translate, 0)
-    // transition
-    $prop: opacity, transform
-    will-change: $prop
-    transition:
-      property: $prop
-      duration: 0.3s
-      timing-function: ease-in-out
+.sn-license
+  font-size: 1.8rem
+  line-height: 2.2rem
+  margin-bottom: 4.9rem
 
-    .form-is-open &
-      opacity: 1
-      $translate: 0, 0
-      transform: translate($translate)
-      transform: translate3d($translate, 0)
+  &:last-child
+    margin-bottom: 0
 
-  +media('<mob')
-    display: block
+  a
+    color: $base-color-alt
+    box-shadow: inset 0 -1px 0 rgba($base-color-alt, 0.5)
+    transition: box-shadow $animation-speed
 
-  .n-callback-form__fields-group
-    $space: #{round-float(nth($n-callback-form-item-space, 2) / 2, 1)}
-    flex-grow: 1
-    flex-shrink: 0
-    $width: calc(50.0% - #{nth($n-callback-form-item-space, 2)})
-    flex-basis: $width
-    max-width: $width
-    text-align: right
-    margin-left: $space
-    margin-right: $space
+    &:hover
+      box-shadow: inset 0 0 0 rgba($base-color-alt, 0.5)
 
-    +media('<tab')
-      $space: #{round-float(nth($n-callback-form-space-item--sm, 2) / 2, 1)}
-      $width: calc(50.0% - #{nth($n-callback-form-space-item--sm, 2)})
-      flex-basis: $width
-      max-width: $width
-      margin-left: $space
-      margin-right: $space
+/* shutter navigation info end
 
-    +media('<tab-s')
-      $space: #{round-float(nth($n-callback-form-space-item--mob, 2) / 2, 1)}
-      $width: calc(50.0% - #{nth($n-callback-form-space-item--mob, 2)})
-      max-width: $width
-      margin-left: $space
-      margin-right: $space
+/* shutter navigation chats
+.sn__chats
+  margin: 0 auto 4rem
 
-    +media('<mob')
-      max-width: none
-
-    textarea
-      $height: calc(#{$form-input-height * 2} + #{$form-bottom-space})
-      height: $height
-      min-height: $height
-      resize: none
-
-  .input-def
-    border-radius: 1rem
-    background-color: white
-    border-right-color: white
-
-  .input-wrap_btn
-    position: relative
-    top: 2rem
-    text-align: right
-
-    +media('<mob')
-      top: auto
-      text-align: center
-
-    [class*="btn-"]
-      box-shadow: 0 10px 10px rgba(81, 0, 33, 0.25)
-
-      +media('<mob')
-        display: block
-        width: 100%
-
-      &:hover
-        box-shadow: 0 5px 5px rgba($btn-bg-hover-color, 0.25)
-
-/* callback-form end
-
-/* chats
-.shutter-nav__chats
-  +media('<tab')
-    justify-content: center
-    margin: 0 auto 4.1rem
-
-  .chats__group
-    & > strong
-      margin-bottom: 1.5rem
-
-/* chats end
+/* shutter navigation chats end
 /* shutter navigation end
 
 
@@ -1188,28 +766,23 @@ $n-callback-form-space-item--mob: 3rem 2rem
   line-height: 2.2rem
   background-color: $bg-color-alt
 
+  //+media('<tab-s')
+    padding-left: #{nth($layout-page-space--mob, 2) * 2}
+
   a
     color: inherit
     text-decoration: none
-    box-shadow: inset 0 -1px 0 rgba($text-color, 0.5)
-    transition:
-      property: color, box-shadow
-      duration: $animation-speed
-
-    &[href^="tel:"]
-      box-shadow: none
-
-    &:hover
-      color: $highlight-color--hover
-      box-shadow: inset 0 -1px 0 transparent
-
-      &[href^="tel:"]
-        box-shadow: none
+    box-shadow: none
 
 .footer-common
-  padding-top: 7rem
-  padding-bottom: 5rem
+  padding: 7.6rem #{nth($layout-flood-space, 2)} 5.9rem
   +clear
+
+  +media('<net')
+    padding: 8.5rem 0 6.9rem
+
+  +media('<tab-s')
+    padding: 3.6rem 0 4.7rem
 
 /* footer telephone
 .f-tel
@@ -1218,15 +791,24 @@ $n-callback-form-space-item--mob: 3rem 2rem
   width: 50%
   list-style: none
   padding: 0 round-float(nth($footer-grid-space, 2) / 2, 1) 0 0
-  margin: 0 0 5rem
+  margin: 0 0 8.7rem
   font-size: 2.4rem
   line-height: 4.0rem
+
+  +media('<net')
+    padding-right: round-float(nth($footer-grid-space--net, 2) / 2, 1)
+
+  +media('<tab-s')
+    float: none
+    width: auto
+    padding: 0
+    margin-bottom: 1.9rem
 
   &:last-child
     margin-bottom: 0
 
   li
-    margin-bottom: 2.7rem
+    margin-bottom: 2.2rem
 
     &:last-child
       margin-bottom: 0
@@ -1235,6 +817,7 @@ $n-callback-form-space-item--mob: 3rem 2rem
     strong
       font-family: inherit
       font-size: 4.0rem
+      padding-left: 0.1em
 
 /* footer telephone end
 
@@ -1243,12 +826,45 @@ $n-callback-form-space-item--mob: 3rem 2rem
   float: right
   clear: right
   width: 50%
-  padding: 0 0 0 #{round-float(nth($footer-grid-space, 2) / 2, 1)}
+  padding: 0.5rem 0 0 #{round-float(nth($footer-grid-space, 2) / 2, 1)}
+
+  +media('<net')
+    padding-left: #{round-float(nth($footer-grid-space--net, 2) / 2, 1)}
+
+  +media('<tab-s')
+    float: none
+    width: auto
+    padding: 0
+    margin-bottom: 4.9rem
 
 .f-email
   font-size: 2.4rem
   line-height: 4.0rem
-  margin-bottom: 4rem
+  margin-bottom: 3.9rem
+
+  +media('<tab-s')
+    margin-bottom: 4.1rem
+
+  &:last-child
+    margin-bottom: 0
+
+  a
+    color: inherit
+    text-decoration: none
+    box-shadow: 0 1px 0 rgba($text-color, 0.5)
+    transition:
+      property: color, box-shadow
+      duration: $animation-speed
+
+    &:hover
+      color: $highlight-color--hover
+      box-shadow: 0 1px 0 transparent
+
+.f-adr
+  margin-bottom: 7.1rem
+
+  +media('<tab-s')
+    margin-bottom: 4.8rem
 
   &:last-child
     margin-bottom: 0
@@ -1259,11 +875,35 @@ $n-callback-form-space-item--mob: 3rem 2rem
   &:last-child
     margin-bottom: 0
 
+  a
+    color: inherit
+    text-decoration: none
+    box-shadow: 0 1px 0 rgba($text-color, 0.5)
+    transition:
+      property: color, box-shadow
+      duration: $animation-speed
+
+    &:hover
+      color: $highlight-color--hover
+      box-shadow: 0 1px 0 transparent
+
 .f-license
   margin-bottom: 2.7rem
 
   &:last-child
     margin-bottom: 0
+
+  a
+    color: inherit
+    text-decoration: none
+    box-shadow: 0 1px 0 rgba($text-color, 0.5)
+    transition:
+      property: color, box-shadow
+      duration: $animation-speed
+
+    &:hover
+      color: $highlight-color--hover
+      box-shadow: 0 1px 0 transparent
 
 /* footer info end
 
@@ -1273,6 +913,14 @@ $n-callback-form-space-item--mob: 3rem 2rem
   clear: left
   width: 50%
   padding: 0 #{round-float(nth($footer-grid-space, 2) / 2, 1)} 0 0
+
+  +media('<net')
+    padding-right: #{round-float(nth($footer-grid-space--net, 2) / 2, 1)}
+
+  +media('<tab-s')
+    float: none
+    width: auto
+    padding: 0
 
   a
     box-shadow: none
@@ -1284,13 +932,27 @@ $n-callback-form-space-item--mob: 3rem 2rem
   align-items: center
   justify-content: space-between
   min-height: 9.6rem
-  padding-top: 3rem
-  padding-bottom: 3rem
+  padding-top: 2.8rem
+  padding-bottom: 2.8rem
+
+  +media('<tab')
+    display: block
+    padding-bottom: 5.6rem
+
+  +media('<tab-s')
+    padding-bottom: 9.5rem
 
 /* copyright
 .copyright
   font-size: 1.4rem
   line-height: 1.8rem
+
+  +media('<net')
+    text-align: center
+    margin-bottom: 3.5rem
+
+  +media('<tab-s')
+    margin-bottom: 3.5rem
 
 /* copyright end
 
@@ -1300,7 +962,7 @@ $n-callback-form-space-item--mob: 3rem 2rem
   font-size: 1.4rem
   line-height: 1.8rem
 
-  +media('<tab')
+  +media('<net')
     text-align: center
 
   a
@@ -1317,6 +979,10 @@ $n-callback-form-space-item--mob: 3rem 2rem
   vertical-align: top
   margin-right: 0.5rem
 
+  +media('<tab-s')
+    display: block
+    margin: 0 0 0.4rem
+
   svg
     display: inline-block
     vertical-align: top
@@ -1326,14 +992,15 @@ $n-callback-form-space-item--mob: 3rem 2rem
       fill: currentColor
 
 .developer__text
+  position: relative
   display: inline-block
   vertical-align: top
-  height: 15px
-  margin-top: -1px
+  top: -0.1rem
 
-  +media('<tab')
+  +media('<tab-s')
     display: block
-    height: auto
+    text-align: center
+    top: 0
 
 /* developer end
 
@@ -1351,16 +1018,17 @@ $n-callback-form-space-item--mob: 3rem 2rem
   align-items: center
   justify-content: center
   min-height: 64.9rem
-  padding-top: #{$header-height + 5}
-  padding-bottom: 5rem
+  padding-top: #{$header-height + 7.2}
+  padding-bottom: 6.5rem
   background-color: $base-color
   margin-bottom: -3rem
 
-  +media('<lap-l')
+  +media('<net')
     min-height: 60.3rem
 
   +media('<tab-s')
     min-height: 59.3rem
+    padding-top: #{$header-height + 5.3}
 
 .promo__bg
   overflow: hidden
@@ -1392,24 +1060,38 @@ $n-callback-form-space-item--mob: 3rem 2rem
 
 .promo__caption
   +font-medium
-  $font-size: 2.4rem !default
-  $line-height: 3.2rem !default
+  $font-size: 2.4rem
+  $line-height: 3.2rem
   $line-height-kef: $line-height / $font-size
   +font-size($font-size, $line-height)
   max-width: $layout-flood-width
-  margin: 0 auto 5rem
+  margin: 0 auto 2.3rem
   padding: 0 calc(#{nth($layout-flood-space, 2)} + #{nth($layout-text-space, 2)})
 
-  +media('<tab-s')
+  +media('<net')
     font-size: 2.2rem
     line-height: round-float(2.2rem * $line-height-kef, 1)
+    padding: 0 calc(#{nth($layout-flood-space--net, 2)} + #{nth($layout-text-space--net, 2)})
+    margin-bottom: 2.5rem
+
+  +media('<tab-s')
+    font-size: 2.0rem
+    line-height: round-float(2.0rem * $line-height-kef, 1)
+    padding: 0
+    margin-bottom: 3.1rem
 
   &:last-child
     margin-bottom: 0
 
 .promo__title
   color: white
-  margin-bottom: 4rem
+  margin-bottom: 5.1rem
+
+  +media('<net')
+    margin-bottom: 5.6rem
+
+  +media('<tab-s')
+    margin-bottom: 6.5rem
 
   &:last-child
     margin-bottom: 0
@@ -1419,6 +1101,14 @@ $n-callback-form-space-item--mob: 3rem 2rem
   max-width: $layout-flood-width
   margin: 0 auto 1rem
   padding: 0 calc(#{nth($layout-flood-space, 2)} + #{nth($layout-text-space, 2)})
+
+  +media('<net')
+    padding: 0 calc(#{nth($layout-flood-space--net, 2)} + #{nth($layout-text-space--net, 2)})
+
+  +media('<tab-s')
+    padding: 0
+    font-size: 1.8rem
+    line-height: 2.2rem
 
   &:last-child
     margin-bottom: 0
@@ -1430,208 +1120,358 @@ $n-callback-form-space-item--mob: 3rem 2rem
   position: relative
   max-width: $layout-flood-width
   margin: 0 auto
-  padding: 10rem #{nth($layout-flood-space, 2)}
+  padding: 10.5rem #{nth($layout-flood-space, 2)} 8.1rem
   background-color: white
   +shadow
 
+  +media('<net')
+    padding: 4.7rem #{nth($layout-flood-space--net, 2)} 7.1rem
+
+  +media('<tab-s')
+    padding: 1.8rem #{nth($layout-flood-space--mob, 2)} 4.3rem
+
 .need__content
-  padding: 0 #{nth($layout-text-space, 2)} 5rem
+  padding: 0 #{nth($layout-text-space, 2)} 4.7rem
+
+  +media('<net')
+    padding: 0 #{nth($layout-text-space--net, 2)} 4.7rem
+
+  +media('<tab-s')
+    padding: 0 #{nth($layout-text-space--mob, 2)} 2.8rem
+
+  h2, .h2
+    margin-bottom: 3.5rem
+
+  h3, .h3
+    margin-bottom: 1.6rem
+
+  p + h3, ul + h3,
+  p + .h3, ul + .h3,
+  p + h4, ul + h4,
+  p + .h4, ul + .h4
+    margin-top: 3.9rem
+
+    +media('<tab-s')
+      margin-top: 2.9rem
 
 .need__footer
+  +font-medium
   display: flex
   flex-wrap: wrap
   align-items: center
   justify-content: space-between
+  font-size: 1.8rem
+  line-height: 2.6rem
+
+  +media('<net')
+    margin-left: -#{nth($layout-text-space--net, 2)}
+    margin-right: -#{nth($layout-text-space--net, 2)}
+
+  +media('<tab-s')
+    margin-left: 0
+    margin-right: 0
+
+  a
+    margin-bottom: 3.1rem
 
 /* need end
 
 /* bond
-$bond-space: 3.1rem 2.9rem 2.3rem
-$bond-space--sm: 2.4rem 2rem 1.9rem
-$bond-space--mob: 1.8rem 2rem 1.2rem
+$bond-space: 3.7rem 4rem 4.1rem
+$bond-space--mob: 2.6rem 2rem 3.5rem
+$bond-border-radius: 0.4rem
 .bond
+  $element: &
   display: block
   position: relative
   padding: $bond-space
+  color: $base-color-alt
   text-decoration: none
-  color: inherit
   cursor: pointer
-  background-color: white
-  border-radius: 0.8rem
-  //box-shadow: 0 1rem 4.6rem rgba($box-shadow-color, 0.25)
-  box-shadow: 0 0.8rem 3.2rem rgba($base-color-alt, 0.25)
-  transition: box-shadow $animation-speed
-
-  +media('<tab')
-    padding: $bond-space--sm
+  background-color: $highlight-color
+  border-radius: $bond-border-radius
+  box-shadow: 0 1rem 2.5rem rgba($base-color-alt, 0.25)
+  transition: background-color $animation-speed, color $animation-speed
 
   +media('<tab-s')
     padding: $bond-space--mob
 
-.bond__figure
-  display: flex
-  align-items: center
-  justify-content: flex-start
-  width: 15rem
-  height: 3.5rem
-  margin: 0.3rem 0 1.9rem
-
-  +media('<tab')
-    height: 2.9rem
-    width: 12rem
-    margin: 0.3rem 0 1.3rem
-
-  +media('<tab-s')
-    margin-bottom: 0.2rem
-
-  img
-    display: block
-    max-width: 100%
-    max-height: 100%
-
-.bond__title
-  $line-height: 2.4rem
-  $line-length: 2
-  display: block
-  position: relative
-  +font-normal
-  font-size: 1.8rem
-  line-height: $line-height
-  font-weight: normal
-  color: #0d0d0d
-  height: $line-height * $line-length
-  overflow: hidden
-  margin-bottom: 1.2rem
-
-  +media('<tab')
-    margin-bottom: 0.1rem
-
-  +media('<tab-s')
-    $line-height: 1.8rem
-    $line-length: 2
-    font-size: 1.5rem
-    line-height: $line-height
-    height: $line-height * $line-length
-    margin-bottom: 0
-
-  &::after
-    content: ""
-    display: block
-    position: absolute
-    bottom: 0
-    right: 0
-    width: 20%
-    min-width: 6rem
-    height: $line-height
-    +linear-gradient(to right, rgba(white, 0) 0%, white 100%)
-
-.bond__release
-  overflow: hidden
-  position: relative
-  margin: 0 12rem 0.1rem 0
-  font-size: 1.8rem
-  line-height: 2.4rem
-  color: #0d0d0d
-  text-overflow: ellipsis
-
-  +media('<tab')
-    margin-right: 9rem
-    font-size: 1.8rem
-    line-height: 2.2rem
-
-  +media('<tab-s')
-    margin-right: 8rem
-    margin-bottom: 0
-    font-size: 1.5rem
-    line-height: 1.8rem
-
-.bond__term
-  overflow: hidden
-  position: relative
-  margin-right: 12rem
-  font-size: 2.4rem
-  line-height: 2.8rem
-  color: #0d0d0d
-  text-overflow: ellipsis
-
-  +media('<tab')
-    margin-right: 9rem
-    font-size: 1.8rem
-    line-height: 2.2rem
-
-  +media('<tab-s')
-    margin-right: 8rem
-    font-size: 1.5rem
-    line-height: 1.8rem
-
-.bond__value
-  position: absolute
-  bottom: nth($bond-space, 3)
-  right: nth($bond-space, 2)
-  +font-bold
-  font-size: 2.4rem
-  line-height: 2.8rem
-  color: #0d0d0d
-
-  +media('<tab')
-    font-size: 1.8rem
-    line-height: 2.2rem
-    bottom: nth($bond-space--sm, 3)
-    right: nth($bond-space--sm, 2)
-
-  +media('<tab-s')
-    font-size: 1.5rem
-    line-height: 1.8rem
-    bottom: nth($bond-space--mob, 3)
-    right: nth($bond-space--mob, 2)
-
-.bond__rate
-  position: absolute
-  top: nth($bond-space, 1)
-  right: nth($bond-space, 2)
-  $size: 4.1rem 8.5rem
-  height: nth($size, 1)
-  min-width: nth($size, 2)
-  padding: 0 1.5rem
-  +font-bold
-  font-size: 2.4rem
-  line-height: nth($size, 1)
-  text-align: center
-  color: white
-  background-color: $highlight-color
-  border-radius: nth($size, 1)
-  transition: background-color $animation-speed
-
-  +media('<tab')
-    top: nth($bond-space--sm, 1)
-    right: nth($bond-space--sm, 2)
-    $size: 3.4rem 6.9rem
-    height: nth($size, 1)
-    min-width: nth($size, 2)
-    font-size: 1.8rem
-    line-height: nth($size, 1)
-    border-radius: nth($size, 1)
-    padding: 0 1rem
-
-  +media('<tab-s')
-    top: nth($bond-space--mob, 1)
-    right: nth($bond-space--mob, 2)
-    $size: 2.6rem 5.2rem
-    height: nth($size, 1)
-    min-width: nth($size, 2)
-    font-size: 1.5rem
-    line-height: nth($size, 1)
-    border-radius: nth($size, 1)
-    padding: 0 0.8rem
-
-  // hover
-  .bond:not(.swiper-slide-active):hover &
+  &:hover
     background-color: $highlight-color--hover
+    box-shadow: 0 1rem 2.5rem rgba($base-color-alt, 0.25)
+
+  @at-root
+    .bond__figure
+      overflow: hidden
+      height: 17.9rem
+      background-color: $base-color-alt
+      background-repeat: no-repeat
+      background-position: center
+      background-size: cover
+      $br: $bond-border-radius
+      border-radius: $br $br 0 0
+      margin: -#{nth($bond-space, 1)} -#{nth($bond-space, 2)} 3.7rem
+
+      +media('<tab-s')
+        height: 11.7rem
+        margin: -#{nth($bond-space--mob, 1)} -#{nth($bond-space--mob, 2)} 2.6rem
+
+    .bond__logotype
+      display: flex
+      align-items: center
+      justify-content: flex-start
+      width: 15rem
+      height: 3.5rem
+      margin: 0 0 3.5rem
+
+      +media('<tab-s')
+        width: 10rem
+        height: 2rem
+        margin-bottom: 2.2rem
+
+      img
+        display: block
+        max-width: 100%
+        max-height: 100%
+
+    .bond__title
+      display: block
+      position: relative
+      +font-medium
+      font-size: 2.4rem
+      line-height: 2.8rem
+      color: white
+      margin-bottom: 2.3rem
+
+      +media('<tab-s')
+        font-size: 1.8rem
+        line-height: 2.4rem
+        margin-bottom: 1rem
+
+    .bond__emission
+      margin-bottom: 0.6rem
+      font-size: 1.8rem
+      line-height: 2.4rem
+
+      +media('<tab-s')
+        margin-bottom: 0.8rem
+        font-size: 1.6rem
+        line-height: 2.0rem
+
+      &:last-child
+        margin-bottom: 0
+
+      strong
+        display: inline-block
+        +font-medium
+        font-size: 2.4rem
+        color: white
+
+        +media('<tab-s')
+          font-size: 1.8rem
+
+    .bond__value
+      margin-bottom: 0.6rem
+      font-size: 1.8rem
+      line-height: 2.4rem
+
+      +media('<tab-s')
+        margin-bottom: 0.8rem
+        font-size: 1.6rem
+        line-height: 2.0rem
+
+      &:last-child
+        margin-bottom: 0
+
+      strong
+        display: inline-block
+        +font-medium
+        font-size: 2.4rem
+        color: white
+
+        +media('<tab-s')
+          font-size: 1.8rem
 
 /* bond end
 
 /* cases slider
 .cases-slider
+  position: relative
+  padding: 3rem 0 5rem
+  margin: -3rem 0 5rem
+
+  +media('<tab-s')
+    padding-bottom: 4rem
+    margin-bottom: 4rem
+
+  .js &:not(.is-loaded)
+    opacity: 0
+    pointer-events: none
+    overflow: hidden
+
+  &:last-child
+    margin-bottom: 0
+
+  &.swiper-container
+    overflow: visible
+
+.cases-slider__item
+  width: 46rem
+  pointer-events: none
+
+  +media('<mob')
+    width: 38rem
+
+  +media('<mob')
+    width: 30rem
+
+.cases-slider__item-visibility
+  height: 100%
+
+  .bond
+    height: 100%
+
+.swiper-slide-active
+  &, & ~ .cases-slider__item
+    pointer-events: auto
+
+    .cases-slider__item-visibility
+      opacity: 1 !important
+
+.cases-slider__pagination
+  &, .swiper-container-horizontal > &
+    bottom: 0
+
+/* cases slider end
+
+/* cases
+.cases
+  padding-top: 7.9rem
+  padding-bottom: 9.5rem
+  background-color: $bg-color-alt
+  overflow: hidden // Обрезать слайдер
+
+  +media('<net')
+    padding-bottom: 5.8rem
+
+  +media('<tab-s')
+    padding-top: 7rem
+    padding-bottom: 5.8rem
+
+.cases__title
+  margin-bottom: 7.2rem
+
+  +media('<net')
+    margin-bottom: 5.3rem
+
+  h1, h2
+    max-width: $layout-large-width
+    margin: 0 auto 3rem
+    text-align: center
+
+    +media('<net')
+      margin-bottom: 3.2rem
+
+    +media('<tab-s')
+      margin-bottom: 2.5rem
+
+    &:last-child
+      margin-bottom: 0
+
+  h3
+    max-width: $layout-flood-width
+    margin: 0 auto 3rem
+    padding: 0 calc(#{nth($layout-flood-space, 2)} + #{nth($layout-text-space, 2)})
+    +font-medium
+    text-align: center
+
+    +media('<net')
+      padding: 0 calc(#{nth($layout-flood-space--net, 2)} + #{nth($layout-text-space--net, 2)})
+      font-size: 2.2rem
+      line-height: 2.8rem
+
+    +media('<tab-s')
+      padding: 0
+      font-size: 2.0rem
+      line-height: 2.6rem
+
+    &:last-child
+      margin-bottom: 0
+
+/* cases end
+
+/* scope
+.scope
+  position: relative
+
+.scope__title
+  background-color: $bg-color-alt
+  margin-bottom: -3rem
+  padding-top: 5rem
+  padding-bottom: 6.8rem
+
+  +media('<tab-s')
+    padding-top: 5.4rem
+    padding-bottom: 6.2rem
+
+  h1, h2, h3
+    max-width: $layout-flood-width
+    margin: 0 auto
+    padding: 0 #{nth($layout-flood-space, 2)}
+
+    +media('<net')
+      padding: 0 #{nth($layout-flood-space--net, 2)}
+
+    +media('<tab-s')
+      padding: 0
+      font-size: 2.4rem
+      line-height: 2.8rem
+
+.scope__body
+  position: relative
+  z-index: 1
+
+.scope__container
+  position: relative
+  max-width: $layout-flood-width
+  margin: 0 auto
+  padding: 7.6rem #{nth($layout-flood-space, 2)} 11.4rem
+  background-color: white
+  z-index: 1
+  +shadow
+
+  +media('<net')
+    padding: 5.1rem #{nth($layout-flood-space--net, 2)} 11.4rem
+
+  +media('<tab-s')
+    padding: 2.3rem #{nth($layout-flood-space--mob, 2)} 11.2rem
+
+  h3, .h3
+    margin-bottom: 3.8rem
+
+    +media('<tab-s')
+      margin-bottom: 3rem
+
+  form
+    display: block
+
+    +media('<tab-s')
+      margin-left: -#{nth($layout-flood-space--mob, 2)}
+      margin-right: -#{nth($layout-flood-space--mob, 2)}
+
+  .form__footer
+    +media('<net')
+      margin-left: -#{nth($layout-text-space--net, 2)}
+      margin-right: -#{nth($layout-text-space--net, 2)}
+
+    +media('<tab-s')
+      margin-left: 0
+      margin-right: 0
+
+/* scope end
+
+/* advantages slider
+.advantages-slider
   position: relative
   padding: 3rem 0 4.9rem
   margin: -3rem 0 5.9rem
@@ -1647,105 +1487,240 @@ $bond-space--mob: 1.8rem 2rem 1.2rem
   &.swiper-container
     overflow: visible
 
-.cases-slider__item
-  opacity: 0
-  // transition
-  $prop: opacity
-  will-change: $prop
-  transition:
-    property: $prop
-    duration: 0.35s
-    timing-function: ease-in-out
+.advantages-slider__item
+  position: relative
+  pointer-events: none
+  padding: 0 #{nth($layout-text-space, 2)}
 
-  +media('<tab')
-    width: 37rem
-    //max-width: 37rem
-    opacity: 0.5
+  //+media('<net')
+    padding: 0 #{nth($layout-text-space--net, 2)}
 
   +media('<tab-s')
-    width: 28rem
+    padding: 0 #{nth($layout-text-space--net, 2)} // По дизайну, отступы больше, чем в остальных блоках
 
-  &.swiper-slide-visible
-    opacity: 1
+  h2
+    position: relative
+    margin-left: -#{nth($layout-text-space, 2)}
+    margin-right: -#{nth($layout-text-space, 2)}
+    z-index: 1
 
-    & ~ .cases-slider__item
-      opacity: 1
-      transition-duration: 0.1s
+    +media('<net')
+      margin-left: -#{nth($layout-text-space--net, 2)}
+      margin-right: -#{nth($layout-text-space--net, 2)}
 
-.selection__bonds-pagination
+    +media('<tab-s')
+      margin-left: -#{nth($layout-text-space--net, 2)} // По дизайну, отступы больше, чем в остальных блоках
+      margin-right: -#{nth($layout-text-space--net, 2)} // По дизайну, отступы больше, чем в остальных блоках
+
+    &::before
+      content: ""
+      display: block
+      position: absolute
+      left: 0
+      top: 0.62em
+      height: 0
+      width: calc(100% + 12.2rem)
+      border-top: 0.2rem solid #c5c7d1
+      z-index: -1
+      opacity: 0
+      pointer-events: none
+      // transition
+      $prop: opacity
+      will-change: $prop
+      transition:
+        property: $prop
+        duration: 0.5s
+        timing-function: ease-in-out
+
+      +media('<tab-s')
+        display: none
+
+    & > span
+      $shadow-color: $bg-color-alt
+      background-color: $shadow-color
+      box-shadow: -2rem 0 0 $shadow-color, 2rem 0 0 $shadow-color
+
+.advantages-slider__item-visibility
+  height: 100%
+
+.swiper-slide-active
+
+  &, & ~ .advantages-slider__item
+    pointer-events: auto
+
+    .advantages-slider__item-visibility
+      opacity: 1 !important
+
+    h2
+      &::before
+        opacity: 1
+        pointer-events: auto
+
+.advantages-slider__pagination
   &, .swiper-container-horizontal > &
     bottom: 0
 
-/* cases slider end
+/* advantages slider end
 
-/* cases
-.cases
-  padding-top: 7rem
-  padding-bottom: 10rem
+/* advantages
+.advantages
+  padding-top: 8.5rem
+  padding-bottom: 12rem
   background-color: $bg-color-alt
   overflow: hidden // Обрезать слайдер
 
-.cases__title
+  +media('<tab-s')
+    padding-top: 3rem
+
+.advantages__content
+
+  h2, .h2
+    margin-bottom: 3.5rem
+
+    +media('<tab-s')
+      font-size: 3.0rem
+      line-height: 3.5rem
+      margin-bottom: 2.5rem
+
+  h3, .h3
+    margin-bottom: 1.6rem
+
+  p + h3, ul + h3,
+  p + .h3, ul + .h3,
+  p + h4, ul + h4,
+  p + .h4, ul + .h4
+    margin-top: 3.9rem
+
+    +media('<tab-s')
+      margin-top: 2.9rem
+
+/* advantages end
+
+/* callback form
+.callback-form
+  max-width: $layout-flood-width
+
+.callback-form__title
+  max-width: $layout-small-width
+  +push-auto
+  padding: 0 #{$form-border-width + $form-input-space-h}
+
+  +media($form-media--net)
+    padding: 0 #{$form-border-width--net + $form-input-space-h--net}
+
+  +media($form-media--mob)
+    padding: 0 #{$form-border-width--mob + $form-input-space-h--mob}
+    +font-normal
+    font-size: 1.6rem
+    line-height: 2.4rem
+    margin-bottom: 2.2rem
+
+.callback-form__fields
+  max-width: $layout-small-width
+  margin: 0 auto 5.3rem
+
+  +media('<tab-s')
+    margin-bottom: $form-bottom-space--mob
+
+  &:last-child
+    margin-bottom: 0
+
+.callback-form__footer
+  text-align: right
+
+  +media('<net')
+    margin-left: -#{nth($layout-text-space--net, 2)}
+    margin-right: -#{nth($layout-text-space--net, 2)}
+
+  +media('<tab-s')
+    margin-left: 0
+    margin-right: 0
+
+/* callback form end
+
+/* prospects
+.prospects
+  padding-top: 6.9rem
+  padding-bottom: 11.4rem
+  background-color: $base-color
+  color: white
+
+  +media('<net')
+    padding-top: 7.9rem
+    padding-bottom: 10.4rem
+
+  +media('<tab-s')
+    padding-top: 2.9rem
+    padding-bottom: 11.4rem
+
+  a
+    color: white
+
+.prospects__title
+  margin-bottom: 6.7rem
+
+  +media('<net')
+    margin-bottom: 6.4rem
+
+  +media('<tab-s')
+    margin-bottom: 4.5rem
 
   h1, h2
-    max-width: $layout-page-max-width
+    max-width: $layout-large-width
     margin: 0 auto 3rem
     text-align: center
+    color: inherit
+
+    +media('<net')
+      margin-bottom: 3.8rem
+
+    +media('<tab-s')
+      margin-bottom: 2.5rem
+
+    &:last-child
+      margin-bottom: 0
 
   h3
     max-width: $layout-flood-width
     margin: 0 auto 3rem
     padding: 0 calc(#{nth($layout-flood-space, 2)} + #{nth($layout-text-space, 2)})
+    +font-normal
+    font-size: 1.8rem
+    line-height: 2.6rem
     text-align: center
+    color: inherit
 
-/* cases end
+    +media('<net')
+      font-size: 1.8rem
+      line-height: 2.2rem
+      padding: 0 calc(#{nth($layout-flood-space--net, 2)} + #{nth($layout-text-space--net, 2)})
 
-/* scope
-.scope
-  position: relative
+    +media('<tab-s')
+      font-size: 1.8rem
+      line-height: 2.2rem
+      padding: 0
 
-.scope__title
-  background-color: $bg-color-alt
-  margin-bottom: -3rem
-  padding-top: 5rem
-  padding-bottom: 5rem
+    &:last-child
+      margin-bottom: 0
 
-  h1, h2, h3
-    max-width: $layout-flood-width
-    margin: 0 auto
-    padding: 0 #{nth($layout-flood-space, 2)}
-
-.scope__body
-  position: relative
-  z-index: 1
-
-.scope__container
-  position: relative
+.prospects__form
   max-width: $layout-flood-width
-  margin: 0 auto
-  padding: 10rem #{nth($layout-flood-space, 2)}
-  background-color: white
-  z-index: 1
-  +shadow
+  margin: 0 auto 3rem
+  padding: 0 #{nth($layout-flood-space, 2)}
 
-/* scope end
+  +media('<net')
+    padding: 0 #{nth($layout-flood-space--net, 2)}
 
-/* terms
-.terms
-  padding-top: 5rem
-  padding-bottom: 5rem
-  background-color: $bg-color-alt
+  +media('<tab-s')
+    padding: 0
 
-/* terms end
+  &:last-child
+    margin-bottom: 0
 
-/* prospects
-.prospects
-  padding-top: 5rem
-  padding-bottom: 5rem
-  background-color: $base-color
-  color: white
+  label
+    background-color: $base-color
 
-  a
+  .callback-form__btn
     color: white
 
 /* prospects end

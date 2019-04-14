@@ -7,7 +7,21 @@
   position: relative
   margin-bottom: $form-bottom-space
 
-  .form-def, .form-radiocheck, .form-switcher, .select2
+  +media($form-media--net)
+    margin-bottom: $form-bottom-space--net
+
+  +media($form-media--mob)
+    margin-bottom: $form-bottom-space--mob
+
+  &.form-unit_nested
+    margin-top: -1.2rem
+    margin-left: 2.7rem
+
+    +media('<tab-s')
+      margin-top: -1rem
+      margin-left: 4.6rem
+
+  .form-def, .form-def_dark, .form-radiocheck, .form-switcher, .select2
     margin-bottom: 0
 
   .error-feedback,
@@ -20,5 +34,8 @@
       margin-top: -#{$form-input-height}
       +font-size(0, 0)
 
-      +media('<mob')
-        margin-top: -#{$form-input-height}
+      +media($form-media--net)
+        margin-top: -#{$form-input-height--net}
+
+      +media($form-media--mob)
+        margin-top: -#{$form-input-height--mob}

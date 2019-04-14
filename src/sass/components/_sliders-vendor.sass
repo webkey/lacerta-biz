@@ -9,7 +9,7 @@
   line-height: 1
 
 .swiper-pagination-bullet
-  $size: 1.2rem 3.6rem
+  $size: 1.0rem 3.0rem
   $size--mob: 0.6rem 1.8rem
   display: inline-block
   vertical-align: top
@@ -17,36 +17,31 @@
   width: 10rem
   max-width: nth($size, 1)
   border-radius: round-float(nth($size, 1) / 2, 1)
-  border: none
+  border: 0.2rem solid $highlight-color
   margin: 1rem 0.5rem 0
   opacity: 1
   pointer-events: auto
-  background: #40455d
+  background-color: transparent
+  box-sizing: border-box
   outline: none
   // transition
-  $prop: opacity, max-width, background-color
+  $prop: opacity, max-width, background-color, border-color
   will-change: $prop
   transition:
     property: $prop
     duration: $animation-speed
-    timing-function: ease-in-out
-
-  +media('<tab-s')
-    height: nth($size--mob, 1)
-    max-width: nth($size--mob, 1)
-    border-radius: round-float(nth($size--mob, 1) / 2, 1)
 
   // hover
   &:not(.swiper-pagination-bullet-active):hover
     background-color: $highlight-color--hover
+    border-color: $highlight-color--hover
 
   &.swiper-pagination-bullet-active
     cursor: default
     max-width: nth($size, 2)
+    background-color: $base-color-alt
+    border-color: $base-color-alt
     opacity: 0.2
-
-    +media('<tab-s')
-      max-width: nth($size--mob, 2)
 
 .swiper-container-horizontal
   & > .swiper-pagination-bullets
@@ -54,8 +49,5 @@
 
     .swiper-pagination-bullet
       margin: 1rem 0.5rem 0
-
-      +media('<tab-s')
-        margin: 1rem 0.2rem 0 0.3rem
 
 /* swiper slider end

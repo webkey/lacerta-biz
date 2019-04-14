@@ -16,27 +16,45 @@ label
   mark
     background: none
     color: $error-color
+    
+  & > em
+    font-family: inherit
+    font-style: normal
+    color: $text-color-light
 
 .label-float
   position: relative
   float: left
   $space-outer-horizontal: $form-border-width + $form-input-space-h - nth($form-label-space-inner, 2)
-  $space-outer-vertical: round-float($form-label-line-height / 2, 1)
+  $space-outer-vertical: round-float($form-label-line-height / 2, 1) + 0.1
   margin: 0 #{$space-outer-horizontal} -#{$space-outer-vertical}
   padding: $form-label-space-inner
   +font-size($form-label-font-size, $form-label-line-height)
   color: $text-color
   background-color: white
 
-// .form-def:
+  +media($form-media--net)
+    $space-outer-horizontal: $form-border-width--net + $form-input-space-h--net - nth($form-label-space-inner--net, 2)
+    $space-outer-vertical: round-float($form-label-line-height--net / 2, 1) + 0.1
+    margin: 0 #{$space-outer-horizontal} -#{$space-outer-vertical}
+    padding: $form-label-space-inner--net
+    +font-size($form-label-font-size--net, $form-label-line-height--net)
+
+  +media($form-media--mob)
+    $space-outer-horizontal: $form-border-width--mob + $form-input-space-h--mob - nth($form-label-space-inner--mob, 2)
+    $space-outer-vertical: round-float($form-label-line-height--mob / 2, 1) + 0.1
+    margin: 0 #{$space-outer-horizontal} -#{$space-outer-vertical}
+    padding: $form-label-space-inner--mob
+    +font-size($form-label-font-size--mob, $form-label-line-height--mob)
+
+// .form-def, .form-def_dark:
 // input[type="text"]
 // input[type="password"]
 // input[type="email"]
 // input[type="search"]
 // textarea
 
-.form-def
-  $form-def: &
+.form-def, .form-def_dark
   display: block
   +inputs-common-styles
   +inputs-font-styles
@@ -48,14 +66,37 @@ label
     duration: $animation-speed
     timing-function: ease-in-out
 
+  +media($form-media--net)
+    +inputs-common-styles--net
+    +inputs-font-style--net
+    +forms-space--net
+
+  +media($form-media--mob)
+    +inputs-common-styles--mob
+    +inputs-font-style--mob
+    +forms-space--mob
+
   // Textarea
   @at-root
-    textarea#{$form-def}
-      $lines: 2
-      $height: round($form-line-height*$lines) + $form-input-space-vt + $form-input-space-vb + round($form-border-width*2)
-      min-height: $height
-      height: $height
-      resize: vertical
+    textarea
+      &.form-def, &.form-def_dark
+        $lines: 1
+        $height: round-float($form-line-height * $lines, 1) + $form-input-space-vt + $form-input-space-vb + round-float($form-border-width * 2, 1)
+        min-height: $height
+        height: $height
+        resize: none
+
+        +media($form-media--net)
+          $lines: 1
+          $height: round-float($form-line-height--net * $lines, 1) + $form-input-space-vt--net + $form-input-space-vb--net + round-float($form-border-width--net * 2, 1)
+          min-height: $height
+          height: $height
+
+        +media($form-media--mob)
+          $lines: 1
+          $height: round-float($form-line-height--mob * $lines, 1) + $form-input-space-vt--mob + $form-input-space-vb--mob + round-float($form-border-width--mob * 2, 1)
+          min-height: $height
+          height: $height
 
   // Последний элемент в списке
   &:last-child
@@ -131,6 +172,52 @@ label
 
     +placeholder
       color: $form-text-color--disabled !important
+
+// dark
+.label_dark
+  color: $base-color-alt
+
+  &.filled
+    color: rgba($base-color-alt, 0.5)
+
+  &.success
+    +form-success
+
+  &.error
+    color: white
+
+.form-def_dark
+  border-color: rgba($base-color-alt, 0.3)
+
+  +placeholder
+    color: rgba($base-color-alt, 0.3)
+
+  &:focus, &:hover, &.focused
+    border-color: rgba($base-color-alt, 0.8)
+
+  &.success
+    +form-success
+
+    +placeholder
+      color: $form-success-color
+
+  &.error
+    color: white
+    border-color: white
+
+    +placeholder
+      color: white
+
+  & ~ .error-feedback
+    color: white
+
+// form footer
+.form__footer
+  padding-top: 0.8rem
+  text-align: right
+
+  +media('<tab-s')
+    padding-top: 0
 
 @import unit
 @import group

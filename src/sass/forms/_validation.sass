@@ -13,7 +13,10 @@
   letter-spacing: normal
   display: none
 
-  +media('<mob')
+  +media($form-media--net)
+    margin-top: -#{$form-bottom-space--net}
+
+  +media($form-media--mob)
     margin-top: -#{$form-bottom-space--mob}
 
 .error-feedback
