@@ -1,9 +1,5 @@
 <!DOCTYPE html>
-<!--[if lt IE 9]> <html class="no-js old-ie" lang="ru"> <![endif]-->
-<!--[if IE 9]> <html class="no-js ie9" lang="ru"> <![endif]-->
-<!--[if gt IE 9]><!-->
 <html class="no-js" lang="ru">
-<!--<![endif]-->
 
 <head>
   <meta charset="UTF-8">
@@ -11,7 +7,7 @@
   <!--Mobile optimized-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0">
   <!--Theme color-->
-  <meta name="theme-color" content="#fff">
+  <meta name="theme-color" content="#eb2b3a">
   <!--SEO-->
   <meta name="description" content="описание">
   <meta name="keywords" content="ключевые слова">
@@ -42,10 +38,9 @@
 
 <body>
   <noscript>
-  <div class="no-js-warning">Для корректной работы сайта <b>включите JavaScript</b> в браузере</div>
-</noscript>
-  <!--[if lt IE 9]>
-<div class="browserupgrade"><p>You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p></div> <![endif]-->
+    <div class="no-js-warning">Для корректной работы сайта <b>включите JavaScript</b> в браузере</div>
+  </noscript>
+  <!--[if lte IE 9]><div class="browserupgrade"><p>You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p></div><![endif]-->
   <header class="header layout-page-spaces">
     <div class="header-frame">
       <!--logo-->
@@ -75,8 +70,8 @@
     </div>
     <!--shutter navigation switcher-->
     <a href="#" class="shutter-nav-switcher shutter-nav-switcher-js">
-    <i>&mdash;</i><span>Меню</span>
-  </a>
+      <i>&mdash;</i><span>Меню</span>
+    </a>
     <!--shutter navigation switcher end-->
   </header>
   <!--shutter navigation overlay-->
@@ -151,7 +146,8 @@
         <a href="mailto:info@lacerta.by">info@lacerta.by</a>
       </div>
       <div class="sn-adr">
-        Беларусь, Минск, 220062<br> пр-т Победителей, 121
+        Беларусь, Минск, 220062<br>
+        пр-т Победителей, 121
       </div>
       <div class="sn-terms"><a href="#">Условия договора на комплексное брокерское обслуживание</a></div>
       <div class="sn-license"><a href="#">Лицензия</a></div>
@@ -163,8 +159,8 @@
           <div class="chats__list">
             <div class="chats__item">
               <a href="https://www.facebook.com/" class="facebook" target="_blank">
-					<span>Facebook</span>
-				</a>
+                <span>Facebook</span>
+              </a>
             </div>
           </div>
         </div>
@@ -173,13 +169,13 @@
           <div class="chats__list">
             <div class="chats__item">
               <a href="https://telegram.org/" class="telegram" target="_blank">
-					<span>Telegram</span>
-				</a>
+                <span>Telegram</span>
+              </a>
             </div>
             <div class="chats__item">
               <a href="https://www.viber.com/" class="viber" target="_blank">
-					<span>Viber</span>
-				</a>
+                <span>Viber</span>
+              </a>
             </div>
           </div>
         </div>
@@ -227,7 +223,8 @@ include("_tpl_forms_textarea.html", {
       <pre>&lt;span class="error-feedback"&gt;Error feedback&lt;/span&gt;
 &lt;span class="success-feedback"&gt;Success feedback&lt;/span&gt;</pre>
       <br>
-      <p>Если нужно проверить отображение с js классами, добавить в шаблонах класс <strong><code>field-js</code></strong>, например <strong><code>class="form-def field-js"</code></strong><br> Для проверки отображения валидации, нажать кнопку <strong><code>VALIDATE</code></strong></p>
+      <p>Если нужно проверить отображение с js классами, добавить в шаблонах класс <strong><code>field-js</code></strong>, например <strong><code>class="form-def field-js"</code></strong><br>
+        Для проверки отображения валидации, нажать кнопку <strong><code>VALIDATE</code></strong></p>
       <hr>
       <!--=== DEFAULT INPUT ===-->
       <h2>Input</h2>
@@ -292,50 +289,50 @@ include("_tpl_forms_textarea.html", {
       <form action="#" class="form-validate-js">
         <!--=== Long label ===-->
         <label class="form-radiocheck">
-        <input type="checkbox" name="checkbox" />
-        <span>Отличный способ для выделения самого важного в тексте – использование контрастных шрифтов</span>
-      </label>
+          <input type="checkbox" name="checkbox" />
+          <span>Отличный способ для выделения самого важного в тексте – использование контрастных шрифтов</span>
+        </label>
         <br>
         <!--=== Checked ===-->
         <label class="form-radiocheck">
-        <input type="checkbox" name="checkbox" checked />
-        <span>Checked</span>
-      </label>
+          <input type="checkbox" name="checkbox" checked />
+          <span>Checked</span>
+        </label>
         <br>
         <!--=== Disabled ===-->
         <label class="form-radiocheck">
-        <input type="checkbox" name="checkbox" disabled />
-        <span>Disabled</span>
-      </label>
+          <input type="checkbox" name="checkbox" disabled />
+          <span>Disabled</span>
+        </label>
         <br>
         <!--=== Checked and disabled ===-->
         <label class="form-radiocheck">
-        <input type="checkbox" name="checkbox" checked disabled />
-        <span>Checked & Disabled</span>
-      </label>
+          <input type="checkbox" name="checkbox" checked disabled />
+          <span>Checked & Disabled</span>
+        </label>
         <br>
         <br>
         <!--=== RADIO BUTTONS ===-->
         <h3>Radio</h3>
         <label class="form-radiocheck">
-        <input type="radio" name="testRadioInside" />
-        <span>Male</span>
-      </label>
+          <input type="radio" name="testRadioInside" />
+          <span>Male</span>
+        </label>
         <br>
         <label class="form-radiocheck">
-        <input type="radio" name="testRadioInside" checked />
-        <span>Female</span>
-      </label>
+          <input type="radio" name="testRadioInside" checked />
+          <span>Female</span>
+        </label>
         <br>
         <label class="form-radiocheck">
-        <input type="radio" name="testRadioInsideDisabled" disabled />
-        <span>Disabled</span>
-      </label>
+          <input type="radio" name="testRadioInsideDisabled" disabled />
+          <span>Disabled</span>
+        </label>
         <br>
         <label class="form-radiocheck">
-        <input type="radio" name="testRadioInsideCheckedDisabled" checked disabled />
-        <span>Checked & Disabled</span>
-      </label>
+          <input type="radio" name="testRadioInsideCheckedDisabled" checked disabled />
+          <span>Checked & Disabled</span>
+        </label>
       </form>
       <br><br>
       <hr>
@@ -359,65 +356,65 @@ include("_tpl_forms_textarea.html", {
         <!--=== Default ===-->
         <label class="label-float" for="selectDefault">Default: <mark>*</mark></label>
         <select class="form-def field-js" id="selectDefault" name="selectDefault" required>
-  <!--Important! The first element must have a value of ""-->
-  <option value="">- Choose option -</option>
-  <option value="1">Option 1</option>
-  <option value="2">Option 2</option>
-  <option value="3">Option 3 we have to add a lot of text for testing to make sure the correctness of cutting this text</option>
-  <option value="4">Option 4</option>
-  <option value="5">Option 5</option>
-  <option value="6">Option 6</option>
-  <option value="7">Option 7</option>
-  <option value="8">Option 8</option>
-</select>
+          <!--Important! The first element must have a value of ""-->
+          <option value="">- Choose option -</option>
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+          <option value="3">Option 3 we have to add a lot of text for testing to make sure the correctness of cutting this text</option>
+          <option value="4">Option 4</option>
+          <option value="5">Option 5</option>
+          <option value="6">Option 6</option>
+          <option value="7">Option 7</option>
+          <option value="8">Option 8</option>
+        </select>
         <span class="error-feedback">Error feedback</span>
         <span class="success-feedback">Success feedback</span>
         <!--=== Disabled ===-->
         <label class="label-float" for="selectDisabled">Disabled: <mark>*</mark></label>
         <select class="form-def field-js" id="selectDisabled" name="selectDisabled" disabled required>
-  <!--Important! The first element must have a value of ""-->
-  <option value="">- Choose option -</option>
-  <option value="1">Option 1</option>
-  <option value="2">Option 2</option>
-  <option value="3">Option 3 we have to add a lot of text for testing to make sure the correctness of cutting this text</option>
-  <option value="4">Option 4</option>
-  <option value="5">Option 5</option>
-  <option value="6">Option 6</option>
-  <option value="7">Option 7</option>
-  <option value="8">Option 8</option>
-</select>
+          <!--Important! The first element must have a value of ""-->
+          <option value="">- Choose option -</option>
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+          <option value="3">Option 3 we have to add a lot of text for testing to make sure the correctness of cutting this text</option>
+          <option value="4">Option 4</option>
+          <option value="5">Option 5</option>
+          <option value="6">Option 6</option>
+          <option value="7">Option 7</option>
+          <option value="8">Option 8</option>
+        </select>
         <span class="error-feedback">Error feedback</span>
         <span class="success-feedback">Success feedback</span>
         <!--=== Selected ===-->
         <label class="label-float" for="selectSelected">Selected: <mark>*</mark></label>
         <select class="form-def field-js" id="selectSelected" name="selectSelected" required>
-  <!--Important! The first element must have a value of ""-->
-  <option value="">- Choose option -</option>
-  <option value="1" selected>Option 1</option>
-  <option value="2">Option 2</option>
-  <option value="3">Option 3 we have to add a lot of text for testing to make sure the correctness of cutting this text</option>
-  <option value="4">Option 4</option>
-  <option value="5">Option 5</option>
-  <option value="6">Option 6</option>
-  <option value="7">Option 7</option>
-  <option value="8">Option 8</option>
-</select>
+          <!--Important! The first element must have a value of ""-->
+          <option value="">- Choose option -</option>
+          <option value="1" selected>Option 1</option>
+          <option value="2">Option 2</option>
+          <option value="3">Option 3 we have to add a lot of text for testing to make sure the correctness of cutting this text</option>
+          <option value="4">Option 4</option>
+          <option value="5">Option 5</option>
+          <option value="6">Option 6</option>
+          <option value="7">Option 7</option>
+          <option value="8">Option 8</option>
+        </select>
         <span class="error-feedback">Error feedback</span>
         <span class="success-feedback">Success feedback</span>
         <!--=== Selected and Disabled ===-->
         <label class="label-float" for="selectSelectedDisabled">Selected and Disabled: <mark>*</mark></label>
         <select class="form-def field-js" id="selectSelectedDisabled" name="selectSelectedDisabled" disabled required>
-  <!--Important! The first element must have a value of ""-->
-  <option value="">- Choose option -</option>
-  <option value="1" selected>Option 1</option>
-  <option value="2">Option 2</option>
-  <option value="3">Option 3 we have to add a lot of text for testing to make sure the correctness of cutting this text</option>
-  <option value="4">Option 4</option>
-  <option value="5">Option 5</option>
-  <option value="6">Option 6</option>
-  <option value="7">Option 7</option>
-  <option value="8">Option 8</option>
-</select>
+          <!--Important! The first element must have a value of ""-->
+          <option value="">- Choose option -</option>
+          <option value="1" selected>Option 1</option>
+          <option value="2">Option 2</option>
+          <option value="3">Option 3 we have to add a lot of text for testing to make sure the correctness of cutting this text</option>
+          <option value="4">Option 4</option>
+          <option value="5">Option 5</option>
+          <option value="6">Option 6</option>
+          <option value="7">Option 7</option>
+          <option value="8">Option 8</option>
+        </select>
         <span class="error-feedback">Error feedback</span>
         <span class="success-feedback">Success feedback</span>
         <!--=== === ===--><br>
@@ -443,69 +440,77 @@ include("_tpl_forms_textarea.html", {
         <!--=== Default ===-->
         <label class="label-float" for="selectArrowDefault">Default: <mark>*</mark></label>
         <select class="form-def has-arrow field-js" id="selectArrowDefault" name="selectArrowDefault" required>
-  <!--Important! The first element must have a value of ""-->
-  <option value="">- Choose option -</option>
-  <option value="1">Option 1</option>
-  <option value="2">Option 2</option>
-  <option value="3">Option 3 we have to add a lot of text for testing to make sure the correctness of cutting this text</option>
-  <option value="4">Option 4</option>
-  <option value="5">Option 5</option>
-  <option value="6">Option 6</option>
-  <option value="7">Option 7</option>
-  <option value="8">Option 8</option>
-</select>
-        <div class="select-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z"></path></svg></div>
+          <!--Important! The first element must have a value of ""-->
+          <option value="">- Choose option -</option>
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+          <option value="3">Option 3 we have to add a lot of text for testing to make sure the correctness of cutting this text</option>
+          <option value="4">Option 4</option>
+          <option value="5">Option 5</option>
+          <option value="6">Option 6</option>
+          <option value="7">Option 7</option>
+          <option value="8">Option 8</option>
+        </select>
+        <div class="select-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path d="M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z"></path>
+          </svg></div>
         <span class="error-feedback">Error feedback</span>
         <span class="success-feedback">Success feedback</span>
         <!--=== Disabled ===-->
         <label class="label-float" for="selectArrowDisabled">Disabled: <mark>*</mark></label>
         <select class="form-def has-arrow field-js" id="selectArrowDisabled" name="selectArrowDisabled" disabled required>
-  <!--Important! The first element must have a value of ""-->
-  <option value="">- Choose option -</option>
-  <option value="1">Option 1</option>
-  <option value="2">Option 2</option>
-  <option value="3">Option 3 we have to add a lot of text for testing to make sure the correctness of cutting this text</option>
-  <option value="4">Option 4</option>
-  <option value="5">Option 5</option>
-  <option value="6">Option 6</option>
-  <option value="7">Option 7</option>
-  <option value="8">Option 8</option>
-</select>
-        <div class="select-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z"></path></svg></div>
+          <!--Important! The first element must have a value of ""-->
+          <option value="">- Choose option -</option>
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+          <option value="3">Option 3 we have to add a lot of text for testing to make sure the correctness of cutting this text</option>
+          <option value="4">Option 4</option>
+          <option value="5">Option 5</option>
+          <option value="6">Option 6</option>
+          <option value="7">Option 7</option>
+          <option value="8">Option 8</option>
+        </select>
+        <div class="select-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path d="M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z"></path>
+          </svg></div>
         <span class="error-feedback">Error feedback</span>
         <span class="success-feedback">Success feedback</span>
         <!--=== Selected ===-->
         <label class="label-float" for="selectArrowSelected">Selected: <mark>*</mark></label>
         <select class="form-def has-arrow field-js" id="selectArrowSelected" name="selectArrowSelected" required>
-  <!--Important! The first element must have a value of ""-->
-  <option value="">- Choose option -</option>
-  <option value="1" selected>Option 1</option>
-  <option value="2">Option 2</option>
-  <option value="3">Option 3 we have to add a lot of text for testing to make sure the correctness of cutting this text</option>
-  <option value="4">Option 4</option>
-  <option value="5">Option 5</option>
-  <option value="6">Option 6</option>
-  <option value="7">Option 7</option>
-  <option value="8">Option 8</option>
-</select>
-        <div class="select-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z"></path></svg></div>
+          <!--Important! The first element must have a value of ""-->
+          <option value="">- Choose option -</option>
+          <option value="1" selected>Option 1</option>
+          <option value="2">Option 2</option>
+          <option value="3">Option 3 we have to add a lot of text for testing to make sure the correctness of cutting this text</option>
+          <option value="4">Option 4</option>
+          <option value="5">Option 5</option>
+          <option value="6">Option 6</option>
+          <option value="7">Option 7</option>
+          <option value="8">Option 8</option>
+        </select>
+        <div class="select-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path d="M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z"></path>
+          </svg></div>
         <span class="error-feedback">Error feedback</span>
         <span class="success-feedback">Success feedback</span>
         <!--=== Selected and Disabled ===-->
         <label class="label-float" for="selectArrowSelectedDisabled">Selected and Disabled: <mark>*</mark></label>
         <select class="form-def has-arrow field-js" id="selectArrowSelectedDisabled" name="selectArrowSelectedDisabled" disabled required>
-  <!--Important! The first element must have a value of ""-->
-  <option value="">- Choose option -</option>
-  <option value="1" selected>Option 1</option>
-  <option value="2">Option 2</option>
-  <option value="3">Option 3 we have to add a lot of text for testing to make sure the correctness of cutting this text</option>
-  <option value="4">Option 4</option>
-  <option value="5">Option 5</option>
-  <option value="6">Option 6</option>
-  <option value="7">Option 7</option>
-  <option value="8">Option 8</option>
-</select>
-        <div class="select-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z"></path></svg></div>
+          <!--Important! The first element must have a value of ""-->
+          <option value="">- Choose option -</option>
+          <option value="1" selected>Option 1</option>
+          <option value="2">Option 2</option>
+          <option value="3">Option 3 we have to add a lot of text for testing to make sure the correctness of cutting this text</option>
+          <option value="4">Option 4</option>
+          <option value="5">Option 5</option>
+          <option value="6">Option 6</option>
+          <option value="7">Option 7</option>
+          <option value="8">Option 8</option>
+        </select>
+        <div class="select-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path d="M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z"></path>
+          </svg></div>
         <span class="error-feedback">Error feedback</span>
         <span class="success-feedback">Success feedback</span>
         <!--=== === ===--><br>
@@ -520,7 +525,8 @@ include("_tpl_forms_textarea.html", {
       </div>
       <!--=== FORM UNIT ===-->
       <h2>Form unit</h2>
-      <p>Котейнер объединяющий элементы относящиеся к одному <strong>полю ввода</strong>, <strong>селекту</strong>, или <strong>переключателю</strong>.<br> Используется для более правильного расположения элементов форм относительно друг друга.</p>
+      <p>Котейнер объединяющий элементы относящиеся к одному <strong>полю ввода</strong>, <strong>селекту</strong>, или <strong>переключателю</strong>.<br>
+        Используется для более правильного расположения элементов форм относительно друг друга.</p>
       <pre>&lt;div class="form-unit"&gt;
   {{input}} / {{select}} / {{radiocheck}}
 &lt;/div&gt;</pre>
@@ -534,35 +540,37 @@ include("_tpl_forms_textarea.html", {
         <div class="form-unit">
           <label class="label-float" for="unitSelectDefault">Default select: <mark>*</mark></label>
           <select class="form-def field-js" id="unitSelectDefault" name="unitSelectDefault" required>
-  <!--Important! The first element must have a value of ""-->
-  <option value="">- Choose option -</option>
-  <option value="1">Option 1</option>
-  <option value="2">Option 2</option>
-  <option value="3">Option 3 we have to add a lot of text for testing to make sure the correctness of cutting this text</option>
-  <option value="4">Option 4</option>
-  <option value="5">Option 5</option>
-  <option value="6">Option 6</option>
-  <option value="7">Option 7</option>
-  <option value="8">Option 8</option>
-</select>
+            <!--Important! The first element must have a value of ""-->
+            <option value="">- Choose option -</option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3 we have to add a lot of text for testing to make sure the correctness of cutting this text</option>
+            <option value="4">Option 4</option>
+            <option value="5">Option 5</option>
+            <option value="6">Option 6</option>
+            <option value="7">Option 7</option>
+            <option value="8">Option 8</option>
+          </select>
           <span class="error-feedback">Error feedback</span>
           <span class="success-feedback">Success feedback</span>
         </div>
         <div class="form-unit">
           <label class="label-float" for="unitSelectArrowDefault">Default select with custom arrow: <mark>*</mark></label>
           <select class="form-def has-arrow field-js" id="unitSelectArrowDefault" name="unitSelectArrowDefault" required>
-  <!--Important! The first element must have a value of ""-->
-  <option value="">- Choose option -</option>
-  <option value="1">Option 1</option>
-  <option value="2">Option 2</option>
-  <option value="3">Option 3 we have to add a lot of text for testing to make sure the correctness of cutting this text</option>
-  <option value="4">Option 4</option>
-  <option value="5">Option 5</option>
-  <option value="6">Option 6</option>
-  <option value="7">Option 7</option>
-  <option value="8">Option 8</option>
-</select>
-          <div class="select-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z"></path></svg></div>
+            <!--Important! The first element must have a value of ""-->
+            <option value="">- Choose option -</option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3 we have to add a lot of text for testing to make sure the correctness of cutting this text</option>
+            <option value="4">Option 4</option>
+            <option value="5">Option 5</option>
+            <option value="6">Option 6</option>
+            <option value="7">Option 7</option>
+            <option value="8">Option 8</option>
+          </select>
+          <div class="select-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+              <path d="M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z"></path>
+            </svg></div>
           <span class="error-feedback">Error feedback</span>
           <span class="success-feedback">Success feedback</span>
         </div>
@@ -644,7 +652,8 @@ include("_tpl_forms_textarea.html", {
           <a href="mailto:info@lacerta.by">info@lacerta.by</a>
         </div>
         <div class="f-adr">
-          Беларусь, Минск, 220062<br> пр-т Победителей, 121
+          Беларусь, Минск, 220062<br>
+          пр-т Победителей, 121
         </div>
         <div class="f-terms" id="terms"><a href="#">Условия договора на комплексное брокерское обслуживание</a></div>
         <div class="f-license"><a href="#">Лицензия</a></div>
@@ -657,8 +666,8 @@ include("_tpl_forms_textarea.html", {
           <div class="chats__list">
             <div class="chats__item">
               <a href="https://www.facebook.com/" class="facebook" target="_blank">
-					<span>Facebook</span>
-				</a>
+                <span>Facebook</span>
+              </a>
             </div>
           </div>
         </div>
@@ -667,13 +676,13 @@ include("_tpl_forms_textarea.html", {
           <div class="chats__list">
             <div class="chats__item">
               <a href="https://telegram.org/" class="telegram" target="_blank">
-					<span>Telegram</span>
-				</a>
+                <span>Telegram</span>
+              </a>
             </div>
             <div class="chats__item">
               <a href="https://www.viber.com/" class="viber" target="_blank">
-					<span>Viber</span>
-				</a>
+                <span>Viber</span>
+              </a>
             </div>
           </div>
         </div>
@@ -686,7 +695,10 @@ include("_tpl_forms_textarea.html", {
       <!--copyright end-->
       <!--developer-->
       <div class="developer">
-        <a href="http://pras.by/" target="_blank" class="developer__logo"><svg viewBox="0 0 90 21" xmlns="http://www.w3.org/2000/svg" height="21" width="90"><path d="M63.756,2.793h8.424c0.754,0,1.366-0.625,1.366-1.397C73.547,0.625,72.935,0,72.181,0h-8.424 c-4.006,0-7.265,3.333-7.265,7.429v1.397h14.114c-0.586,1.909-2.329,3.336-4.324,3.336h-8.303c-0.754,0-1.366,0.626-1.366,1.397 c0,0.771,0.611,1.396,1.366,1.396h8.303c4.006,0,7.265-3.376,7.265-7.526V6.033H59.433C60.014,4.157,61.732,2.793,63.756,2.793z M47.437,0h-2.516c-4.006,0-7.265,3.333-7.265,7.429v6.14c0,0.772,0.611,1.397,1.366,1.397c0.754,0,1.366-0.625,1.366-1.397V8.826 h11.584v4.743c0,0.772,0.612,1.397,1.366,1.397c0.754,0,1.366-0.625,1.366-1.397v-6.14C54.702,3.333,51.443,0,47.437,0z M40.597,6.033c0.581-1.876,2.299-3.24,4.324-3.24h2.516c2.024,0,3.743,1.364,4.324,3.24H40.597z M28.613,0h-2.517 c-4.006,0-7.266,3.333-7.266,7.429v6.152c0,0.771,0.611,1.396,1.366,1.396c0.754,0,1.366-0.625,1.366-1.396V8.826h4.881 l7.223,5.839c0.251,0.202,0.549,0.301,0.846,0.301c0.403,0,0.803-0.182,1.072-0.531c0.468-0.605,0.367-1.484-0.225-1.962 l-4.512-3.647h5.031V7.429C35.879,3.333,32.619,0,28.613,0z M21.772,6.033c0.581-1.876,2.299-3.24,4.324-3.24h2.517 c2.024,0,3.743,1.364,4.324,3.24H21.772z M9.783,0H1.372C0.617,0,0.006,0.625,0.006,1.396c0,0.772,0.612,1.397,1.366,1.397h8.411 c2.024,0,3.743,1.364,4.324,3.24H0.008l-0.002,7.539c0,0.771,0.612,1.396,1.366,1.396c0.754,0,1.366-0.625,1.366-1.396V8.826 h14.311V7.429C17.049,3.333,13.789,0,9.783,0z"></path><path d="M89.994,13.499c0,4.141-3.283,7.498-7.333,7.498c-4.05,0-7.333-3.357-7.333-7.498S78.611,6,82.661,6 C86.711,6,89.994,9.357,89.994,13.499z"></path></svg></a>
+        <a href="http://pras.by/" target="_blank" class="developer__logo"><svg viewBox="0 0 90 21" xmlns="http://www.w3.org/2000/svg" height="21" width="90">
+            <path d="M63.756,2.793h8.424c0.754,0,1.366-0.625,1.366-1.397C73.547,0.625,72.935,0,72.181,0h-8.424 c-4.006,0-7.265,3.333-7.265,7.429v1.397h14.114c-0.586,1.909-2.329,3.336-4.324,3.336h-8.303c-0.754,0-1.366,0.626-1.366,1.397 c0,0.771,0.611,1.396,1.366,1.396h8.303c4.006,0,7.265-3.376,7.265-7.526V6.033H59.433C60.014,4.157,61.732,2.793,63.756,2.793z M47.437,0h-2.516c-4.006,0-7.265,3.333-7.265,7.429v6.14c0,0.772,0.611,1.397,1.366,1.397c0.754,0,1.366-0.625,1.366-1.397V8.826 h11.584v4.743c0,0.772,0.612,1.397,1.366,1.397c0.754,0,1.366-0.625,1.366-1.397v-6.14C54.702,3.333,51.443,0,47.437,0z M40.597,6.033c0.581-1.876,2.299-3.24,4.324-3.24h2.516c2.024,0,3.743,1.364,4.324,3.24H40.597z M28.613,0h-2.517 c-4.006,0-7.266,3.333-7.266,7.429v6.152c0,0.771,0.611,1.396,1.366,1.396c0.754,0,1.366-0.625,1.366-1.396V8.826h4.881 l7.223,5.839c0.251,0.202,0.549,0.301,0.846,0.301c0.403,0,0.803-0.182,1.072-0.531c0.468-0.605,0.367-1.484-0.225-1.962 l-4.512-3.647h5.031V7.429C35.879,3.333,32.619,0,28.613,0z M21.772,6.033c0.581-1.876,2.299-3.24,4.324-3.24h2.517 c2.024,0,3.743,1.364,4.324,3.24H21.772z M9.783,0H1.372C0.617,0,0.006,0.625,0.006,1.396c0,0.772,0.612,1.397,1.366,1.397h8.411 c2.024,0,3.743,1.364,4.324,3.24H0.008l-0.002,7.539c0,0.771,0.612,1.396,1.366,1.396c0.754,0,1.366-0.625,1.366-1.396V8.826 h14.311V7.429C17.049,3.333,13.789,0,9.783,0z"></path>
+            <path d="M89.994,13.499c0,4.141-3.283,7.498-7.333,7.498c-4.05,0-7.333-3.357-7.333-7.498S78.611,6,82.661,6 C86.711,6,89.994,9.357,89.994,13.499z"></path>
+          </svg></a>
         <div class="developer__text">
           <a href="http://pras.by/" target="_blank">Разработка сайта</a> — <a href="http://pras.by/" target="_blank">компания PRAS</a>
         </div>

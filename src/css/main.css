@@ -552,10 +552,6 @@ body {
 /* ==================================== */
 /* ============ TYPOGRAPHY ============ */
 /* ==================================== */
-body *::-moz-selection {
-  background-color: rgba(235, 43, 58, 0.9);
-  color: #bbf9f4;
-}
 body *::selection {
   background-color: rgba(235, 43, 58, 0.9);
   color: #bbf9f4;
