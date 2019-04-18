@@ -138,12 +138,12 @@ label
         color: $text-color-light
 
   // Success
-  @at-root
+  //@at-root
     label
       &.success
         +form-success
 
-  &.success
+  //&.success
     +form-success
 
     // Placeholder
@@ -180,11 +180,14 @@ label
   &.filled
     color: rgba($base-color-alt, 0.5)
 
-  &.success
+  //&.success
     +form-success
 
   &.error
-    color: white
+    color: $base-color-alt
+
+    &.filled
+      color: rgba($base-color-alt, 0.5)
 
 .form-def_dark
   border-color: rgba($base-color-alt, 0.3)
@@ -195,21 +198,21 @@ label
   &:focus, &:hover, &.focused
     border-color: rgba($base-color-alt, 0.8)
 
-  &.success
+  //&.success
     +form-success
 
     +placeholder
       color: $form-success-color
 
   &.error
-    color: white
-    border-color: white
+    color: $base-color-alt
+    border-color: rgba($base-color-alt, 0.3)
 
     +placeholder
-      color: white
+      color: rgba($base-color-alt, 0.3)
 
   & ~ .error-feedback
-    color: white
+    color: $base-color-alt
 
 // form footer
 .form__footer

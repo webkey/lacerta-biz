@@ -142,11 +142,11 @@ gulp.task('mergeCssLibs', function () {
 /**
  * @description Таск для формирования кастомного modernizr
  */
-gulp.task('createCustomModernizr', function (done) {
-  modernizr.build(config, function (code) {
-    fs.writeFile('src/js/modernizr.min.js', code, done);
-  });
-});
+// gulp.task('createCustomModernizr', function (done) {
+//   modernizr.build(config, function (code) {
+//     fs.writeFile('src/js/modernizr.min.js', code, done);
+//   });
+// });
 
 /**
  * @description Таск для мераж js библиотек
@@ -194,7 +194,7 @@ gulp.task('browserSync', function (done) {
 /**
  * @description Таск наблюдения за изменением файлов
  */
-gulp.task('watch', ['createCustomModernizr', 'browserSync', 'html:buildAllPages', 'sassCompilation', 'mergeCssLibs', 'copyLibsScriptsToJs'], function () {
+gulp.task('watch', ['browserSync', 'html:buildAllPages', 'sassCompilation', 'mergeCssLibs', 'copyLibsScriptsToJs'], function () {
   gulp.watch(['src/_tpl_*.html', 'src/__*.html', 'src/includes/**/*.json', 'src/includes/**/*.svg'], ['html:buildAllPages']);
   gulp.watch('src/sass/**/*.+(scss|sass)', ['sassCompilation']);
 });
@@ -250,7 +250,7 @@ gulp.task('sassCompilationForDist', function () {
 /**
  * @description Перенос файлов в папку релиза
  */
-gulp.task('buildDist', ['cleanDist', 'html:buildAllPages', 'copyImgToDist', 'sassCompilationForDist', 'mergeCssLibs', 'createCustomModernizr', 'copyLibsScriptsToJs'], function () {
+gulp.task('buildDist', ['cleanDist', 'html:buildAllPages', 'copyImgToDist', 'sassCompilationForDist', 'mergeCssLibs', 'copyLibsScriptsToJs'], function () {
 
   gulp.src(['src/ajax/**/*'])
       .pipe(gulp.dest(path.dist + '/ajax'));

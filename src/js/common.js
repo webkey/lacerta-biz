@@ -398,6 +398,7 @@ function slidersInit() {
         slidesPerView: 'auto',
         watchSlidesVisibility: true,
         parallax: true,
+        slideToClickedSlide: true,
         // autoplay: {
         //   delay: 3000,
         //   disableOnInteraction: true
@@ -444,6 +445,7 @@ function slidersInit() {
         centeredSlides: true,
         watchSlidesVisibility: true,
         parallax: true,
+        slideToClickedSlide: true,
         // autoplay: {
         //   delay: 3000,
         //   disableOnInteraction: true
@@ -476,10 +478,16 @@ function scrollToAnchor(){
   var $page = $('html, body');
 
   $('body').on('click', 'a[href^="#"]', function (e) {
+
+    var $curAnchor = $(this);
+
+    if ($curAnchor.attr('href') === '#') {
+      return;
+    }
+
     e.preventDefault();
 
-    var $curAnchor = $(this),
-        $scrollElem = $($curAnchor.attr('href'));
+    var $scrollElem = $($curAnchor.attr('href'));
 
     if (!$page.is(':animated')) {
       $page.stop().animate({scrollTop: $scrollElem.offset().top - $('.header').innerHeight()}, 300);
